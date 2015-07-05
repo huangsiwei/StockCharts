@@ -4,7 +4,11 @@ class CompanyRegionDistributionController {
 
     def index() {}
 
+
+
     def loadCompanyRegionDistributionData() {
 
     }
+
+
 }
