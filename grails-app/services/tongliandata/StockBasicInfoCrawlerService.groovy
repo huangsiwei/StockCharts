@@ -73,4 +73,8 @@ class StockBasicInfoCrawlerService {
             stockRegionInfo.save(flush: true)
         }
     }
+
+    def matchStockProvinceData() {
+        StockRegionInfo.list()
+    }
 }

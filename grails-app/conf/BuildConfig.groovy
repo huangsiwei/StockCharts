@@ -50,6 +50,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.24'
         runtime 'mysql:mysql-connector-java:5.1.29'
+        runtime 'com.alibaba:fastjson:1.2.0'
     }
 
     plugins {
