@@ -74,7 +74,14 @@ class StockBasicInfoCrawlerService {
         }
     }
 
-    def matchStockProvinceData() {
-        StockRegionInfo.list()
+    def test() {
+        String url = "https://gw.wmcloud.com/dataquery/#!/q/300005%202010-2013%20%E8%90%A5%E4%B8%9A%E5%88%A9%E6%B6%A6"
+        HttpClient httpClient = new DefaultHttpClient()
+        HttpGet httpGet = new HttpGet(url)
+        httpGet.addHeader("Authorization", "Bearer 5c97761c5f15ec4d41eef90557588fa3b2e0fb1ccb104ff18158cd1ba3319139")
+        def response = httpClient.execute(httpGet)
+        HttpEntity entity = response.getEntity()
+        String body = EntityUtils.toString(entity)
+        println(body)
     }
 }

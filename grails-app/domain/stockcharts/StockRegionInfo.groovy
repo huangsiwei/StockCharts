@@ -3,8 +3,8 @@ package stockcharts
 class StockRegionInfo {
 
     String stockName
-    String provinceRegion
     String stockCode
+    String provinceRegion
     String cityRegion
     Integer level
 
