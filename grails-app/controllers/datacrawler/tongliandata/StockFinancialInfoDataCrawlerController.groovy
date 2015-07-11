@@ -2,7 +2,7 @@ package datacrawler.tongliandata
 
 import tongliandata.StockFinancialInfoCrawlerService
 
-class StockFinancialInfoController {
+class StockFinancialInfoDataCrawlerController {
 
     StockFinancialInfoCrawlerService stockFinancialInfoCrawlerService
 

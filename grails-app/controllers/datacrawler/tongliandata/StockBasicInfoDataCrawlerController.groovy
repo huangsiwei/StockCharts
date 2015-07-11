@@ -4,7 +4,7 @@ import base.Region
 import stockcharts.StockRegionInfo
 import tongliandata.StockBasicInfoCrawlerService
 
-class StockBasicInfoController {
+class StockBasicInfoDataCrawlerController {
 
     StockBasicInfoCrawlerService stockBasicInfoCrawlerService
 
