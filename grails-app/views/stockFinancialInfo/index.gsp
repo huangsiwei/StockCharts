@@ -10,32 +10,54 @@
 <head>
     <title></title>
     <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
+    <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
+    <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">
 </head>
 
 <body>
 
-<h1 align="center">探路者财务数据趋势图</h1>
+<h1 align="center">股票财务数据趋势图</h1>
+
+<div style="width: 600px; margin: 40px auto">
+    <select name="stockCodes" multiple="multiple" style="width: 500px;">
+        <g:each in="${stockFinancialInfoMap}" var = "stockFinancialInfo" >
+            <option value="${stockFinancialInfo.key}">${stockFinancialInfo.value}</option>
+        </g:each>
+    </select>
+    <button onclick="loadStockFinancialInfoChart()">
+        查询
+    </button>
+</div>
 
 <div id="stockFinancialInfoChart" style="height:500px;width: 800px;margin: 40px auto"></div>
 
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
 <script type="text/javascript">
     $(function () {
-        loadStockFinancialInfoChart();
+        $('[name=stockCodes]').select2();
     });
 
     function loadStockFinancialInfoChart() {
         var seriesData = [];
+        var stockCodes = $('[name=stockCodes]').val();
+
         $.ajax({
             url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoData')}",
-            data:{stockCode:'300005'},
+            data:{stockCodes:stockCodes},
             dataType:"json",
             success: function (jsonObj) {
-
-                var seriseData = [];
+                var seriesDataList = [];
                 var xAxisData = [];
+                var legendDataList = [];
                 for (var i = 0; i < jsonObj.dataList.length; i++) {
-                    seriseData.push(jsonObj.dataList[i]);
+                    var seriesData = new Object();
+                    seriesData.name= jsonObj.dataList[i].stockName;
+                    seriesData.type = 'line';
+                    seriesData.data = jsonObj.dataList[i].basicEPSList;
+                    seriesDataList.push(seriesData);
+                    legendDataList.push(seriesData.name);
                 }
                 for (var i = 0; i < jsonObj.yearList.length; i++) {
                     xAxisData.push(jsonObj.yearList[i]);
@@ -60,6 +82,10 @@
                                 tooltip : {
                                     trigger: 'axis'
                                 },
+                                legend: {
+                                    data:legendDataList
+                                },
+                                calculable:false,
                                 toolbox: {
                                     show: true,
                                     orient : 'vertical',
@@ -84,14 +110,7 @@
                                         type : 'value'
                                     }
                                 ],
-                                series : [
-                                    {
-                                        name:'基本每股收益',
-                                        type:'line',
-                                        stack: '总量',
-                                        data:seriseData
-                                    }
-                                ]
+                                series : seriesDataList
                             };
                             myChart.setOption(option);
                         }
