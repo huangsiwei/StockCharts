@@ -19,11 +19,21 @@
 
 <h1 align="center">股票财务数据趋势图</h1>
 
-<div style="width: 600px; margin: 40px auto">
-    <select name="stockCodes" multiple="multiple" style="width: 500px;">
+<div style="width: 700px; margin: 40px auto">
+    <select name="stockCodes" multiple="multiple" style="width: 400px;">
         <g:each in="${stockFinancialInfoMap}" var = "stockFinancialInfo" >
             <option value="${stockFinancialInfo.key}">${stockFinancialInfo.value}</option>
         </g:each>
+    </select>
+    <select name="index" style="width: 160px;">
+        <option value="basicEPS" selected>基本每股收益</option>
+        <option value="nIncome">净利润</option>
+        <option value="tProfit">利润总额</option>
+        <option value="tRevenue">营业总收入</option>
+        <option value="revenue">营业收入</option>
+        <option value="operateProfit">营业利润</option>
+        <option value="noperateIncome">营业外收入</option>
+        <option value="noperateExp">营业外支出</option>
     </select>
     <button onclick="loadStockFinancialInfoChart()">
         查询
@@ -37,15 +47,15 @@
 <script type="text/javascript">
     $(function () {
         $('[name=stockCodes]').select2();
+        $('[name=index]').select2();
     });
 
     function loadStockFinancialInfoChart() {
-        var seriesData = [];
         var stockCodes = $('[name=stockCodes]').val();
-
+        var index = $('[name=index]').val();
         $.ajax({
             url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoData')}",
-            data:{stockCodes:stockCodes},
+            data:{stockCodes:stockCodes,index:index},
             dataType:"json",
             success: function (jsonObj) {
                 var seriesDataList = [];
@@ -55,7 +65,7 @@
                     var seriesData = new Object();
                     seriesData.name= jsonObj.dataList[i].stockName;
                     seriesData.type = 'line';
-                    seriesData.data = jsonObj.dataList[i].basicEPSList;
+                    seriesData.data = jsonObj.dataList[i].indexDataList;
                     seriesDataList.push(seriesData);
                     legendDataList.push(seriesData.name);
                 }

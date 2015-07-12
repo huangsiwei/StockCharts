@@ -19,7 +19,7 @@ class StockFinancialInfoController {
         def dataList = []
         def yearStrList = []
         def yearDateList = []
-
+        def index = params.index
         def stockCodeList = params."stockCodes[]"
         if (stockCodeList instanceof String) {
             def tempList = []
@@ -37,14 +37,14 @@ class StockFinancialInfoController {
             def stockFinancialData = []
             yearDateList.each { endDate ->
                 println()
-                if (StockFinancialInfo.findByStockCodeAndEndDate(stockCode, endDate, [sort: "actPubtime", order: "desc"]).basicEPS) {
-                    stockFinancialData << StockFinancialInfo.findByStockCodeAndEndDate(stockCode, endDate, [sort: "actPubtime", order: "desc"]).basicEPS
+                if (StockFinancialInfo.findByStockCodeAndEndDate(stockCode, endDate, [sort: "actPubtime", order: "desc"])."${index}") {
+                    stockFinancialData << StockFinancialInfo.findByStockCodeAndEndDate(stockCode, endDate, [sort: "actPubtime", order: "desc"])."${index}"
                 } else {
                     stockFinancialData << "-"
                 }
             }
             stockFinancialInfoMap["stockName"] = StockFinancialInfo.findByStockCode(stockCode).stockName
-            stockFinancialInfoMap["basicEPSList"] = stockFinancialData
+            stockFinancialInfoMap["indexDataList"] = stockFinancialData
             dataList << stockFinancialInfoMap
         }
 
