@@ -17,7 +17,7 @@
 
 <body>
 
-<h1 align="center">股票财务数据趋势图</h1>
+<h1 align="center">上司公司财务数据趋势图</h1>
 
 <div style="width: 700px; margin: 40px auto">
     <select name="stockCodes" multiple="multiple" style="width: 400px;">
