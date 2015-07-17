@@ -10,6 +10,12 @@ class StockBasicInfoDataCrawlerController {
 
     def index() {}
 
+    //TODO:十大流通股股东通过sina接口调用
+    //Example:http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_StockHolder/stockid/300005/displaytype/30.phtml
+    def top10StockHolder() {
+
+    }
+
     //取得地域MAP信息
     def fetchRegionInfo() {
         stockBasicInfoCrawlerService.fetchRegionInfo()
@@ -33,7 +39,10 @@ class StockBasicInfoDataCrawlerController {
         }
     }
 
-    def test() {
-        stockBasicInfoCrawlerService.test()
+    def fetchStockMainBusinessInfo() {
+        (1..100).each {
+            String stockCode = (300000 + it).toString()
+            stockBasicInfoCrawlerService.fetchStockMainBusinessInfo(stockCode)
+        }
     }
 }

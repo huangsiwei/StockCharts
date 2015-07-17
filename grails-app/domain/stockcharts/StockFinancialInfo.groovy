@@ -5,7 +5,7 @@ class StockFinancialInfo {
     String stockName
     String stockCode
 
-    Date endDate          //截止日期
+    Date endDate            //截止日期
     Date actPubtime         //实际披露时间
     Integer fiscalPeriod    //会计期间
     Float tRevenue          //营业总收入

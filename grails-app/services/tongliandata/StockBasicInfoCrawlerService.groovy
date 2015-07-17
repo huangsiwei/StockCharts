@@ -8,6 +8,7 @@ import org.apache.http.client.HttpClient
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.util.EntityUtils
+import stockcharts.StockMainBusinessInfo
 import stockcharts.StockRegionInfo
 
 @Transactional
@@ -74,14 +75,37 @@ class StockBasicInfoCrawlerService {
         }
     }
 
-    def test() {
-        String url = "https://gw.wmcloud.com/dataquery/#!/q/300005%202010-2013%20%E8%90%A5%E4%B8%9A%E5%88%A9%E6%B6%A6"
+    def fetchStockMainBusinessInfo(String stockCode) {
+        String url = "https://api.wmcloud.com/data/v1/api/equity/getEquIndustry.json?field=&industryVersionCD=010303&industry=&secID=&ticker=" + stockCode + "&intoDate="
         HttpClient httpClient = new DefaultHttpClient()
         HttpGet httpGet = new HttpGet(url)
         httpGet.addHeader("Authorization", "Bearer 5c97761c5f15ec4d41eef90557588fa3b2e0fb1ccb104ff18158cd1ba3319139")
         def response = httpClient.execute(httpGet)
         HttpEntity entity = response.getEntity()
         String body = EntityUtils.toString(entity)
-        println(body)
+        JSON.parse(body).data.each { stock ->
+            StockMainBusinessInfo stockMainBusinessInfo = new StockMainBusinessInfo()
+            stockMainBusinessInfo.stockName = stock.secShortName
+            stockMainBusinessInfo.stockCode = stock.ticker
+            stockMainBusinessInfo.industry = stock.industry
+            stockMainBusinessInfo.industryID = stock.industryID
+            stockMainBusinessInfo.industrySymbol = stock.industrySymbol
+            stockMainBusinessInfo.intoDate = stock.intoDate ? Date.parse("yyyy-MM-dd", stock.intoDate) : null
+            stockMainBusinessInfo.outDate = stock.outDate ? Date.parse("yyyy-MM-dd", stock.outDate) : null
+            stockMainBusinessInfo.isNew = stock.isNew
+            stockMainBusinessInfo.industryID1 = stock.industryID1 ?: null
+            stockMainBusinessInfo.industryName1 = stock.industryName1 ?: null
+            stockMainBusinessInfo.industryID2 = stock.industryID2 ?: null
+            stockMainBusinessInfo.industryName2 = stock.industryName2 ?: null
+            stockMainBusinessInfo.industryID3 = stock.industryID3 ?: null
+            stockMainBusinessInfo.industryName3 = stock.industryName3 ?: null
+            stockMainBusinessInfo.industryName4 = stock.industryName4 ?: null
+            stockMainBusinessInfo.industryName4 = stock.industryName4 ?: null
+            if (!stockMainBusinessInfo.save(flush: true)) {
+                stockMainBusinessInfo.errors.each {
+                    println stockCode + ":" + it
+                }
+            }
+        }
     }
 }
