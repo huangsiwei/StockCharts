@@ -8,6 +8,7 @@ class StockBasicInfoController {
 
     def mainBusinessInfo() {
 
+
     }
 
     def loadStockMainBusinessInfoPieChart() {
