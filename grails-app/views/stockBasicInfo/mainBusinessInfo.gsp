@@ -36,10 +36,31 @@
             dataType:"json",
             success: function (jsonObj) {
                 var legendDataList = [];
-                var seriesDataList = [];
+                var seriesDataTotalList = [];
+                var labelTop = {
+                    normal : {
+                        label : {
+                            show : false,
+                            position : 'center',
+                            formatter : '{b}',
+                            textStyle: {
+                                baseline : 'bottom'
+                            }
+                        },
+                        labelLine : {
+                            show : false
+                        }
+                    }
+                };
                 for (var i = 0; i < jsonObj.length; i++) {
-                    legendDataList.push(jsonObj[i].name);
-                    seriesDataList.push(jsonObj[i])
+                    var seriesDataList = [];
+                    for (var j = 0; j< jsonObj[i].length;j++) {
+                        legendDataList.push(jsonObj[i][j].name);
+                        var seriesData = jsonObj[i][j];
+                        seriesData.itemStyle = labelTop;
+                        seriesDataList.push(seriesData);
+                    }
+                    seriesDataTotalList.push(seriesDataList);
                 }
                 require.config({
                     paths: {
@@ -61,40 +82,32 @@
                                     trigger: 'item',
                                     formatter: "{b} : {c} ({d}%)"
                                 },
-                                legend: {
-                                    orient : 'vertical',
-                                    x : 'left',
-                                    data:legendDataList
-                                },
-                                toolbox: {
-                                    show : true,
-                                    feature : {
-                                        mark : {show: true},
-                                        dataView : {show: true, readOnly: false},
-                                        magicType : {
-                                            show: true,
-                                            type: ['pie', 'funnel'],
-                                            option: {
-                                                funnel: {
-                                                    x: '25%',
-                                                    width: '50%',
-                                                    funnelAlign: 'left',
-                                                    max: 1548
-                                                }
-                                            }
-                                        },
-                                        restore : {show: true},
-                                        saveAsImage : {show: true}
-                                    }
-                                },
+//                                legend: {
+//                                    orient : 'vertical',
+//                                    x : 'top',
+//                                    data:legendDataList
+//                                },
                                 calculable : true,
                                 series : [
                                     {
                                         type:'pie',
-                                        radius : '70%',
+                                        radius : [0, 70],
                                         center: ['50%', '60%'],
-                                        data:seriesDataList
+                                        data:seriesDataTotalList[0]
+                                    },
+                                    {
+                                        type:'pie',
+                                        radius : [100, 120],
+                                        center: ['50%', '60%'],
+                                        data:seriesDataTotalList[1]
+                                    },
+                                    {
+                                        type:'pie',
+                                        radius : [140, 160],
+                                        center: ['50%', '60%'],
+                                        data:seriesDataTotalList[2]
                                     }
+
                                 ]
                             };
                             myChart.setOption(option);

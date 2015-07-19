@@ -40,7 +40,7 @@ class StockBasicInfoDataCrawlerController {
     }
 
     def fetchStockMainBusinessInfo() {
-        (1..100).each {
+        (1..500).each {
             String stockCode = (300000 + it).toString()
             stockBasicInfoCrawlerService.fetchStockMainBusinessInfo(stockCode)
         }

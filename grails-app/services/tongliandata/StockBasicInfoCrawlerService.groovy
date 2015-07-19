@@ -83,7 +83,7 @@ class StockBasicInfoCrawlerService {
         def response = httpClient.execute(httpGet)
         HttpEntity entity = response.getEntity()
         String body = EntityUtils.toString(entity)
-        JSON.parse(body).data.each { stock ->
+        JSON.parse(body).data?.each { stock ->
             StockMainBusinessInfo stockMainBusinessInfo = new StockMainBusinessInfo()
             stockMainBusinessInfo.stockName = stock.secShortName
             stockMainBusinessInfo.stockCode = stock.ticker
