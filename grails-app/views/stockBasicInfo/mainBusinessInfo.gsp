@@ -37,24 +37,23 @@
             success: function (jsonObj) {
                 var legendDataList = [];
                 var seriesDataTotalList = [];
-                var labelTop = {
-                    normal : {
-                        label : {
-                            show : false,
-                            position : 'center',
-                            formatter : '{b}',
-                            textStyle: {
-                                baseline : 'bottom'
-                            }
-                        },
-                        labelLine : {
-                            show : false
-                        }
-                    }
-                };
+
                 for (var i = 0; i < jsonObj.length; i++) {
                     var seriesDataList = [];
                     for (var j = 0; j< jsonObj[i].length;j++) {
+
+                        console.log(jsonObj[i][j].color);
+                        var labelTop = {
+                            normal : {
+                                color:jsonObj[i][j].color,
+                                label : {
+                                    show : false
+                                },
+                                labelLine : {
+                                    show : false
+                                }
+                            }
+                        };
                         legendDataList.push(jsonObj[i][j].name);
                         var seriesData = jsonObj[i][j];
                         seriesData.itemStyle = labelTop;
@@ -82,11 +81,6 @@
                                     trigger: 'item',
                                     formatter: "{b} : {c} ({d}%)"
                                 },
-//                                legend: {
-//                                    orient : 'vertical',
-//                                    x : 'top',
-//                                    data:legendDataList
-//                                },
                                 calculable : true,
                                 series : [
                                     {
@@ -107,7 +101,6 @@
                                         center: ['50%', '60%'],
                                         data:seriesDataTotalList[2]
                                     }
-
                                 ]
                             };
                             myChart.setOption(option);
