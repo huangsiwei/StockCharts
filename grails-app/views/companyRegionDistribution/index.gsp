@@ -90,7 +90,7 @@
                                 },
                                 series : [
                                     {
-                                        name: 'iphone3',
+                                        name: '上市公司',
                                         type: 'map',
                                         mapType: 'china',
                                         roam: false,
