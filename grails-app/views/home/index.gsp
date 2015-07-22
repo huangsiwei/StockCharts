@@ -133,12 +133,7 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
+                <a href="${createLink(controller: 'companyRegionDistribution',action: 'index')}" class="portfolio-link">
                     <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
@@ -147,12 +142,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
+                <a href="${createLink(controller: 'stockBasicInfo',action: 'mainBusinessInfo')}" class="portfolio-link">
                     <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
@@ -161,7 +151,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
-                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                <a href="${createLink(controller: 'stockFinancialInfo',action: 'index')}" class="portfolio-link">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
                             <i class="fa fa-plus fa-3x"></i>
