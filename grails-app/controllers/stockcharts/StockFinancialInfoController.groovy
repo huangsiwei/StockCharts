@@ -52,6 +52,9 @@ class StockFinancialInfoController {
         result["yearList"] = yearStrList
         result["dataList"] = dataList
         render(JSON.toJSONString(result))
+    }
+
+    def financialInfoWithIndustry() {
 
     }
 }

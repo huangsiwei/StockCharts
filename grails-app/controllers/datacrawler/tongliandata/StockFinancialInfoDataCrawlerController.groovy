@@ -9,7 +9,7 @@ class StockFinancialInfoDataCrawlerController {
     def index() {}
 
     def fetchStockFinancialInfo() {
-        (1..100).each {
+        (1..500).each {
             String stockCode = (300000 + it).toString()
             stockFinancialInfoCrawlerService.fetchStockFinancialInfo(stockCode)
         }
