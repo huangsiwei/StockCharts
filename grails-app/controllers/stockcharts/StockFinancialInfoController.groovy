@@ -1,5 +1,6 @@
 package stockcharts
 
+import base.Industry
 import com.alibaba.fastjson.JSON
 
 class StockFinancialInfoController {
@@ -54,7 +55,18 @@ class StockFinancialInfoController {
         render(JSON.toJSONString(result))
     }
 
-    def financialInfoWithIndustry() {
+    def financialInfoByIndustryFilter() {
+        def industryL1List = Industry.findAllByLevel(1)
+        render(view: "financialInfoByIndustryFilter",model: [industryL1List:industryL1List])
+    }
 
+    def loadChildIndustry(){
+        def parentIndustry = Industry.findByIndustryID(params.parentIndustryId)
+        def childrenIndustryList = Industry.findAllByParent(parentIndustry)
+        def result = []
+        childrenIndustryList.each {
+            result << ["industryId":it.industryID,"industryName":it.industryName]
+        }
+        render (JSON.toJSONString(result))
     }
 }
