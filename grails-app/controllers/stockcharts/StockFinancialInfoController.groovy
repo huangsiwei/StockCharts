@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSON
 
 class StockFinancialInfoController {
 
+    def stockFinancialInfoService
+
     def index() {
         def stockFinancialInfoMap = [:]
         StockFinancialInfo.list().each { stockFinancialInfo ->
@@ -17,41 +19,14 @@ class StockFinancialInfoController {
 
     def loadStockFinancialInfoData() {
         def result = [:]
-        def dataList = []
-        def yearStrList = []
-        def yearDateList = []
-        def index = params.index
+        String index = params.index
         def stockCodeList = params."stockCodes[]"
         if (stockCodeList instanceof String) {
             def tempList = []
             tempList << stockCodeList
             stockCodeList = tempList
         }
-        stockCodeList.each { stockCode ->
-            StockFinancialInfo.findAllByStockCode(stockCode).each { stockFinancialInfo ->
-                yearDateList << stockFinancialInfo.endDate
-            }
-        }
-        yearDateList = yearDateList.unique().sort()
-        stockCodeList.each { stockCode ->
-            def stockFinancialInfoMap = [:]
-            def stockFinancialData = []
-            yearDateList.each { endDate ->
-                println()
-                if (StockFinancialInfo.findByStockCodeAndEndDate(stockCode, endDate, [sort: "actPubtime", order: "desc"])."${index}") {
-                    stockFinancialData << StockFinancialInfo.findByStockCodeAndEndDate(stockCode, endDate, [sort: "actPubtime", order: "desc"])."${index}"
-                } else {
-                    stockFinancialData << "-"
-                }
-            }
-            stockFinancialInfoMap["stockName"] = StockFinancialInfo.findByStockCode(stockCode).stockName
-            stockFinancialInfoMap["indexDataList"] = stockFinancialData
-            dataList << stockFinancialInfoMap
-        }
-
-        yearDateList.each { yearDate -> yearStrList << yearDate.format("yyyy") }
-        result["yearList"] = yearStrList
-        result["dataList"] = dataList
+        result = stockFinancialInfoService.loadStockFinancialInfoData(stockCodeList,index)
         render(JSON.toJSONString(result))
     }
 
@@ -68,5 +43,19 @@ class StockFinancialInfoController {
             result << ["industryId":it.industryID,"industryName":it.industryName]
         }
         render (JSON.toJSONString(result))
+    }
+
+    def loadStockFinancialTrendDataByIndustry() {
+        def stockCodeList
+        def index = params.index
+        if (params.industryL3 != "") {
+            stockCodeList = StockMainBusinessInfo.findAllByIndustryID3(params.industryL3).stockCode
+        } else if (params.industryL2 !="") {
+            stockCodeList = StockMainBusinessInfo.findAllByIndustryID2(params.industryL2).stockCode
+        } else if (params.industryL1 != "") {
+            stockCodeList = StockMainBusinessInfo.findAllByIndustryID1(params.industryL1).stockCode
+        }
+        def result = stockFinancialInfoService.loadStockFinancialInfoData(stockCodeList,index)
+        render(JSON.toJSONString(result))
     }
 }
