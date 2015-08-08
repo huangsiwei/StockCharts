@@ -8,11 +8,38 @@ import org.apache.http.client.HttpClient
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.util.EntityUtils
+import stockcharts.StockBasicInfo
 import stockcharts.StockMainBusinessInfo
 import stockcharts.StockRegionInfo
 
 @Transactional
 class StockBasicInfoCrawlerService {
+
+    def fetahStockBasicInfo() {
+        String url = "https://api.wmcloud.com/data/v1/api/master/getSecID.json?field=&assetClass=E&ticker=&partyID=&cnSpell="
+        HttpClient httpClient = new DefaultHttpClient()
+        HttpGet httpGet = new HttpGet(url)
+        httpGet.addHeader("Authorization", "Bearer 5c97761c5f15ec4d41eef90557588fa3b2e0fb1ccb104ff18158cd1ba3319139")
+        def response = httpClient.execute(httpGet)
+        HttpEntity entity = response.getEntity()
+        String body = EntityUtils.toString(entity)
+        JSON.parse(body).data.each { stock ->
+            if (stock.transCurrCD == "CNY") {
+                StockBasicInfo stockBasicInfo = new StockBasicInfo()
+                stockBasicInfo.stockCode = stock.ticker
+                stockBasicInfo.stockName = stock.secShortName
+                stockBasicInfo.listStatusCD = stock.listStatusCD
+                stockBasicInfo.listDate = stock.listDate? Date.parse("yyyy-MM-dd", stock.listDate) : null
+                stockBasicInfo.exchangeCD = stock.exchangeCD
+                stockBasicInfo.assetClass = stock.assetClass
+                if (!stockBasicInfo.save(flush: true)) {
+                    stockBasicInfo.errors.each {
+                        println (stock.ticker + ":" + it)
+                    }
+                }
+            }
+        }
+    }
 
     def fetchRegionInfo() {
         String url = "https://api.wmcloud.com/data/v1/api/master/getSecType.json?field="

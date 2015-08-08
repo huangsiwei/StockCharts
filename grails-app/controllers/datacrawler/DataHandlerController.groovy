@@ -9,4 +9,8 @@ class DataHandlerController {
     def initIndustryData() {
         dataHandlerService.initIndustryData()
     }
+
+    def addListDateToStockRegionInfo () {
+        dataHandlerService.addListDateToStockRegionInfo()
+    }
 }

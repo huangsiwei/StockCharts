@@ -2,10 +2,24 @@ package tongliandata
 
 import base.Industry
 import grails.transaction.Transactional
+import stockcharts.StockBasicInfo
 import stockcharts.StockMainBusinessInfo
+import stockcharts.StockRegionInfo
 
 @Transactional
 class DataHandlerService {
+
+    def addListDateToStockRegionInfo() {
+        StockRegionInfo.list().each { stockRegionInfo ->
+            def stockCode = stockRegionInfo.stockCode
+            stockRegionInfo.listDate = StockBasicInfo.findByStockCode(stockCode)?.listDate
+            if (!stockRegionInfo.save(flush: true)) {
+                stockRegionInfo.errors.each {
+                    println stockCode + ":" + it
+                }
+            }
+        }
+    }
 
     def initIndustryData() {
 

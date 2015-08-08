@@ -4,15 +4,18 @@ import com.alibaba.fastjson.JSON
 
 class CompanyRegionDistributionController {
 
+    def companyRegionDistributionService
+
     def index() {
 
     }
 
     def loadStockRegionDistributionData() {
-        def result = []
-        StockRegionInfo.list().groupBy { it.provinceRegion }.each {
-            result << [name: it.key, value: it.value.size()]
-        }
-        render(JSON.toJSONString(result))
+        def resultMap = companyRegionDistributionService.loadStockRegionDistributionData()
+        render(JSON.toJSONString(resultMap))
+    }
+
+    def test (){
+        companyRegionDistributionService.loadStockRegionDistributionData()
     }
 }

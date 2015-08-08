@@ -1,19 +1,20 @@
 package stockcharts
 
-class StockRegionInfo {
+class StockBasicInfo {
 
     String stockName
     String stockCode
-    String provinceRegion
-    String cityRegion
-    Integer level
+    String exchangeCD
+    String assetClass
+    String listStatusCD
     Date listDate
 
     static constraints = {
         stockName nullable: false
         stockCode nullable: false
-        provinceRegion nullable: true
-        cityRegion nullable: true
+        exchangeCD nullable: false
+        assetClass nullable: false
+        listStatusCD nullable: true
         listDate nullable: true
     }
 }

@@ -45,4 +45,8 @@ class StockBasicInfoDataCrawlerController {
             stockBasicInfoCrawlerService.fetchStockMainBusinessInfo(stockCode)
         }
     }
+
+    def fetchStockBasicInfo() {
+        stockBasicInfoCrawlerService.fetahStockBasicInfo()
+    }
 }

@@ -14,7 +14,7 @@
 
 <body>
 
-<h1 align="center">中国上市公司地域分布</h1>
+<h1 align="center">中国每年公司上市家数</h1>
 
 <div id="stockRegionMapChart" style="height:500px;width: 800px;margin: 40px auto"></div>
 
@@ -58,47 +58,172 @@
                             var myChart = ec.init(document.getElementById('stockRegionMapChart'));
 
                             var option = {
-                                tooltip : {
-                                    trigger: 'item'
+                                timeline:{
+                                    data:[
+                                        '1990','1991','1992','1993','1994','1995','1996','1997','1998','1999',
+                                        '2000','2001','2002','2003','2004','2005','2006','2007','2008','2009',
+                                        '2010','2011','2012','2013','2014','2015'
+                                    ],
+                                    label : {
+                                        formatter : function(s) {
+                                            return s.slice(0, 4);
+                                        }
+                                    },
+                                    autoPlay : true,
+                                    playInterval : 1000
                                 },
-                                dataRange: {
-                                    min: parseInt(min),
-                                    max: parseInt(max),
-                                    x: 'left',
-                                    y: 'bottom',
-                                    text:['高','低'],           // 文本，默认为数值文本
-                                    calculable : true
-                                },
-                                toolbox: {
-                                    show: true,
-                                    orient : 'vertical',
-                                    x: 'right',
-                                    y: 'center',
-                                    feature : {
-                                        mark : {show: true},
-                                        dataView : {show: true, readOnly: false},
-                                        restore : {show: true},
-                                        saveAsImage : {show: true}
-                                    }
-                                },
-                                roamController: {
-                                    show: true,
-                                    x: 'right',
-                                    mapTypeControl: {
-                                        'china': true
-                                    }
-                                },
-                                series : [
+                                options:[
                                     {
-                                        name: '上市公司',
-                                        type: 'map',
-                                        mapType: 'china',
-                                        roam: false,
-                                        itemStyle:{
-                                            normal:{label:{show:true}},
-                                            emphasis:{label:{show:true}}
+                                        tooltip : {'trigger':'item'},
+                                        toolbox : {
+                                            'show':true,
+                                            'feature':{
+                                                'mark':{'show':true},
+                                                'dataView':{'show':true,'readOnly':false},
+                                                'restore':{'show':true},
+                                                'saveAsImage':{'show':true}
+                                            }
                                         },
-                                        data: seriesData
+                                        dataRange: {
+                                            min: 0,
+                                            max: 60,
+                                            x: 'left',
+                                            y: 'bottom',
+                                            text: ['高', '低'],           // 文本，默认为数值文本
+                                            calculable: true
+                                        },
+                                        series : [
+                                            {
+                                                'name':'上市公司',
+                                                'type':'map',
+                                                'data': jsonObj["1990"]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1991"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1992"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1993"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1994"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1995"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1996"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1997"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1998"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["1999"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2000"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2001"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2002"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2003"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2004"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2005"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2006"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2007"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2008"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2009"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2010"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2011"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2012"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2013"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2014"]}
+                                        ]
+                                    },
+                                    {
+                                        series : [
+                                            {'data': jsonObj["2015"]}
+                                        ]
                                     }
                                 ]
                             };
