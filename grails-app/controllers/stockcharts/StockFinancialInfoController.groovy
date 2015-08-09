@@ -58,4 +58,21 @@ class StockFinancialInfoController {
         def result = stockFinancialInfoService.loadStockFinancialInfoData(stockCodeList,index)
         render(JSON.toJSONString(result))
     }
+
+    def financialInfoRadar() {
+        def stockFinancialInfoMap = [:]
+        StockFinancialInfo.list().each { stockFinancialInfo ->
+            if (!stockFinancialInfoMap[stockFinancialInfo.stockCode]) {
+                stockFinancialInfoMap[stockFinancialInfo.stockCode] = stockFinancialInfo.stockName
+            }
+        }
+        [stockFinancialInfoMap: stockFinancialInfoMap]
+    }
+
+    def loadStockFinancialInfoRadarChart() {
+        def indexes = params.indexes.split(",")
+        def stockCodes = params.stockCodes.split(",")
+        def result = stockFinancialInfoService.loadStockFinancialInfoRadarChartData(stockCodes,indexes,new Date("2014/12/31"),null)
+        render (JSON.toJSONString(result))
+    }
 }
