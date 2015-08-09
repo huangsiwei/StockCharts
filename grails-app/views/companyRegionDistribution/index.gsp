@@ -86,11 +86,12 @@
                                         },
                                         dataRange: {
                                             min: 0,
-                                            max: 60,
+                                            max: 50,
                                             x: 'left',
                                             y: 'bottom',
                                             text: ['高', '低'],           // 文本，默认为数值文本
-                                            calculable: true
+                                            calculable: true,
+                                            color: ['#FF6C00','#A8C4F9','#CAFCF6']
                                         },
                                         series : [
                                             {
