@@ -10,6 +10,8 @@
 <head>
     <title></title>
     <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
+    <link href="${resource(dir: "bootstrap-template/css",file: "bootstrap.min.css")}" rel="stylesheet">
+    <script src="${resource(dir: "bootstrap-template/js",file: "bootstrap.min.js")}"></script>
 </head>
 
 <body>
@@ -70,20 +72,11 @@
                                         }
                                     },
                                     autoPlay : true,
-                                    playInterval : 1000
+                                    playInterval : 2000
                                 },
                                 options:[
                                     {
                                         tooltip : {'trigger':'item'},
-                                        toolbox : {
-                                            'show':true,
-                                            'feature':{
-                                                'mark':{'show':true},
-                                                'dataView':{'show':true,'readOnly':false},
-                                                'restore':{'show':true},
-                                                'saveAsImage':{'show':true}
-                                            }
-                                        },
                                         dataRange: {
                                             min: 0,
                                             max: 50,

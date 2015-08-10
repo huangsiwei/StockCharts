@@ -11,7 +11,6 @@
     <title></title>
     <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
     <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
-    <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">
     <script src="${resource(dir: 'js/common', file: 'common.js')}"></script>
     <link href="${resource(dir: "bootstrap-template/css",file: "bootstrap.min.css")}" rel="stylesheet">
