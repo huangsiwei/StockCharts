@@ -20,20 +20,40 @@
 <body>
 <h2 align="center">基本面信息雷达图</h2>
 
-<div style="width: 700px; margin: 40px auto">
-    <select name="stockCodes" style="width: 400px;" multiple="multiple">
-        <g:each in="${stockFinancialInfoMap}" var = "stockFinancialInfo" >
-            <option value="${stockFinancialInfo.key}">${stockFinancialInfo.value}</option>
-        </g:each>
-    </select>
-    <select name="indexes" style="width: 160px;" multiple="multiple">
-        <g:each in="${ReportConstant.STOCK_FINANCIAL_INDEX_KEYS}" var="index" status="i">
-            <option value="${index}">${ReportConstant.STOCK_FINANCIAL_INDEXES.get(index)}</option>
-        </g:each>
-    </select>
-    <button onclick="loadStockFinancialInfoRadarChart()">
-        查询
-    </button>
+
+<div class="col-md-12" style="padding-top: 10px">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+        <select name="indexes" style="width: 100%" multiple="multiple">
+            <g:each in="${ReportConstant.STOCK_FINANCIAL_INDEX_KEYS}" var="index" status="i">
+                    <option value="${index}" <g:if test="${i < 5}"> selected="selected" </g:if> >${ReportConstant.STOCK_FINANCIAL_INDEXES.get(index)}</option>
+
+            </g:each>
+        </select>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+<div class="col-md-12" style="padding-top: 10px">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+        <select name="stockCodes" style="width: 100%;" multiple="multiple">
+            <g:each in="${stockFinancialInfoMap}" var = "stockFinancialInfo" >
+                <option value="${stockFinancialInfo.key}">${stockFinancialInfo.value}</option>
+            </g:each>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-info" onclick="loadStockFinancialInfoRadarChart()">
+            查询
+        </button>
+    </div>
 </div>
 
 <div id="stockFinancialInfoRadarChart" style="height:500px;width: 800px;margin: 40px auto">
@@ -46,8 +66,12 @@
 
 <script type="text/javascript">
     $(function () {
-        $('[name=stockCodes]').select2();
-        $('[name=indexes]').select2();
+        $('[name=stockCodes]').select2({
+            placeholder:"请添加股票"
+        });
+        $('[name=indexes]').select2({
+            placeholder:"请选择指标"
+        });
     });
 
 
