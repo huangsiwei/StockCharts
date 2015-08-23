@@ -51,8 +51,8 @@
                             更多图表
                         </button>
                         <ul class="dropdown-menu">
-                            <g:each in="${report.ReportConstant.CHART_TYPE_INDEX_KEYS}" var="chartKey">
-                                <li><a href="#">${report.ReportConstant.CHART_TYPE_INDEXES.get(chartKey)}</a></li>
+                            <g:each in="${StockChartType}" var="chart">
+                                <li><a href="${createLink(controller: "${chart.chartController}",action: "${chart.chartAction}")}">${chart.chartName}</a></li>
                             </g:each>
                         </ul>
                     </div>
