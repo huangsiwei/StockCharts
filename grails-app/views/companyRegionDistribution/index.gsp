@@ -74,6 +74,14 @@
         $("[name='my-checkbox']").bootstrapSwitch();
         $(".bootstrap-switch-wrapper").css("width","54px");
         $(".bootstrap-switch-label").remove();
+        $("[name=my-checkbox]").on('switchChange.bootstrapSwitch', function(event, state) {
+            console.log(state); // true | false
+            if (state) {
+                loadStockRegionMapChartByYear();
+            } else {
+                loadStockRegionMapChartTotally();
+            }
+        });
         loadStockRegionMapChartByYear();
     });
 
@@ -122,7 +130,7 @@
                                             return s.slice(0, 4);
                                         }
                                     },
-                                    autoPlay : false,
+                                    autoPlay : true,
                                     playInterval : 2000
                                 },
                                 options:[

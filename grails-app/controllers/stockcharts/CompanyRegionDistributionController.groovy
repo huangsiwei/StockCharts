@@ -20,7 +20,4 @@ class CompanyRegionDistributionController {
         render(JSON.toJSONString(resultMap))
     }
 
-    def test (){
-        companyRegionDistributionService.loadStockRegionDistributionDataByYear()
-    }
 }
