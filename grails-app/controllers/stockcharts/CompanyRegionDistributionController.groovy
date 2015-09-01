@@ -10,12 +10,17 @@ class CompanyRegionDistributionController {
 
     }
 
-    def loadStockRegionDistributionData() {
-        def resultMap = companyRegionDistributionService.loadStockRegionDistributionData()
+    def loadStockRegionDistributionDataByYear() {
+        def resultMap = companyRegionDistributionService.loadStockRegionDistributionDataByYear()
+        render(JSON.toJSONString(resultMap))
+    }
+
+    def loadStockRegionDistributionDataTotally() {
+        def resultMap = companyRegionDistributionService.loadStockRegionDistributionDataTotally()
         render(JSON.toJSONString(resultMap))
     }
 
     def test (){
-        companyRegionDistributionService.loadStockRegionDistributionData()
+        companyRegionDistributionService.loadStockRegionDistributionDataByYear()
     }
 }
