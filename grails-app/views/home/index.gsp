@@ -110,11 +110,6 @@
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
                 <a href="${createLink(controller: 'stockFinancialInfo',action: 'index')}" class="portfolio-link">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
                     <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
@@ -125,7 +120,6 @@
 
             <div class="col-md-4 col-sm-6 portfolio-item">
                 <a href="${createLink(controller: 'stockFinancialInfo',action: 'financialInfoByIndustryFilter')}" class="portfolio-link">
-
                     <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
