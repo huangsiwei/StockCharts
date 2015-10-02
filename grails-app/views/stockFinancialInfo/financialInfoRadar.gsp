@@ -168,6 +168,7 @@
                                     }
                                 ]
                             };
+                            myChart.setTheme('macarons');
                             myChart.setOption(option);
                         }
                 );

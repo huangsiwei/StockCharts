@@ -4,8 +4,8 @@
 public enum StockChartType {
 
 
-    regionDistribution("地域分布图","regionDistributionChart","companyRegionDistribution","index"),
-    mainBusinessPieChart("主营业务分布图","mainBusinessPieChart","stockBasicInfo","mainBusinessInfo"),
+//    regionDistribution("地域分布图","regionDistributionChart","companyRegionDistribution","index"),
+//    mainBusinessPieChart("主营业务分布图","mainBusinessPieChart","stockBasicInfo","mainBusinessInfo"),
     financialInfoTrendChart("业绩趋势图","financialInfoTrendChart","stockFinancialInfo","index"),
     financialInfoTrendChartByIndustryFilter("业绩趋势图(按行业分类)","financialInfoTrendChartByIndustryFilter","stockFinancialInfo","financialInfoByIndustryFilter"),
     financialInfoRadarChart("个股业绩雷达图","financialInfoRadarChart","stockFinancialInfo","financialInfoRadar")

@@ -16,6 +16,10 @@ class StockFinancialInfo {
     Float tProfit           //利润总额
     Float nIncome           //净利润
     Float basicEPS          //基本每股收益
+    Float investIncome      //投资收益
+    String reportType
+    String exchangeCD
+    Float cogs              //营业支出
 
     static constraints = {
         tRevenue nullable: true

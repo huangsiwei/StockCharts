@@ -1,5 +1,6 @@
 package datacrawler.tongliandata
 
+import stockcharts.StockBasicInfo
 import tongliandata.StockFinancialInfoCrawlerService
 
 class StockFinancialInfoDataCrawlerController {
@@ -9,10 +10,9 @@ class StockFinancialInfoDataCrawlerController {
     def index() {}
 
     def fetchStockFinancialInfo() {
-        (1..500).each {
-            String stockCode = (300000 + it).toString()
+        List stockCodeList = StockBasicInfo.list().stockCode
+        stockCodeList?.each { String stockCode ->
             stockFinancialInfoCrawlerService.fetchStockFinancialInfo(stockCode)
         }
-
     }
 }

@@ -162,6 +162,7 @@
                                 ],
                                 series : seriesDataList
                             };
+                            myChart.setTheme('macarons');
                             myChart.setOption(option);
                         }
                 );
