@@ -70,7 +70,7 @@
     </button>
 </div>
 
-<div id="stockFinancialInfoChart" style="height:500px;width: 800px;margin: 40px auto"></div>
+<div id="stockFinancialInfoChart" style="height:500px;width: 900px;margin: 40px auto"></div>
 
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 

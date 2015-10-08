@@ -146,7 +146,10 @@
 
                             var option = {
                                 tooltip : {
-                                    trigger: 'axis'
+                                    trigger: 'axis',
+                                    formatter: function (params) {
+                                        return toolTipFormatter($("[name=indexes]").val(),params);
+                                    }
                                 },
                                 legend: {
                                     orient : 'vertical',
@@ -162,7 +165,6 @@
                                 ],
                                 series : [
                                     {
-                                        name: '预算 vs 开销（Budget vs spending）',
                                         type: 'radar',
                                         data : seriesDataList
                                     }
@@ -177,6 +179,41 @@
                 console.log(error);
             }
         })
+    }
+
+    function toolTipFormatter(indexes, params) {
+        var res = "";
+        for (var i = 0; i < params.length; i++) {
+            var unit = "";
+            switch (indexes[params[i].dataIndex]) {
+                case "basicEPS":
+                    unit = "元/每股";
+                    break;
+                case "nIncome":
+                    unit = "元";
+                    break;
+                case "tProfit":
+                    unit = "元";
+                    break;
+                case "tRevenue":
+                    unit = "元";
+                    break;
+                case "revenue":
+                    unit = "元";
+                    break;
+                case "operateProfit":
+                    unit = "元";
+                    break;
+                case "noperateIncome":
+                    unit = "元";
+                    break;
+                case "noperateExp":
+                    unit = "元";
+                    break;
+            }
+            res += params[i][1] + "<br>" + params[i].indicator + ":" + params[i].value + " " + unit + "<br>";
+        }
+        return res
     }
 
 </script>
