@@ -30,5 +30,7 @@ class StockFinancialInfo {
         tProfit nullable: true
         nIncome nullable: true
         basicEPS nullable: true
+        investIncome nullable: true
+        cogs nullable: true
     }
 }

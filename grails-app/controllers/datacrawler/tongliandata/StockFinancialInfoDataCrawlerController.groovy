@@ -10,7 +10,7 @@ class StockFinancialInfoDataCrawlerController {
     def index() {}
 
     def fetchStockFinancialInfo() {
-        List stockCodeList = StockBasicInfo.list().stockCode
+        List stockCodeList = StockBasicInfo.findAllByListStatusCD("L").stockCode
         stockCodeList?.each { String stockCode ->
             stockFinancialInfoCrawlerService.fetchStockFinancialInfo(stockCode)
         }

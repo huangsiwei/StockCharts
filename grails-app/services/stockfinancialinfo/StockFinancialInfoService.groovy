@@ -13,7 +13,7 @@ class StockFinancialInfoService {
         def yearStrList = []
         def yearDateList = []
         stockCodeList.each { stockCode ->
-            StockFinancialInfo.findAllByStockCode(stockCode).each { stockFinancialInfo ->
+            StockFinancialInfo.findAllByStockCodeAndReportType(stockCode,"A").each { stockFinancialInfo ->
                 yearDateList << stockFinancialInfo.endDate
             }
         }
@@ -22,8 +22,9 @@ class StockFinancialInfoService {
             def stockFinancialInfoMap = [:]
             def stockFinancialData = []
             yearDateList.each { endDate ->
-                if (StockFinancialInfo.findByStockCodeAndEndDate(stockCode, endDate, [sort: "actPubtime", order: "desc"])?."${index}") {
-                    stockFinancialData << StockFinancialInfo.findByStockCodeAndEndDate(stockCode, endDate, [sort: "actPubtime", order: "desc"])?."${index}"
+                def indexValue = StockFinancialInfo.findByStockCodeAndEndDateAndReportType(stockCode, endDate, "A", [sort: "actPubtime", order: "desc"])?."${index}"
+                if (indexValue) {
+                    stockFinancialData << indexValue
                 } else {
                     stockFinancialData << "-"
                 }

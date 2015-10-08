@@ -43,7 +43,11 @@ class StockFinancialInfoCrawlerService {
                 stockFinancialInfo.basicEPS = financialReport.basicEPS ? financialReport.basicEPS as Float : null
                 stockFinancialInfo.cogs = financialReport.COGS ? financialReport.COGS as Float : null
                 stockFinancialInfo.investIncome = financialReport.investIncome ? financialReport.investIncome as Float : null
-                stockFinancialInfo.save(flush: true)
+                if (!stockFinancialInfo.save(flush: true)) {
+                    stockFinancialInfo.errors.each {
+                        println it
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace()
