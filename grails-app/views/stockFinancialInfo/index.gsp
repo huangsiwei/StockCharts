@@ -51,8 +51,8 @@
 
 <div style="width: 700px; margin: 40px auto">
     <select name="stockCodes" multiple="multiple" style="width: 400px;">
-        <g:each in="${stockFinancialInfoMap}" var = "stockFinancialInfo" >
-            <option value="${stockFinancialInfo.key}">${stockFinancialInfo.value}</option>
+        <g:each in="${stockList}" var = "stock" >
+            <option value="${stock.stockCode}">${stock.stockName}</option>
         </g:each>
     </select>
     <select name="index" style="width: 160px;">

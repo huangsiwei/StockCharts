@@ -8,13 +8,8 @@ class StockFinancialInfoController {
     def stockFinancialInfoService
 
     def index() {
-        def stockFinancialInfoMap = [:]
-        StockFinancialInfo.list().each { stockFinancialInfo ->
-            if (!stockFinancialInfoMap[stockFinancialInfo.stockCode]) {
-                stockFinancialInfoMap[stockFinancialInfo.stockCode] = stockFinancialInfo.stockName
-            }
-        }
-        [stockFinancialInfoMap: stockFinancialInfoMap]
+        def stockList = StockBasicInfo.findAllByListStatusCD("L")
+        [stockList: stockList]
     }
 
     def loadStockFinancialInfoData() {
