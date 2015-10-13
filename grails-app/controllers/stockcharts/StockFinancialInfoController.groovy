@@ -55,13 +55,13 @@ class StockFinancialInfoController {
     }
 
     def financialInfoRadar() {
-        def stockFinancialInfoMap = [:]
-        StockFinancialInfo.list().each { stockFinancialInfo ->
-            if (!stockFinancialInfoMap[stockFinancialInfo.stockCode]) {
-                stockFinancialInfoMap[stockFinancialInfo.stockCode] = stockFinancialInfo.stockName
+        def stockBasicInfoMap = [:]
+        StockBasicInfo.findAllByListStatusCD("L").each { stockBasicInfo ->
+            if (!stockBasicInfoMap[stockBasicInfo.stockCode]) {
+                stockBasicInfoMap[stockBasicInfo.stockCode] = stockBasicInfo.stockName
             }
         }
-        [stockFinancialInfoMap: stockFinancialInfoMap]
+        [stockBasicInfoMap: stockBasicInfoMap]
     }
 
     def loadStockFinancialInfoRadarChart() {
