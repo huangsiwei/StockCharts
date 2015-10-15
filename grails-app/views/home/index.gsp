@@ -67,7 +67,7 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    <a class="page-scroll" href="#portfolio">More</a>
                 </li>
             </ul>
         </div>
@@ -81,7 +81,7 @@
     <div class="container">
         <div class="intro-text">
             <div class="intro-heading">Stock Charts!</div>
-            <a href="#portfolio" class="page-scroll btn btn-xl">Tell Me More</a>
+            <a href="#portfolio" class="page-scroll btn btn-xl" style="padding: 10px 20px;">基本面数据的图形化展现</a>
         </div>
     </div>
 </header>
@@ -125,18 +125,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <span class="copyright">Copyright &copy; Your Website 2014</span>
+
             </div>
             <div class="col-md-4">
 
             </div>
             <div class="col-md-4">
-                <ul class="list-inline quicklinks">
-                    <li><a href="#">Privacy Policy</a>
-                    </li>
-                    <li><a href="#">Terms of Use</a>
-                    </li>
-                </ul>
+
             </div>
         </div>
     </div>
