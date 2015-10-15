@@ -2,6 +2,7 @@ package stockcharts
 
 import base.Industry
 import com.alibaba.fastjson.JSON
+import report.ReportConstant
 
 class StockFinancialInfoController {
 
@@ -67,7 +68,7 @@ class StockFinancialInfoController {
     def loadStockFinancialInfoRadarChart() {
         def indexes = params.indexes.split(",")
         def stockCodes = params.stockCodes.split(",")
-        def result = stockFinancialInfoService.loadStockFinancialInfoRadarChartData(stockCodes,indexes,new Date("2014/12/31"),null)
+        def result = stockFinancialInfoService.loadStockFinancialInfoRadarChartData(stockCodes,indexes,ReportConstant.STOCK_CHART_YEAR_LIST.last(),null)
         render (JSON.toJSONString(result))
     }
 }
