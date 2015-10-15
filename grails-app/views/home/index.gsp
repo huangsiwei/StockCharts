@@ -40,6 +40,11 @@
     <style>
         header {
             background-color: rgba(255,0,0,0.85);
+            height: 100%;
+        }
+
+        .second-page {
+            height: 100%;
         }
     </style>
 
@@ -67,7 +72,7 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#portfolio">More</a>
+                    <a class="page-scroll" href="#second-page" style="background-color: #fed136;border-radius:5px">More</a>
                 </li>
             </ul>
         </div>
@@ -86,56 +91,59 @@
     </div>
 </header>
 
-<!-- Portfolio Grid Section -->
-<section id="portfolio" class="bg-light-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-4 portfolio-item">
-                <a href="${createLink(controller: 'stockFinancialInfo',action: 'index')}" class="portfolio-link">
-                    <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>业绩趋势图</h4>
+<div class="second-page" id="second-page">
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 portfolio-item">
+                    <a href="${createLink(controller: 'stockFinancialInfo',action: 'index')}" class="portfolio-link">
+                        <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>业绩趋势图</h4>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4 col-sm-4 portfolio-item">
-                <a href="${createLink(controller: 'stockFinancialInfo',action: 'financialInfoByIndustryFilter')}" class="portfolio-link">
-                    <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>业绩趋势图(按行业分类)</h4>
+                <div class="col-md-4 col-sm-4 portfolio-item">
+                    <a href="${createLink(controller: 'stockFinancialInfo',action: 'financialInfoByIndustryFilter')}" class="portfolio-link">
+                        <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>业绩趋势图(按行业分类)</h4>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4 col-sm-4 portfolio-item">
-                <a href="${createLink(controller: 'stockFinancialInfo',action: 'financialInfoRadar')}" class="portfolio-link">
-                    <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>个股业绩雷达图</h4>
+                <div class="col-md-4 col-sm-4 portfolio-item">
+                    <a href="${createLink(controller: 'stockFinancialInfo',action: 'financialInfoRadar')}" class="portfolio-link">
+                        <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>个股业绩雷达图</h4>
+                    </div>
                 </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-4">
 
             </div>
         </div>
-    </div>
-</footer>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
 
 <!-- jQuery -->
 <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>

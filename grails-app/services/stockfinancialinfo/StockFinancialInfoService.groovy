@@ -1,5 +1,6 @@
 package stockfinancialinfo
 
+import datautils.DataUtilsService
 import grails.transaction.Transactional
 import report.ReportConstant
 import stockcharts.StockFinancialInfo
@@ -11,13 +12,7 @@ class StockFinancialInfoService {
         def result = [:]
         def dataList = []
         def yearStrList = []
-        def yearDateList = []
-        stockCodeList.each { stockCode ->
-            StockFinancialInfo.findAllByStockCodeAndReportType(stockCode,"A").each { stockFinancialInfo ->
-                yearDateList << stockFinancialInfo.endDate
-            }
-        }
-        yearDateList = yearDateList.unique().sort()
+        def yearDateList = ReportConstant.STOCK_CHART_YEAR_LIST
         stockCodeList.each { stockCode ->
             def stockFinancialInfoMap = [:]
             def stockFinancialData = []

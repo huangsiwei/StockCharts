@@ -33,4 +33,11 @@ class StockFinancialInfo {
         investIncome nullable: true
         cogs nullable: true
     }
+
+    static mapping = {
+        stockCode index: "idx_stockCode"
+        endDate index: "idx_endDate"
+        reportType index: "idx_reportType"
+        actPubtime index: "idx_actPubtime"
+    }
 }
