@@ -74,8 +74,8 @@
     </div>
     <div class="col-md-6">
         <select name="stockCodes" style="width: 100%;" multiple="multiple">
-            <g:each in="${stockBasicInfoMap}" var = "stockBasicInfo" >
-                <option value="${stockBasicInfo.key}">${stockBasicInfo.value}</option>
+            <g:each in="${stockList}" var = "stock" >
+                <option value="${stock.stockCode}">${stock.stockName}</option>
             </g:each>
         </select>
     </div>

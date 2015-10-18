@@ -7,6 +7,7 @@ import report.ReportConstant
 class StockFinancialInfoController {
 
     def stockFinancialInfoService
+    def dataUtilsService
 
     def index() {
         def stockList = StockBasicInfo.findAllByListStatusCD("L")
@@ -56,13 +57,9 @@ class StockFinancialInfoController {
     }
 
     def financialInfoRadar() {
-        def stockBasicInfoMap = [:]
-        StockBasicInfo.findAllByListStatusCD("L").each { stockBasicInfo ->
-            if (!stockBasicInfoMap[stockBasicInfo.stockCode]) {
-                stockBasicInfoMap[stockBasicInfo.stockCode] = stockBasicInfo.stockName
-            }
-        }
-        [stockBasicInfoMap: stockBasicInfoMap]
+
+        def stockList = StockBasicInfo.findAllByListStatusCD("L")
+        [stockList: stockList]
     }
 
     def loadStockFinancialInfoRadarChart() {
