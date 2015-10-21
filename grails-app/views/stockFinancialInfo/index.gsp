@@ -73,6 +73,7 @@
 <div id="stockFinancialInfoChart" style="height:500px;width: 900px;margin: 40px auto"></div>
 
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script src="${resource(dir: 'js/common',file: 'utils.js')}"></script>
 
 <script type="text/javascript">
     $(function () {
@@ -164,53 +165,6 @@
                 console.log(error);
             }
         })
-    }
-
-    function toolTipFormatter(index,params) {
-        var res = "";
-        switch (index) {
-            case "basicEPS":
-                for (var i = 0;i<params.length;i++) {
-                    res = res + params[i].seriesName +": " + params[i].data + " " + "元/每股" + "<br>"
-                }
-                break;
-            case "nIncome":
-                for (var i = 0;i<params.length;i++) {
-                    res = res + params[i].seriesName +": " + params[i].data + " " + "元" + "<br>"
-                }
-                break;
-            case "tProfit":
-                for (var i = 0;i<params.length;i++) {
-                    res = res + params[i].seriesName +": " + params[i].data + " " + "元" + "<br>"
-                }
-                break;
-            case "tRevenue":
-                for (var i = 0;i<params.length;i++) {
-                    res = res + params[i].seriesName +": " + params[i].data + " " + "元" + "<br>"
-                }
-                break;
-            case "revenue":
-                for (var i = 0;i<params.length;i++) {
-                    res = res + params[i].seriesName +": " + params[i].data + " " + "元" + "<br>"
-                }
-                break;
-            case "operateProfit":
-                for (var i = 0;i<params.length;i++) {
-                    res = res + params[i].seriesName +": " + params[i].data + " " + "元" + "<br>"
-                }
-                break;
-            case "noperateIncome":
-                for (var i = 0;i<params.length;i++) {
-                    res = res + params[i].seriesName +": " + params[i].data + " " + "元" + "<br>"
-                }
-                break;
-            case "noperateExp":
-                for (var i = 0;i<params.length;i++) {
-                    res = res + params[i].seriesName +": " + params[i].data + " " + "元" + "<br>"
-                }
-                break;
-        }
-        return res
     }
 </script>
 <script type="text/javascript">

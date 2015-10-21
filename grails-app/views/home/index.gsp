@@ -43,8 +43,23 @@
             height: 100%;
         }
 
-        .second-page {
+        #portfolio {
+            padding-bottom: 70px;
             height: 100%;
+        }
+
+        .chart-info {
+            margin: 15px 5px 5px 5px;
+            border-color: #cccccc;
+            border-width: 1px;
+            border-style:solid;
+        }
+
+        footer {
+            height: 70px;
+            position: relative;
+            margin-top: -70px;
+            background-color: #ffffff;
         }
     </style>
 
@@ -96,53 +111,55 @@
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4 portfolio-item">
-                    <a href="${createLink(controller: 'stockFinancialInfo',action: 'index')}" class="portfolio-link">
-                        <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
-                    </a>
+                <div class="col-md-2"></div>
+
+                <div class="col-md-4 portfolio-item">
                     <div class="portfolio-caption">
-                        <h4>业绩趋势图</h4>
+                        <a href="${createLink(controller: 'stockFinancialInfo', action: 'index')}">
+                            <h4>业绩趋势折线图</h4>
+                        </a>
+                        <div class="chart-info">
+                            portfolio-captionportfolio-captionportfolio-captionportfolio-captionportfolio-caption
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 portfolio-item">
+                    <div class="portfolio-caption">
+                        <a href="${createLink(controller: 'stockFinancialInfo', action: 'index')}">
+                            <h4>个股业绩雷达图</h4>
+                        </a>
+                        <div class="chart-info">
+                            portfolio-captionportfolio-captionportfolio-captionportfolio-captionportfolio-caption
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 col-sm-4 portfolio-item">
-                    <a href="${createLink(controller: 'stockFinancialInfo',action: 'financialInfoByIndustryFilter')}" class="portfolio-link">
-                        <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>业绩趋势图(按行业分类)</h4>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-4 portfolio-item">
-                    <a href="${createLink(controller: 'stockFinancialInfo',action: 'financialInfoRadar')}" class="portfolio-link">
-                        <img src="${resource(dir:"images",file: "chart.jpg")}" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>个股业绩雷达图</h4>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
 
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 </div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+                需要更多功能？发送邮件到 stockgraph@sina.com 我来帮你实现！
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 
 <!-- jQuery -->
@@ -162,7 +179,6 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="${resource(dir: "bootstrap-template/js",file: "agency.js")}"></script>
-
 
 </body>
 </html>
