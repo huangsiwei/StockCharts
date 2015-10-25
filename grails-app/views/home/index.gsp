@@ -48,11 +48,11 @@
             height: 100%;
         }
 
-        .chart-info {
+        .chart-desc {
             margin: 15px 5px 5px 5px;
-            border-color: #cccccc;
-            border-width: 1px;
-            border-style:solid;
+            /*border-color: #cccccc;*/
+            /*border-width: 1px;*/
+            /*border-style:solid;*/
         }
 
         footer {
@@ -111,33 +111,40 @@
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
             <div class="row">
-                <div class="col-md-2"></div>
 
-                <div class="col-md-4 portfolio-item">
-                    <div class="portfolio-caption">
-                        <a href="${createLink(controller: 'stockFinancialInfo', action: 'index')}">
-                            <h4>业绩趋势折线图</h4>
-                        </a>
-                        <div class="chart-info">
-                            portfolio-captionportfolio-captionportfolio-captionportfolio-captionportfolio-caption
+                <div style="margin-left: auto;margin-right: auto;width: 80%">
+                    <div class="col-md-4 portfolio-item">
+                        <div class="portfolio-caption">
+                            <a href="${createLink(controller: 'stockFinancialInfo', action: 'index')}">
+                                <h4>业绩趋势折线图</h4>
+                            </a>
+                            <div class="chart-desc">
+                                <p>选择一只或多只股票，查看它们的基本面指标</p>
+                            </div>
                         </div>
                     </div>
 
-                </div>
-
-                <div class="col-md-4 portfolio-item">
-                    <div class="portfolio-caption">
-                        <a href="${createLink(controller: 'stockFinancialInfo', action: 'index')}">
-                            <h4>个股业绩雷达图</h4>
-                        </a>
-                        <div class="chart-info">
-                            portfolio-captionportfolio-captionportfolio-captionportfolio-captionportfolio-caption
+                    <div class="col-md-4 portfolio-item">
+                        <div class="portfolio-caption">
+                            <a href="${createLink(controller: 'stockFinancialInfo', action: 'financialInfoByIndustryFilter')}">
+                                <h4>同行业业绩折线图</h4>
+                            </a>
+                            <div class="chart-desc">
+                                <p>选择一个行业，查看它们的基本面指标</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-2">
-
+                    <div class="col-md-4 portfolio-item">
+                        <div class="portfolio-caption">
+                            <a href="${createLink(controller: 'stockFinancialInfo', action: 'financialInfoRadar')}">
+                                <h4>个股业绩雷达图</h4>
+                            </a>
+                            <div class="chart-desc">
+                                <p>选择多只股票，同时比较它们的多种基本面指标</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

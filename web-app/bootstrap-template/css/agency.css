@@ -412,9 +412,9 @@ section h3.section-subheading {
 
 #portfolio .portfolio-item .portfolio-caption p {
     margin: 0;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
-    font-style: italic;
+    /*font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    font-size: 14px;
+    /*font-style: italic;*/
 }
 
 #portfolio * {

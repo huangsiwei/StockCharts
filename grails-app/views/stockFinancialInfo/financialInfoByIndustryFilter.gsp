@@ -81,6 +81,7 @@
 <div id="stockFinancialInfoChart" style="height:700px;width: 1200px;margin: 40px auto"></div>
 
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script src="${resource(dir: 'js/common',file: 'utils.js')}"></script>
 
 <script>
 
@@ -130,7 +131,10 @@
 
                             var option = {
                                 tooltip : {
-                                    trigger: 'axis'
+                                    trigger: 'axis',
+                                    formatter: function (parmas) {
+                                        return toolTipFormatter(index,parmas);
+                                    }
                                 },
                                 legend: {
                                     data:legendDataList
