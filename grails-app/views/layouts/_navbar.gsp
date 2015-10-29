@@ -68,3 +68,13 @@
 </nav>
 
 <div style="height: 80px"></div>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?0c0b5113d101bcca87968935c57f8cbe";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>

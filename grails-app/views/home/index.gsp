@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Stock Graph 基本面信息的图表展现</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "bootstrap.min.css")}" rel="stylesheet">
@@ -77,7 +77,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Stock Charts</a>
+            <a class="navbar-brand page-scroll" href="#page-top">Stock Graph</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,7 +100,7 @@
 <header>
     <div class="container">
         <div class="intro-text">
-            <div class="intro-heading">Stock Charts!</div>
+            <div class="intro-heading">Stock Graph!</div>
             <a href="#portfolio" class="page-scroll btn btn-xl" style="padding: 10px 20px;">基本面数据的图形化展现</a>
         </div>
     </div>
@@ -186,6 +186,17 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="${resource(dir: "bootstrap-template/js",file: "agency.js")}"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?0c0b5113d101bcca87968935c57f8cbe";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
 
 </body>
 </html>
