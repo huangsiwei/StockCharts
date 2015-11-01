@@ -114,36 +114,38 @@
         <div class="container">
             <div class="row">
 
-                <div style="margin-left: auto;margin-right: auto;width: 80%">
-                    <div class="col-md-4 portfolio-item">
-                        <div class="portfolio-caption">
+                <div style="margin-left: auto;margin-right: auto;width: 100%">
+                    <div class="col-md-6 portfolio-item">
+                        <div class="portfolio-caption" style="margin-left: auto;margin-right: auto;">
                             <a href="${createLink(controller: 'stockFinancialInfo', action: 'index')}">
                                 <h4>业绩趋势折线图</h4>
                             </a>
                             <div class="chart-desc">
                                 <p>选择一只或多只股票，查看它们的基本面指标</p>
+                                <img src="${resource(dir: 'images',file: 'line-chart.png')}" style="width: 100%">
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 portfolio-item">
-                        <div class="portfolio-caption">
-                            <a href="${createLink(controller: 'stockFinancialInfo', action: 'financialInfoByIndustryFilter')}">
-                                <h4>同行业业绩折线图</h4>
-                            </a>
-                            <div class="chart-desc">
-                                <p>选择一个行业，查看它们的基本面指标</p>
-                            </div>
-                        </div>
-                    </div>
+                    %{--<div class="col-md-4 portfolio-item">--}%
+                        %{--<div class="portfolio-caption">--}%
+                            %{--<a href="${createLink(controller: 'stockFinancialInfo', action: 'financialInfoByIndustryFilter')}">--}%
+                                %{--<h4>同行业业绩折线图</h4>--}%
+                            %{--</a>--}%
+                            %{--<div class="chart-desc">--}%
+                                %{--<p>选择一个行业，查看它们的基本面指标</p>--}%
+                            %{--</div>--}%
+                        %{--</div>--}%
+                    %{--</div>--}%
 
-                    <div class="col-md-4 portfolio-item">
-                        <div class="portfolio-caption">
+                    <div class="col-md-6 portfolio-item">
+                        <div class="portfolio-caption" style="margin-left: auto;margin-right: auto;">
                             <a href="${createLink(controller: 'stockFinancialInfo', action: 'financialInfoRadar')}">
                                 <h4>个股业绩雷达图</h4>
                             </a>
                             <div class="chart-desc">
                                 <p>选择多只股票，同时比较它们的多种基本面指标</p>
+                                <img src="${resource(dir: 'images',file: 'web-chart.png')}" style="width: 100%">
                             </div>
                         </div>
                     </div>
