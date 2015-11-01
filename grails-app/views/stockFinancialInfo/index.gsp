@@ -78,7 +78,9 @@
 
 <script type="text/javascript">
     $(function () {
-        $('[name=stockCodes]').select2();
+        $('[name=stockCodes]').select2({
+            placeholder:"请选择要查看的股票"
+        });
         $('[name=index]').select2();
     });
 
@@ -152,7 +154,10 @@
                                 ],
                                 yAxis : [
                                     {
-                                        type : 'value'
+                                        type : 'value',
+                                        axisLabel:{
+                                            rotate: 45
+                                        }
                                     }
                                 ],
                                 series : seriesDataList

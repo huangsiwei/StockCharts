@@ -161,7 +161,10 @@
                                 ],
                                 yAxis : [
                                     {
-                                        type : 'value'
+                                        type : 'value',
+                                        axisLabel:{
+                                            rotate: 45
+                                        }
                                     }
                                 ],
                                 series : seriesDataList
