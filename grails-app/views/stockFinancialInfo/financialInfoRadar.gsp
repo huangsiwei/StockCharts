@@ -8,8 +8,8 @@
 <%@ page import="report.ReportConstant" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-
-    <title></title>
+    <link rel="shortcut icon" href="${resource(dir: 'images',file: 'stocks-icon.png')}" type="image/x-icon">
+    <title>个股基本面数据雷达图</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

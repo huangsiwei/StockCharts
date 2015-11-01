@@ -15,6 +15,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" href="${resource(dir: 'images',file: 'stocks-icon.png')}" type="image/x-icon">
+
     <title>Stock Graph 基本面信息的图表展现</title>
 
     <!-- Bootstrap Core CSS -->
