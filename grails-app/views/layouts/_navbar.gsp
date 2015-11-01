@@ -38,7 +38,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="${createLink(controller: 'home',action: 'index')}">Stock Charts</a>
+            <a class="navbar-brand page-scroll" href="${createLink(controller: 'home',action: 'index')}">Stock Graph</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
