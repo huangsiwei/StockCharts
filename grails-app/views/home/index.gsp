@@ -70,7 +70,7 @@
 <body id="page-top" class="index">
 
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -100,14 +100,14 @@
 </nav>
 
 <!-- Header -->
-<header>
-    <div class="container">
-        <div class="intro-text">
-            <div class="intro-heading">Stock Graph!</div>
-            <a href="#portfolio" class="page-scroll btn btn-xl" style="padding: 10px 20px;">基本面数据的图形化展现</a>
-        </div>
-    </div>
-</header>
+%{--<header>--}%
+    %{--<div class="container">--}%
+        %{--<div class="intro-text">--}%
+            %{--<div class="intro-heading">Stock Graph!</div>--}%
+            %{--<a href="#portfolio" class="page-scroll btn btn-xl" style="padding: 10px 20px;">基本面数据的图形化展现</a>--}%
+        %{--</div>--}%
+    %{--</div>--}%
+%{--</header>--}%
 
 <div class="second-page" id="second-page">
     <!-- Portfolio Grid Section -->
@@ -119,11 +119,11 @@
                     <div class="col-md-6 portfolio-item">
                         <div class="portfolio-caption" style="margin-left: auto;margin-right: auto;">
                             <a href="${createLink(controller: 'stockFinancialInfo', action: 'index')}">
-                                <h4>业绩趋势折线图</h4>
+                                <h3>股票业绩趋势折线图</h3>
                             </a>
                             <div class="chart-desc">
                                 <p>选择一只或多只股票，查看它们的基本面指标</p>
-                                <img src="${resource(dir: 'images',file: 'line-chart.png')}" style="width: 100%">
+                                <img alt="股票基本面 业绩 折线图" src="${resource(dir: 'images',file: 'line-chart.png')}" style="width: 100%">
                             </div>
                         </div>
                     </div>
@@ -142,11 +142,11 @@
                     <div class="col-md-6 portfolio-item">
                         <div class="portfolio-caption" style="margin-left: auto;margin-right: auto;">
                             <a href="${createLink(controller: 'stockFinancialInfo', action: 'financialInfoRadar')}">
-                                <h4>个股业绩雷达图</h4>
+                                <h3>股票业绩雷达图</h3>
                             </a>
                             <div class="chart-desc">
                                 <p>选择多只股票，同时比较它们的多种基本面指标</p>
-                                <img src="${resource(dir: 'images',file: 'web-chart.png')}" style="width: 100%">
+                                <img alt="股票 基本面 业绩雷达图" src="${resource(dir: 'images',file: 'web-chart.png')}" style="width: 100%">
                             </div>
                         </div>
                     </div>

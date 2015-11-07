@@ -2,7 +2,7 @@
 .nav.navbar-nav.navbar-right > li > .active > button {
     border-radius: 3px;
     color: #fff;
-    background-color: #fed136;
+    background-color: #fea836;
     border: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -11,7 +11,7 @@
 .nav.navbar-nav.navbar-right > li > .active > button:hover,
 .nav.navbar-nav.navbar-right > li > .active > button:focus {
     color: #fff;
-    background-color: #fec503;
+    background-color: #fea836;
     border: 0px;
 }
 
@@ -25,6 +25,14 @@
     color: #848484;
 }
 
+.nav.navbar-nav.navbar-right > li > .active > button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-right {
+    margin-top: 10px;
+}
 
 </style>
 
@@ -32,12 +40,6 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand page-scroll" href="${createLink(controller: 'home',action: 'index')}">Stock Graph</a>
         </div>
 
@@ -45,7 +47,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <div class="active btn-group">
+                    <div class="active btn-group btn-group-xs">
                         <button type="button" class="btn page-scroll btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                             更多图表
