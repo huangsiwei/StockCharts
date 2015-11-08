@@ -5,7 +5,7 @@
   Time: 下午11:13
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="report.ReportConstant" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <link rel="shortcut icon" href="${resource(dir: 'images',file: 'stocks-icon.png')}" type="image/x-icon">
@@ -23,10 +23,10 @@
     <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
 
     <link href="${resource(dir: "bootstrap-template/font-awesome/css",file: "font-awesome.min.css")}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    %{--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>--}%
 
     <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
     <script src="${resource(dir: "bootstrap-template/js",file: "bootstrap.min.js")}"></script>
@@ -48,12 +48,17 @@
 
 <g:render template="/layouts/navbar"></g:render>
 
-<h1 align="center">上司公司财务数据趋势图</h1>
+<h2 align="center">上司公司财务数据趋势图</h2>
 
-<div style="width: 700px; margin: 40px auto">
-    <select name="stockCodes" multiple="multiple" style="width: 400px;">
+<div style="width: 800px; margin: 20px auto">
+    <select name="stockCodes" multiple="multiple" style="width: 500px;">
         <g:each in="${stockList}" var = "stock" >
-            <option value="${stock.stockCode}">${stock.stockName}</option>
+            <g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">
+                <option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>
+            </g:if>
+            <g:else>
+                <option value="${stock.stockCode}">${stock.stockName}</option>
+            </g:else>
         </g:each>
     </select>
     <select name="index" style="width: 160px;">
@@ -71,7 +76,7 @@
     </button>
 </div>
 
-<div id="stockFinancialInfoChart" style="height:500px;width: 900px;margin: 40px auto"></div>
+<div id="stockFinancialInfoChart" style="height:500px;width: 900px;margin: 20px auto"></div>
 
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 <script src="${resource(dir: 'js/common',file: 'utils.js')}"></script>
@@ -79,8 +84,8 @@
 <script type="text/javascript">
     $(function () {
         $('[name=stockCodes]').select2({
-            placeholder:"请选择要查看的股票"
-        });
+            placeholder:"请输入或者选择要查看的股票"
+        },loadStockFinancialInfoChart());
         $('[name=index]').select2();
     });
 
@@ -99,6 +104,7 @@
                     var seriesData = new Object();
                     seriesData.name= jsonObj.dataList[i].stockName;
                     seriesData.type = 'line';
+                    seriesData.symbol = 'none';
                     seriesData.data = jsonObj.dataList[i].indexDataList;
                     seriesDataList.push(seriesData);
                     legendDataList.push(seriesData.name);

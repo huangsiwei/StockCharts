@@ -10,6 +10,8 @@ class ReportConstant {
 
     public static final List STOCK_CHART_YEAR_LIST = new ArrayList();
 
+    public static final List TOP10_BASICEPS_STOCK_LIST = new ArrayList();
+
     static {
 
         STOCK_FINANCIAL_INDEX_KEYS.add("basicEPS")
@@ -39,5 +41,16 @@ class ReportConstant {
         STOCK_CHART_YEAR_LIST.add(new Date("2012/12/31"))
         STOCK_CHART_YEAR_LIST.add(new Date("2013/12/31"))
         STOCK_CHART_YEAR_LIST.add(new Date("2014/12/31"))
+
+        TOP10_BASICEPS_STOCK_LIST.add("贵州茅台")
+        TOP10_BASICEPS_STOCK_LIST.add("大商股份")
+        TOP10_BASICEPS_STOCK_LIST.add("葵花药业")
+        TOP10_BASICEPS_STOCK_LIST.add("中国平安")
+        TOP10_BASICEPS_STOCK_LIST.add("格力电器")
+//        TOP10_BASICEPS_STOCK_LIST.add("大商股份")
+//        TOP10_BASICEPS_STOCK_LIST.add("厚普股份")
+//        TOP10_BASICEPS_STOCK_LIST.add("飞天诚信")
+//        TOP10_BASICEPS_STOCK_LIST.add("春秋航空")
+//        TOP10_BASICEPS_STOCK_LIST.add("迅游科技")
     }
 }

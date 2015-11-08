@@ -11,7 +11,8 @@ class StockFinancialInfoController {
 
     def index() {
         def stockList = StockBasicInfo.findAllByListStatusCD("L")
-        [stockList: stockList]
+        def defaultStock = ReportConstant.TOP10_BASICEPS_STOCK_LIST
+        [stockList: stockList,defaultStock:defaultStock]
     }
 
     def loadStockFinancialInfoData() {
