@@ -1,6 +1,7 @@
 package datacrawler.tongliandata
 
 import base.Region
+import stockcharts.StockBasicInfo
 import stockcharts.StockRegionInfo
 import tongliandata.StockBasicInfoCrawlerService
 
@@ -40,10 +41,14 @@ class StockBasicInfoDataCrawlerController {
     }
 
     def fetchStockMainBusinessInfo() {
-        (1..500).each {
-            String stockCode = (300000 + it).toString()
+        List stockCodeList = StockBasicInfo.findAllByListStatusCD("L").stockCode
+        stockCodeList?.each { String stockCode ->
             stockBasicInfoCrawlerService.fetchStockMainBusinessInfo(stockCode)
         }
+    }
+
+    def fetchAllStockMainBusinessInfo() {
+        stockBasicInfoCrawlerService.fetchAllStockMainBusinessInfo()
     }
 
     def fetchStockBasicInfo() {
