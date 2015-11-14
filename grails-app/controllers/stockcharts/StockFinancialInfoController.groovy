@@ -15,7 +15,7 @@ class StockFinancialInfoController {
         [stockList: stockList,defaultStock:defaultStock]
     }
 
-    def loadStockFinancialInfoData() {
+    def loadStockFinancialInfoChartData() {
         def result = [:]
         String index = params.index
         def stockCodeList = params."stockCodes[]"

@@ -93,7 +93,7 @@
         var stockCodes = $('[name=stockCodes]').val();
         var index = $('[name=index]').val();
         $.ajax({
-            url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoData')}",
+            url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoChartData')}",
             data:{stockCodes:stockCodes,index:index},
             dataType:"json",
             success: function (jsonObj) {
