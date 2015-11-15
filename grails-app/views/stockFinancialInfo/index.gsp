@@ -179,9 +179,5 @@
         })
     }
 </script>
-<script type="text/javascript">
-    // 路径配置
-
-</script>
 </body>
 </html>

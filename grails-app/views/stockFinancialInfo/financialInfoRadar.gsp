@@ -24,10 +24,10 @@
     <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
 
     <link href="${resource(dir: "bootstrap-template/font-awesome/css",file: "font-awesome.min.css")}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    %{--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>--}%
 
     <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
     <script src="${resource(dir: "bootstrap-template/js",file: "bootstrap.min.js")}"></script>
@@ -120,6 +120,7 @@
                     var seriesData = new Object();
                     seriesData.name = jsonObj.seriesData[i].name;
                     seriesData.value = jsonObj.seriesData[i].value;
+                    seriesData.symbol = 'none';
                     seriesDataList.push(seriesData);
                     legendDataList.push(jsonObj.seriesData[i].name);
                 }
@@ -211,10 +212,29 @@
                     unit = "元";
                     break;
             }
-            res += params[i][1] + "<br>" + params[i].indicator + ":" + params[i].value + " " + unit + "<br>";
+            res += params[i][1] + "<br>" + params[i].indicator + ":" + toThousands(params[i].value) + " " + unit + "<br>";
         }
         return res
     }
+
+    function toThousands(num) {
+        var numInt = parseInt(num);
+        var numFloat = (num - numInt).toFixed(2);
+        var result = '', counter = 0;
+        numInt = (numInt || 0).toString();
+        for (var i = numInt.length - 1; i >= 0; i--) {
+            counter++;
+            result = numInt.charAt(i) + result;
+            if (!(counter % 3) && i != 0) {
+                result = ',' + result;
+            }
+        }
+        if (numFloat && numFloat != 0) {
+            result = result + (numFloat + "");
+        }
+        return result;
+    }
+
 
 </script>
 </html>
