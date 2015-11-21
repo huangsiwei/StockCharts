@@ -50,19 +50,23 @@ function toolTipFormatter(index,params) {
 }
 
 function toThousands(num) {
-    var numInt = parseInt(num);
-    var numFloat = (num - numInt).toFixed(2);
-    var result = '', counter = 0;
-    numInt = (numInt || 0).toString();
-    for (var i = numInt.length - 1; i >= 0; i--) {
-        counter++;
-        result = numInt.charAt(i) + result;
-        if (!(counter % 3) && i != 0) {
-            result = ',' + result;
+    if (num == "-") {
+        return "-"
+    } else {
+        var numInt = parseInt(num);
+        var numFloat = (num - numInt).toFixed(2);
+        var result = '', counter = 0;
+        numInt = (numInt || 0).toString();
+        for (var i = numInt.length - 1; i >= 0; i--) {
+            counter++;
+            result = numInt.charAt(i) + result;
+            if (!(counter % 3) && i != 0) {
+                result = ',' + result;
+            }
         }
+        if (numFloat && numFloat != 0) {
+            result = result + (numFloat + "");
+        }
+        return result;
     }
-    if (numFloat && numFloat != 0) {
-        result = result + (numFloat + "");
-    }
-    return result;
 }
