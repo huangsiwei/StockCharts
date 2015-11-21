@@ -106,6 +106,7 @@
                     var seriesData = new Object();
                     seriesData.name= jsonObj.dataList[i].stockName;
                     seriesData.type = 'line';
+                    seriesData.symbol = 'none';
                     seriesData.data = jsonObj.dataList[i].indexDataList;
                     seriesDataList.push(seriesData);
                     legendDataList.push(seriesData.name);
@@ -146,10 +147,8 @@
                                     x: 'right',
                                     y: 'center',
                                     feature : {
-                                        mark : {show: true},
                                         dataView : {show: true, readOnly: false},
-                                        restore : {show: true},
-                                        saveAsImage : {show: true}
+                                        restore : {show: true}
                                     }
                                 },
                                 xAxis : [

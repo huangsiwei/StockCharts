@@ -24,9 +24,11 @@ class StockFinancialInfoService {
                     stockFinancialData << "-"
                 }
             }
-            stockFinancialInfoMap["stockName"] = StockFinancialInfo.findByStockCode(stockCode)?.stockName
-            stockFinancialInfoMap["indexDataList"] = stockFinancialData
-            dataList << stockFinancialInfoMap
+            if (StockFinancialInfo.findByStockCode(stockCode)) {
+                stockFinancialInfoMap["stockName"] = StockFinancialInfo.findByStockCode(stockCode)?.stockName
+                stockFinancialInfoMap["indexDataList"] = stockFinancialData
+                dataList << stockFinancialInfoMap
+            }
         }
 
         yearDateList.each { yearDate -> yearStrList << yearDate.format("yyyy") }
