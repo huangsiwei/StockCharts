@@ -78,7 +78,7 @@
     </button>
 </div>
 
-<div id="stockFinancialInfoChart" style="height:700px;width: 1200px;margin: 40px auto"></div>
+<div id="stockFinancialInfoChart" style="height:650px;width: 1200px;margin: 40px auto"></div>
 
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 <script src="${resource(dir: 'js/common',file: 'utils.js')}"></script>
