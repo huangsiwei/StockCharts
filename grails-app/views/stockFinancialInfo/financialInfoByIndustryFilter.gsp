@@ -133,6 +133,14 @@
                             var option = {
                                 tooltip : {
                                     trigger: 'axis',
+                                    axisPointer:{
+                                        type:'line',
+                                        lineStyle:{
+                                            color:"#FF0000",
+                                            width:1,
+                                            type:"dashed"
+                                        }
+                                    },
                                     formatter: function (parmas) {
                                         return toolTipFormatter(index,parmas);
                                     }
