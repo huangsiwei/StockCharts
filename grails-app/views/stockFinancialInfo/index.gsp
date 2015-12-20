@@ -18,7 +18,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "bootstrap.min.css")}" rel="stylesheet">
-
+    <link href="${resource(dir: "css",file: "bootstrap-table.css")}">
     <!-- Custom CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
 
@@ -30,6 +30,7 @@
 
     <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
     <script src="${resource(dir: "bootstrap-template/js",file: "bootstrap.min.js")}"></script>
+    <script src="${resource(dir: "js",file: "bootstrap-table.js")}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,7 +42,6 @@
     <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">
 
-    <title></title>
 </head>
 
 <body>
@@ -71,23 +71,42 @@
         <option value="noperateIncome">营业外收入</option>
         <option value="noperateExp">营业外支出</option>
     </select>
-    <button class="btn btn-success btn-sm" onclick="loadStockFinancialInfoChart()">
+    <button class="btn btn-success btn-sm" onclick="loadPage()">
         查询
     </button>
 </div>
 
 <div id="stockFinancialInfoChart" style="height:500px;width: 900px;margin: 20px auto"></div>
 
+<div style="width: 900px;margin: 20px auto">
+    <div style="padding: 10px; ">
+        <br>
+        <table id="stockFinancialInfoTable"></table>
+    </div>
+</div>
+
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 <script src="${resource(dir: 'js/common',file: 'utils.js')}"></script>
+
+<style>
+.row-index {
+    width: 50px;
+    display: inline-block;
+}
+</style>
 
 <script type="text/javascript">
     $(function () {
         $('[name=stockCodes]').select2({
             placeholder:"请输入或者选择要查看的股票"
-        },loadStockFinancialInfoChart());
+        },loadPage());
         $('[name=index]').select2();
     });
+
+    function loadPage() {
+        loadStockFinancialInfoChart();
+        loadStockFinancialInfoRankingTable();
+    }
 
     function loadStockFinancialInfoChart() {
         var stockCodes = $('[name=stockCodes]').val();
@@ -185,6 +204,58 @@
                 console.log(error);
             }
         })
+    }
+
+    function loadStockFinancialInfoRankingTable() {
+        var stockCodes = $('[name=stockCodes]').val();
+        var index = $('[name=index]').val();
+        $.ajax({
+            url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoChartTableData')}",
+            data:{stockCodes:stockCodes,index:index},
+            dataType:"json",
+            success: function (jsonObj) {
+                bindStockFinancialInfoRankingTable(jsonObj)
+            },
+            error:function (error) {
+                console.log(error);
+            }
+        })
+    }
+
+    function bindStockFinancialInfoRankingTable(stockFinancialDataListWithRanking) {
+        var tableData = [];
+        for (var i = 0; i < stockFinancialDataListWithRanking.length; i++) {
+            var obj = {};
+            obj["stockName"] = stockFinancialDataListWithRanking[i].stockName;
+            obj["indexValue"] = stockFinancialDataListWithRanking[i].indexValue;
+            obj["rankingInfo"] = "在" + stockFinancialDataListWithRanking[i].industryId1Name + "行业中排" + stockFinancialDataListWithRanking[i].rankInIndustry1 +"名,在" + stockFinancialDataListWithRanking[i].industryId2Name + "行业中排" + stockFinancialDataListWithRanking[i].rankInIndustry2 +"名,在" + stockFinancialDataListWithRanking[i].industryId3Name +  "行业中排" + stockFinancialDataListWithRanking[i].rankInIndustry3 +"名";
+            tableData.push(obj);
+        }
+        if ($('#stockFinancialInfoTable').html() == "") {
+            $('#stockFinancialInfoTable').bootstrapTable({
+                columns: [{
+                    field: 'stockName',
+                    title: '股票名称'
+                }, {
+                    field: 'indexValue',
+                    title: '最近年报'
+                },{
+                    field: 'rankingInfo',
+                    title: '介绍'
+                }],
+                data: tableData,
+                formatLoadingMessage: function () {
+                    return '';
+                }
+            });
+        } else {
+            $('#stockFinancialInfoTable').bootstrapTable("load",{
+                data: tableData,
+                formatLoadingMessage: function () {
+                    return '';
+                }
+            });
+        }
     }
 </script>
 </body>

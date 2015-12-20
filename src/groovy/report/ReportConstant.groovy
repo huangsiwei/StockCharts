@@ -7,7 +7,7 @@ class ReportConstant {
 
     public static final Map STOCK_FINANCIAL_INDEXES = new HashMap();
     public static final List STOCK_FINANCIAL_INDEX_KEYS = new ArrayList();
-
+    //精确到日期，供查询数据试用
     public static final List STOCK_CHART_YEAR_LIST = new ArrayList();
 
     public static final List TOP10_BASICEPS_STOCK_LIST = new ArrayList();

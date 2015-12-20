@@ -28,6 +28,19 @@ class StockFinancialInfoController {
         render(JSON.toJSONString(result))
     }
 
+    def loadStockFinancialInfoChartTableData() {
+        def result = [:]
+        String index = params.index
+        def stockCodeList = params."stockCodes[]"
+        if (stockCodeList instanceof String) {
+            def tempList = []
+            tempList << stockCodeList
+            stockCodeList = tempList
+        }
+        result = stockFinancialInfoService.loadStockFinancialInfoTableData(stockCodeList,index)
+        render(JSON.toJSONString(result))
+    }
+
     def financialInfoByIndustryFilter() {
         def industryL1List = Industry.findAllByLevel(1)
         render(view: "financialInfoByIndustryFilter",model: [industryL1List:industryL1List])
