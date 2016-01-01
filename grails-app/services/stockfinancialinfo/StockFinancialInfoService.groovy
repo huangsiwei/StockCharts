@@ -60,10 +60,13 @@ class StockFinancialInfoService {
                 stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}"
                 stockFinancialInfoMap["rankInIndustry1"] = industryId1ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
                 stockFinancialInfoMap["industryId1Name"] = industryId1Name
+                stockFinancialInfoMap["industryId1"] = industryId1
                 stockFinancialInfoMap["rankInIndustry2"] = industryId2ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
                 stockFinancialInfoMap["industryId2Name"] = industryId2Name
+                stockFinancialInfoMap["industryId2"] = industryId2
                 stockFinancialInfoMap["rankInIndustry3"] = industryId3ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
                 stockFinancialInfoMap["industryId3Name"] = industryId3Name
+                stockFinancialInfoMap["industryId3"] = industryId3
             } else {
                 stockFinancialInfoMap["stockName"] = "-"
                 stockFinancialInfoMap["indexValue"] = "-"

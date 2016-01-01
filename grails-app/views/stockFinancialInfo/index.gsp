@@ -233,7 +233,7 @@
                 obj["indexValue"] = toThousands(stockFinancialDataListWithRanking[i].indexValue) + "元";
             }
 //            obj["indexValue"] = stockFinancialDataListWithRanking[i].indexValue;
-            obj["rankingInfo"] = "在" + stockFinancialDataListWithRanking[i].industryId1Name + "行业中排名第" + stockFinancialDataListWithRanking[i].rankInIndustry1 +",在" + stockFinancialDataListWithRanking[i].industryId2Name + "行业中排排名第" + stockFinancialDataListWithRanking[i].rankInIndustry2 +",在" + stockFinancialDataListWithRanking[i].industryId3Name +  "行业中排排名第" + stockFinancialDataListWithRanking[i].rankInIndustry3;
+            obj["rankingInfo"] = "在<a href='javascript:;' class='financialInfoLink' onclick='goToFinancialInfoByIndustryFilter($(this))' industryId=" + stockFinancialDataListWithRanking[i].industryId1 + ">" + stockFinancialDataListWithRanking[i].industryId1Name + "</a>"+ "行业中排名第" + stockFinancialDataListWithRanking[i].rankInIndustry1 +",在<a href='javascript:;' class='financialInfoLink' onclick='goToFinancialInfoByIndustryFilter($(this))' industryId=" + stockFinancialDataListWithRanking[i].industryId2 + ">" + stockFinancialDataListWithRanking[i].industryId2Name + "</a>" +"行业中排排名第" + stockFinancialDataListWithRanking[i].rankInIndustry2 +",在<a href='javascript:;' class='financialInfoLink' onclick='goToFinancialInfoByIndustryFilter($(this))' industryId=" + stockFinancialDataListWithRanking[i].industryId3 + ">" + stockFinancialDataListWithRanking[i].industryId3Name + "</a>" + "行业中排排名第" + stockFinancialDataListWithRanking[i].rankInIndustry3;
             tableData.push(obj);
         }
         if ($('#stockFinancialInfoTable').html() == "") {
@@ -262,6 +262,12 @@
             });
         }
     }
+
+    function goToFinancialInfoByIndustryFilter(obj) {
+        var industryId = obj.attr("industryId");
+        window.location = "financialInfoByIndustryFilter?industryId=" + industryId;
+    }
+
 </script>
 </body>
 </html>
