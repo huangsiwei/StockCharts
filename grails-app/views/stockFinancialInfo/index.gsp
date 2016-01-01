@@ -214,7 +214,7 @@
             data:{stockCodes:stockCodes,index:index},
             dataType:"json",
             success: function (jsonObj) {
-                bindStockFinancialInfoRankingTable(jsonObj)
+                bindStockFinancialInfoRankingTable(jsonObj,index)
             },
             error:function (error) {
                 console.log(error);
@@ -222,13 +222,18 @@
         })
     }
 
-    function bindStockFinancialInfoRankingTable(stockFinancialDataListWithRanking) {
+    function bindStockFinancialInfoRankingTable(stockFinancialDataListWithRanking,index) {
         var tableData = [];
         for (var i = 0; i < stockFinancialDataListWithRanking.length; i++) {
             var obj = {};
             obj["stockName"] = stockFinancialDataListWithRanking[i].stockName;
-            obj["indexValue"] = stockFinancialDataListWithRanking[i].indexValue;
-            obj["rankingInfo"] = "在" + stockFinancialDataListWithRanking[i].industryId1Name + "行业中排" + stockFinancialDataListWithRanking[i].rankInIndustry1 +"名,在" + stockFinancialDataListWithRanking[i].industryId2Name + "行业中排" + stockFinancialDataListWithRanking[i].rankInIndustry2 +"名,在" + stockFinancialDataListWithRanking[i].industryId3Name +  "行业中排" + stockFinancialDataListWithRanking[i].rankInIndustry3 +"名";
+            if (index == "basicEPS") {
+                obj["indexValue"] = stockFinancialDataListWithRanking[i].indexValue + "元/每股";
+            } else {
+                obj["indexValue"] = toThousands(stockFinancialDataListWithRanking[i].indexValue) + "元";
+            }
+//            obj["indexValue"] = stockFinancialDataListWithRanking[i].indexValue;
+            obj["rankingInfo"] = "在" + stockFinancialDataListWithRanking[i].industryId1Name + "行业中排名第" + stockFinancialDataListWithRanking[i].rankInIndustry1 +",在" + stockFinancialDataListWithRanking[i].industryId2Name + "行业中排排名第" + stockFinancialDataListWithRanking[i].rankInIndustry2 +",在" + stockFinancialDataListWithRanking[i].industryId3Name +  "行业中排排名第" + stockFinancialDataListWithRanking[i].rankInIndustry3;
             tableData.push(obj);
         }
         if ($('#stockFinancialInfoTable').html() == "") {
@@ -238,10 +243,10 @@
                     title: '股票名称'
                 }, {
                     field: 'indexValue',
-                    title: '最近年报'
+                    title: '最近年报数据'
                 },{
                     field: 'rankingInfo',
-                    title: '介绍'
+                    title: '行业排名'
                 }],
                 data: tableData,
                 formatLoadingMessage: function () {
