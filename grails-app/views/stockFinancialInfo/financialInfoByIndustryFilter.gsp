@@ -73,7 +73,7 @@
         <option value="noperateIncome">营业外收入</option>
         <option value="noperateExp">营业外支出</option>
     </select>
-    <button onclick="loadStockFinancialTrendDataByIndustry()" class="btn btn-success btn-sm">
+    <button onclick="loadStockFinancialTrendDataByIndustry()" class="btn btn-success btn-sm" id="queryBtn">
         查询
     </button>
 </div>
@@ -86,9 +86,25 @@
 <script>
 
     $(function () {
-        $("select").select2();
-        alert("${selectedIndustryL1}");
+        initSelectedIndustries();
     });
+
+    function initSelectedIndustries() {
+        if ("${selectedIndustryL3}" != "") {
+            $("[name=industryL1]").html("<option value='${selectedIndustryL1?.industryID}'>${selectedIndustryL1?.industryName}</option>");
+            $("[name=industryL2]").html("<option value='${selectedIndustryL2?.industryID}'>${selectedIndustryL2?.industryName}</option>");
+            $("[name=industryL3]").html("<option value='${selectedIndustryL3?.industryID}'>${selectedIndustryL3?.industryName}</option>");
+        } else if ("${selectedIndustryL2}" != ""){
+            $("[name=industryL1]").html("<option value='${selectedIndustryL1?.industryID}'>${selectedIndustryL1?.industryName}</option>");
+            $("[name=industryL2]").html("<option value='${selectedIndustryL2?.industryID}'>${selectedIndustryL2?.industryName}</option>");
+        } else if ("${selectedIndustryL1}" != "") {
+            $("[name=industryL1]").html("<option value='${selectedIndustryL1?.industryID}'>${selectedIndustryL1?.industryName}</option>");
+        }
+        $("select").select2();
+        if ("${selectedIndustryL1}" != "") {
+            $("#queryBtn").click();
+        }
+    }
 
     function loadStockFinancialTrendDataByIndustry() {
         var industryL1 = $("[name=industryL1]").val();
