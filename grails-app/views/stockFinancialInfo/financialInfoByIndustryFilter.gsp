@@ -17,17 +17,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Bootstrap Core CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "bootstrap.min.css")}" rel="stylesheet">
-
-    <!-- Custom CSS -->
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">
     <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
-
     <link href="${resource(dir: "bootstrap-template/font-awesome/css",file: "font-awesome.min.css")}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    %{--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>--}%
+    %{--<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>--}%
 
     <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
     <script src="${resource(dir: "bootstrap-template/js",file: "bootstrap.min.js")}"></script>
@@ -40,7 +37,6 @@
     <![endif]-->
 
     <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
-    <link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">
     <script src="${resource(dir: 'js/common', file: 'common.js')}"></script>
 </head>
 
