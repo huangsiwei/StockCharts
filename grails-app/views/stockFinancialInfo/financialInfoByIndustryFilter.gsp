@@ -87,6 +87,7 @@
 
     $(function () {
         $("select").select2();
+        alert("${selectedIndustryL1}");
     });
 
     function loadStockFinancialTrendDataByIndustry() {

@@ -42,8 +42,29 @@ class StockFinancialInfoController {
     }
 
     def financialInfoByIndustryFilter() {
+        Industry selectedIndustryL1 = null;
+        Industry selectedIndustryL2 = null;
+        Industry selectedIndustryL3 = null;
+        if (params.industryId) {
+            Industry industry = Industry.findByIndustryID(params.industryId)
+            switch (industry.level) {
+                case 3:
+                    selectedIndustryL3 = Industry.findByIndustryID(params.industryId)
+                    selectedIndustryL2 = industry.parent
+                    selectedIndustryL1 = industry.parent.parent
+                    break;
+                case 2:
+                    selectedIndustryL2 = industry
+                    selectedIndustryL1 = industry.parent
+                    break;
+                case 1:
+                    selectedIndustryL1 = industry
+                    break;
+            }
+        }
+
         def industryL1List = Industry.findAllByLevel(1)
-        render(view: "financialInfoByIndustryFilter",model: [industryL1List:industryL1List])
+        render(view: "financialInfoByIndustryFilter",model: [industryL1List:industryL1List,selectedIndustryL1:selectedIndustryL1,selectedIndustryL2:selectedIndustryL2,selectedIndustryL3:selectedIndustryL3])
     }
 
     def loadChildIndustry(){
