@@ -18,3 +18,4 @@ data/
 .classpath
 .project
 web-app/WEB-INF/tld/
+.slcache/
