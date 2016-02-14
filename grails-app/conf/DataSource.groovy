@@ -35,6 +35,21 @@ environments {
             password = "c45d36576b"
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost:3306/StockCharts?autoreconnect=true&useUnicode=true&characterEncoding=UTF-8"
+            properties {
+                jmxEnabled = true
+                initialSize = 5
+                maxActive = 100
+                minIdle = 5
+                maxIdle = 25
+                maxWait = 10000
+                maxAge = 10 * 60000 * 6
+                timeBetweenEvictionRunsMillis = 1000 * 60 * 30
+                minEvictableIdleTimeMillis = 1000 * 60 * 30
+                testOnBorrow = true
+                testWhileIdle = false
+                testOnReturn = false
+                validationQuery = "SELECT 1"
+            }
         }
     }
     production {
