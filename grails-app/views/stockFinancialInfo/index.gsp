@@ -123,7 +123,8 @@
                     var seriesData = new Object();
                     seriesData.name= jsonObj.dataList[i].stockName;
                     seriesData.type = 'line';
-                    seriesData.symbol = 'none';
+//                    seriesData.symbol = 'none';
+                    seriesData.symbolSize = 2;
                     seriesData.data = jsonObj.dataList[i].indexDataList;
                     seriesDataList.push(seriesData);
                     legendDataList.push(seriesData.name);
@@ -149,19 +150,20 @@
 
                             var option = {
                                 tooltip : {
-                                    trigger: 'axis',
-                                    axisPointer:{
-                                        type:'line',
-                                        lineStyle:{
-                                            color:"#FF0000",
-                                            width:1,
-                                            type:"dashed"
-                                        }
-                                    },
-                                    formatter: function (parmas) {
-                                        return toolTipFormatter(index,parmas);
+                                    trigger: 'item',
+//                                    axisPointer:{
+//                                        type:'line',
+//                                        lineStyle:{
+//                                            color:"#FF0000",
+//                                            width:1,
+//                                            type:"dashed"
+//                                        }
+//                                    },
+                                    formatter: function (params) {
+                                        return toolTipItemFormatter(index,params);
                                     }
                                 },
+
                                 legend: {
                                     data:legendDataList
                                 },

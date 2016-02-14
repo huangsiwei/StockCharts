@@ -49,6 +49,19 @@ function toolTipFormatter(index,params) {
     return res
 }
 
+function toolTipItemFormatter(index,params) {
+    var res = "";
+    switch (index) {
+        case "basicEPS":
+            res = res + params.seriesName + ": " + params.data + " " + "元/每股" + "<br>";
+            break;
+        case !"basicEPS":
+            res = res + params.seriesName +": " + toThousands(params.data) + " " + "元" + "<br>";
+            break;
+    }
+    return res
+}
+
 function toThousands(num) {
     if (num == "-") {
         return "-"
