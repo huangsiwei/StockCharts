@@ -55,7 +55,7 @@ function toolTipItemFormatter(index,params) {
         case "basicEPS":
             res = res + params.seriesName + ": " + params.data + " " + "元/每股" + "<br>";
             break;
-        case !"basicEPS":
+        default :
             res = res + params.seriesName +": " + toThousands(params.data) + " " + "元" + "<br>";
             break;
     }

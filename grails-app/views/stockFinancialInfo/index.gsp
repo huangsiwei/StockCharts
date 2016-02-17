@@ -51,26 +51,39 @@
 <h2 align="center">上司公司财务数据趋势图</h2>
 
 <div style="width: 800px; margin: 20px auto">
-    <select name="stockCodes" multiple="multiple" style="width: 500px;">
-        <g:each in="${stockList}" var = "stock" >
-            <g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">
-                <option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>
-            </g:if>
-            <g:else>
-                <option value="${stock.stockCode}">${stock.stockName}</option>
-            </g:else>
-        </g:each>
-    </select>
-    <select name="index" style="width: 160px;">
-        <option value="basicEPS" selected>基本每股收益</option>
-        <option value="nIncome">净利润</option>
-        <option value="tProfit">利润总额</option>
-        <option value="tRevenue">营业总收入</option>
-        <option value="revenue">营业收入</option>
-        <option value="operateProfit">营业利润</option>
-        <option value="noperateIncome">营业外收入</option>
-        <option value="noperateExp">营业外支出</option>
-    </select>
+
+    <div class="form-group">
+        <label>请选择基本面指标:</label>
+        <select name="index" style="width: 160px;">
+            <option value="basicEPS" selected>基本每股收益</option>
+            <option value="nIncome">净利润</option>
+            <option value="tProfit">利润总额</option>
+            <option value="tRevenue">营业总收入</option>
+            <option value="revenue">营业收入</option>
+            <option value="operateProfit">营业利润</option>
+            <option value="noperateIncome">营业外收入</option>
+            <option value="noperateExp">营业外支出</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>请选择个股:</label>
+        <select name="stockCodes" multiple="multiple" style="width: 500px;">
+            <g:each in="${stockList}" var = "stock" >
+                <g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">
+                    <option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>
+                </g:if>
+                <g:else>
+                    <option value="${stock.stockCode}">${stock.stockName}</option>
+                </g:else>
+            </g:each>
+        </select>
+    </div>
+
+    <button class="btn btn-info btn-sm" onclick="">
+        清空
+    </button>
+
     <button class="btn btn-success btn-sm" onclick="loadPage()">
         查询
     </button>
@@ -106,6 +119,10 @@
     function loadPage() {
         loadStockFinancialInfoChart();
         loadStockFinancialInfoRankingTable();
+    }
+
+    function resetStockSelected() {
+
     }
 
     function loadStockFinancialInfoChart() {
