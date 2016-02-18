@@ -22,7 +22,7 @@
     <!-- Custom CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
 
-    <link href="${resource(dir: "bootstrap-template/font-awesome/css",file: "font-awesome.min.css")}" rel="stylesheet" type="text/css">
+    %{--<link href="${resource(dir: "bootstrap-template/font-awesome/css",file: "font-awesome.min.css")}" rel="stylesheet" type="text/css">--}%
     %{--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">--}%
     %{--<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>--}%
     %{--<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>--}%
@@ -40,7 +40,44 @@
     <![endif]-->
 
     <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
-    <link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">
+    %{--<link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">--}%
+
+    <link rel="stylesheet" href="${resource(dir:'assets/css/fonts/linecons/css/',file: 'linecons.css')}">
+    <link rel="stylesheet" href="${resource(dir:'assets/css/fonts/fontawesome/css/',file: 'font-awesome.min.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'bootstrap.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'xenon-core.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'xenon-forms.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'xenon-components.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'xenon-skins.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'custom.css')}">
+
+
+    <!-- Imported styles on this page -->
+    <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/',file: 'select2.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/',file: 'select2-bootstrap.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/js/multiselect/css/',file: 'multi-select.css')}">
+
+    <!-- Bottom Scripts -->
+    <script src="${resource(dir: 'assets/js/',file:  'bootstrap.min.js')}"></script>
+    <script src="${resource(dir: 'assets/js/',file:  'TweenMax.min.js')}"></script>
+    <script src="${resource(dir: 'assets/js/',file:  'resizeable.js')}"></script>
+    <script src="${resource(dir: 'assets/js/',file:  'joinable.js')}"></script>
+    <script src="${resource(dir: 'assets/js/',file:  'xenon-api.js')}"></script>
+    <script src="${resource(dir: 'assets/js/',file:  'xenon-toggles.js')}"></script>
+    <script src="${resource(dir: 'assets/js/',file:  'moment.min.js')}"></script>
+
+    <!-- Imported scripts on this page -->
+    <script src="${resource(dir: 'assets/js/select2/',file:  'select2.min.js')}"></script>
+    <script src="${resource(dir: 'assets/js/jquery-ui/',file:  'jquery-ui.min.js')}"></script>
+    <script src="${resource(dir: 'assets/js/selectboxit/',file:  'jquery.selectBoxIt.min.js')}"></script>
+    <script src="${resource(dir: 'assets/js/tagsinput/',file:  'bootstrap-tagsinput.min.js')}"></script>
+    <script src="${resource(dir: 'assets/js/',file:  'typeahead.bundle.js')}"></script>
+    <script src="${resource(dir: 'assets/js/',file:  'handlebars.min.js')}"></script>
+    <script src="${resource(dir: 'assets/js/multiselect/js/',file:  'jquery.multi-select.js')}"></script>
+
+    <!-- JavaScripts initializations and stuff -->
+    <script src="${resource(dir: 'assets/js/',file: 'xenon-custom.js')}"></script>
+
 
 </head>
 
@@ -48,65 +85,103 @@
 
 <g:render template="/layouts/navbar"></g:render>
 
-<h2 align="center">上司公司财务数据趋势图</h2>
+<h2 align="center">XXXXX</h2>
+%{--<h2 align="center">上司公司财务数据趋势图</h2>--}%
 
-<div style="width: 800px; margin: 20px auto">
+<div class="row">
+    <div class="col-sm-2">
 
-    <div class="form-group">
-        <label>请选择基本面指标:</label>
-        <select name="index" style="width: 160px;">
-            <option value="basicEPS" selected>基本每股收益</option>
-            <option value="nIncome">净利润</option>
-            <option value="tProfit">利润总额</option>
-            <option value="tRevenue">营业总收入</option>
-            <option value="revenue">营业收入</option>
-            <option value="operateProfit">营业利润</option>
-            <option value="noperateIncome">营业外收入</option>
-            <option value="noperateExp">营业外支出</option>
-        </select>
     </div>
+    <div class="col-sm-8">
 
-    <div class="form-group">
-        <label>请选择个股:</label>
-        <select name="stockCodes" multiple="multiple" style="width: 500px;">
-            <g:each in="${stockList}" var = "stock" >
-                <g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">
-                    <option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>
-                </g:if>
-                <g:else>
-                    <option value="${stock.stockCode}">${stock.stockName}</option>
-                </g:else>
-            </g:each>
-        </select>
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <form role="form" class="form-horizontal" style="margin-bottom: 0px">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">请选择指标:</label>
+
+                        <div class="col-sm-9">
+                            <select name="index" style="width: 160px;">
+                                <option value="basicEPS" selected>基本每股收益</option>
+                                <option value="nIncome">净利润</option>
+                                <option value="tProfit">利润总额</option>
+                                <option value="tRevenue">营业总收入</option>
+                                <option value="revenue">营业收入</option>
+                                <option value="operateProfit">营业利润</option>
+                                <option value="noperateIncome">营业外收入</option>
+                                <option value="noperateExp">营业外支出</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3 control-label">
+                            请选择个股:
+                        </div>
+
+                        <div class="col-sm-9">
+                            <select name="stockCodes" multiple="multiple" style="width: 500px;">
+                                <g:each in="${stockList}" var = "stock" >
+                                    <g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">
+                                        <option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>
+                                    </g:if>
+                                    <g:else>
+                                        <option value="${stock.stockCode}">${stock.stockName}</option>
+                                    </g:else>
+                                </g:each>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-8">
+
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-info btn-sm" type="button" >
+                                重置
+                            </button>
+
+                            <button class="btn btn-success btn-sm" type="button" onclick="loadPage()">
+                                查询
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+                <div class="col-sm-12">
+                    <div id="stockFinancialInfoChart" style="width: 100%;height:600px"></div>
+                </div>
+
+            </div>
+        </div>
     </div>
-
-    <button class="btn btn-info btn-sm" onclick="">
-        清空
-    </button>
-
-    <button class="btn btn-success btn-sm" onclick="loadPage()">
-        查询
-    </button>
 </div>
 
-<div id="stockFinancialInfoChart" style="height:500px;width: 900px;margin: 20px auto"></div>
+<div class="row">
+    <div class="col-sm-2">
 
-<div style="width: 900px;margin: 20px auto">
-    <div style="padding: 10px; ">
-        <br>
-        <table id="stockFinancialInfoTable"></table>
     </div>
+    <div class="col-sm-8">
+        <div class="panel panel-color">
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div style="padding: 10px;">
+                        <table id="stockFinancialInfoTable" class="table table-model-2 table-hover"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 <script src="${resource(dir: 'js/common',file: 'utils.js')}"></script>
-
-<style>
-.row-index {
-    width: 50px;
-    display: inline-block;
-}
-</style>
 
 <script type="text/javascript">
     $(function () {
@@ -180,9 +255,15 @@
                                         return toolTipItemFormatter(index,params);
                                     }
                                 },
-
+                                grid:{
+                                    y:"30px",
+                                    y2:"60px"
+                                },
                                 legend: {
-                                    data:legendDataList
+                                    data:legendDataList,
+                                    orient:'horizontal',
+                                    x:'center',
+                                    y:'bottom'
                                 },
                                 calculable:false,
                                 toolbox: {
