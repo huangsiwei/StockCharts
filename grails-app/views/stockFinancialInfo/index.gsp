@@ -18,7 +18,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "bootstrap.min.css")}" rel="stylesheet">
-    <link href="${resource(dir: "css",file: "bootstrap-table.css")}">
+    %{--<link href="${resource(dir: "css",file: "bootstrap-table.css")}">--}%
     <!-- Custom CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
 
@@ -30,7 +30,7 @@
 
     <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
     <script src="${resource(dir: "bootstrap-template/js",file: "bootstrap.min.js")}"></script>
-    <script src="${resource(dir: "js",file: "bootstrap-table.js")}"></script>
+    %{--<script src="${resource(dir: "js",file: "bootstrap-table.js")}"></script>--}%
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -171,7 +171,18 @@
             <div class="panel-body">
                 <div class="col-sm-12">
                     <div style="padding: 10px;">
-                        <table id="stockFinancialInfoTable" class="table table-model-2 table-hover"></table>
+                        <table id="stockFinancialInfoTable" class="table table-model-2 table-hover">
+                            <thead>
+                            <tr>
+                                <th>股票名称</th>
+                                <th>最近年报数据</th>
+                                <th>行业排名</th>
+                            </tr>
+                            </thead>
+                            <tbody id="stockFinancialInfoTableContainer">
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -310,57 +321,16 @@
         var stockCodes = $('[name=stockCodes]').val();
         var index = $('[name=index]').val();
         $.ajax({
-            url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoChartTableData')}",
+            url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoRankingTable')}",
             data:{stockCodes:stockCodes,index:index},
-            dataType:"json",
-            success: function (jsonObj) {
-                bindStockFinancialInfoRankingTable(jsonObj,index)
+            dataType:"html",
+            success: function (html) {
+                $("#stockFinancialInfoTableContainer").html(html);
             },
             error:function (error) {
                 console.log(error);
             }
         })
-    }
-
-    function bindStockFinancialInfoRankingTable(stockFinancialDataListWithRanking,index) {
-        var tableData = [];
-        for (var i = 0; i < stockFinancialDataListWithRanking.length; i++) {
-            var obj = {};
-            obj["stockName"] = stockFinancialDataListWithRanking[i].stockName;
-            if (index == "basicEPS") {
-                obj["indexValue"] = stockFinancialDataListWithRanking[i].indexValue + "元/每股";
-            } else {
-                obj["indexValue"] = toThousands(stockFinancialDataListWithRanking[i].indexValue) + "元";
-            }
-//            obj["indexValue"] = stockFinancialDataListWithRanking[i].indexValue;
-            obj["rankingInfo"] = "在<a href='javascript:;'  onclick='goToFinancialInfoByIndustryFilter($(this))' industryId=" + stockFinancialDataListWithRanking[i].industryId1 + ">" + stockFinancialDataListWithRanking[i].industryId1Name + "</a>"+ "行业中排名第" + stockFinancialDataListWithRanking[i].rankInIndustry1 +",在<a href='javascript:;'  onclick='goToFinancialInfoByIndustryFilter($(this))' industryId=" + stockFinancialDataListWithRanking[i].industryId2 + ">" + stockFinancialDataListWithRanking[i].industryId2Name + "</a>" +"行业中排排名第" + stockFinancialDataListWithRanking[i].rankInIndustry2 +",在<a href='javascript:;'  onclick='goToFinancialInfoByIndustryFilter($(this))' industryId=" + stockFinancialDataListWithRanking[i].industryId3 + ">" + stockFinancialDataListWithRanking[i].industryId3Name + "</a>" + "行业中排排名第" + stockFinancialDataListWithRanking[i].rankInIndustry3;
-            tableData.push(obj);
-        }
-        if ($('#stockFinancialInfoTable').html() == "") {
-            $('#stockFinancialInfoTable').bootstrapTable({
-                columns: [{
-                    field: 'stockName',
-                    title: '股票名称'
-                }, {
-                    field: 'indexValue',
-                    title: '最近年报数据'
-                },{
-                    field: 'rankingInfo',
-                    title: '行业排名'
-                }],
-                data: tableData,
-                formatLoadingMessage: function () {
-                    return '';
-                }
-            });
-        } else {
-            $('#stockFinancialInfoTable').bootstrapTable("load",{
-                data: tableData,
-                formatLoadingMessage: function () {
-                    return '';
-                }
-            });
-        }
     }
 
     function goToFinancialInfoByIndustryFilter(obj) {

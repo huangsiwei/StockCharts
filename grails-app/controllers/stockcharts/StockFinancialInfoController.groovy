@@ -28,7 +28,7 @@ class StockFinancialInfoController {
         render(JSON.toJSONString(result))
     }
 
-    def loadStockFinancialInfoChartTableData() {
+    def loadStockFinancialInfoRankingTable() {
         def result = [:]
         String index = params.index
         def stockCodeList = params."stockCodes[]"
@@ -38,7 +38,7 @@ class StockFinancialInfoController {
             stockCodeList = tempList
         }
         result = stockFinancialInfoService.loadStockFinancialInfoTableData(stockCodeList,index)
-        render(JSON.toJSONString(result))
+        render template: 'stock_financial_info_ranking_table',model: [result:result]
     }
 
     def financialInfoByIndustryFilter() {
