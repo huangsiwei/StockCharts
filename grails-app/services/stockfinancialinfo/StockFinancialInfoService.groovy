@@ -67,6 +67,11 @@ class StockFinancialInfoService {
                 stockFinancialInfoMap["rankInIndustry3"] = industryId3ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
                 stockFinancialInfoMap["industryId3Name"] = industryId3Name
                 stockFinancialInfoMap["industryId3"] = industryId3
+                if (index == 'basicEPS') {
+                    stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元/每股"
+                } else {
+                    stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元"
+                }
             } else {
                 stockFinancialInfoMap["stockName"] = "-"
                 stockFinancialInfoMap["indexValue"] = "-"

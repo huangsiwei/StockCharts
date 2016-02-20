@@ -79,13 +79,19 @@
     <script src="${resource(dir: 'assets/js/',file: 'xenon-custom.js')}"></script>
 
 
+    <style>
+        td:nth-child(3) .description {
+            cursor: pointer
+        }
+    </style>
+
 </head>
 
 <body>
 
 <g:render template="/layouts/navbar"></g:render>
 
-<h2 align="center">XXXXX</h2>
+%{--<h1 class="title">上司公司财务数据趋势图</h1>--}%
 %{--<h2 align="center">上司公司财务数据趋势图</h2>--}%
 
 <div class="row">
@@ -121,8 +127,8 @@
                             请选择个股:
                         </div>
 
-                        <div class="col-sm-9">
-                            <select name="stockCodes" multiple="multiple" style="width: 500px;">
+                        <div class="col-sm-7">
+                            <select name="stockCodes" multiple="multiple">
                                 <g:each in="${stockList}" var = "stock" >
                                     <g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">
                                         <option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>
@@ -149,12 +155,10 @@
                             </button>
                         </div>
                     </div>
-
-
                 </form>
 
                 <div class="col-sm-12">
-                    <div id="stockFinancialInfoChart" style="width: 100%;height:600px"></div>
+                    <div id="stockFinancialInfoChart" style="width: 100%;height:500px"></div>
                 </div>
 
             </div>
