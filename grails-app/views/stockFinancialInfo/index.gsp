@@ -39,6 +39,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" href="${resource(dir: 'css',file: 'loader.css')}">
+
     <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
     %{--<link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">--}%
 
@@ -184,7 +186,9 @@
                             </tr>
                             </thead>
                             <tbody id="stockFinancialInfoTableContainer">
-
+                                <td></td>
+                            <td></td>
+                            <td></td>
                             </tbody>
                         </table>
                     </div>
@@ -222,6 +226,9 @@
             url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoChartData')}",
             data:{stockCodes:stockCodes,index:index},
             dataType:"json",
+            beforeSend: function () {
+                $("#stockFinancialInfoChart").html('<div style="width:100px;margin-left: auto;margin-right: auto;margin-top: 150px"><div class="ouro"><span class="ouro-left"><span class="anim"></span></span><span class="ouro-right"><span class="anim"></span></span></div></div>');
+            },
             success: function (jsonObj) {
                 var seriesDataList = [];
                 var xAxisData = [];
@@ -328,6 +335,9 @@
             url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialInfoRankingTable')}",
             data:{stockCodes:stockCodes,index:index},
             dataType:"html",
+            beforeSend: function () {
+                $("#stockFinancialInfoTableContainer").html('<td colspan="3"><div style="width:100px;margin-left: auto;margin-right: auto"><div class="ouro"><span class="ouro-left"><span class="anim"></span></span><span class="ouro-right"><span class="anim"></span></span></div></div></td>');
+            },
             success: function (html) {
                 $("#stockFinancialInfoTableContainer").html(html);
             },
