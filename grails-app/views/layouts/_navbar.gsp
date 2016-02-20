@@ -26,6 +26,7 @@
 }
 
 .nav.navbar-nav.navbar-right > li > .active > button {
+    margin-top: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -33,6 +34,17 @@
 .navbar-right {
     margin-top: 10px;
 }
+
+.navbar-default .navbar-brand {
+    color: #fea836;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: rgba(254, 41, 26, 0.83);
+    font-weight: bold;
+}
+
 
 </style>
 
