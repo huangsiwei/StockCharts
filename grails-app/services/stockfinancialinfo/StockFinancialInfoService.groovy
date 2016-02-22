@@ -46,35 +46,40 @@ class StockFinancialInfoService {
             def stockFinancialInfoMap = [:]
             def stockFinancialInfo = StockFinancialInfo.findByStockCodeAndEndDateAndReportType(stockCode,endData,"A",[sort:"actPubtime", order: "desc"])
             def stockMainBusinessInfo = StockMainBusinessInfo.findByStockCode(stockCode)
-            def industryId1 = stockMainBusinessInfo.industryID1
-            def industryId1Name = stockMainBusinessInfo.industryName1
-            def industryId2 = stockMainBusinessInfo.industryID2
-            def industryId2Name = stockMainBusinessInfo.industryName2
-            def industryId3 = stockMainBusinessInfo.industryID3
-            def industryId3Name = stockMainBusinessInfo.industryName3
-            def industryId1ResultList = StockFinancialInfo.findAllByStockCodeInListAndEndDateAndReportType(StockMainBusinessInfo.findAllByIndustryID1(industryId1).stockCode, endData, "A")."${index}".sort { a, b -> b <=> a }
-            def industryId2ResultList = StockFinancialInfo.findAllByStockCodeInListAndEndDateAndReportType(StockMainBusinessInfo.findAllByIndustryID2(industryId2).stockCode, endData, "A")."${index}".sort { a, b -> b <=> a }
-            def industryId3ResultList = StockFinancialInfo.findAllByStockCodeInListAndEndDateAndReportType(StockMainBusinessInfo.findAllByIndustryID3(industryId3).stockCode, endData, "A")."${index}".sort { a, b -> b <=> a }
             if (stockFinancialInfo) {
                 stockFinancialInfoMap["stockName"] = stockFinancialInfo.stockName
                 stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}"
-                stockFinancialInfoMap["rankInIndustry1"] = industryId1ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
-                stockFinancialInfoMap["industryId1Name"] = industryId1Name
-                stockFinancialInfoMap["industryId1"] = industryId1
-                stockFinancialInfoMap["rankInIndustry2"] = industryId2ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
-                stockFinancialInfoMap["industryId2Name"] = industryId2Name
-                stockFinancialInfoMap["industryId2"] = industryId2
-                stockFinancialInfoMap["rankInIndustry3"] = industryId3ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
-                stockFinancialInfoMap["industryId3Name"] = industryId3Name
-                stockFinancialInfoMap["industryId3"] = industryId3
-                if (index == 'basicEPS') {
-                    stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元/每股"
-                } else {
-                    stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元"
-                }
             } else {
                 stockFinancialInfoMap["stockName"] = "-"
                 stockFinancialInfoMap["indexValue"] = "-"
+            }
+            //对没有找到主营业务的个股进行处理
+            if (stockMainBusinessInfo) {
+                def industryId1 = stockMainBusinessInfo.industryID1
+                def industryId1Name = stockMainBusinessInfo.industryName1
+                def industryId2 = stockMainBusinessInfo.industryID2
+                def industryId2Name = stockMainBusinessInfo.industryName2
+                def industryId3 = stockMainBusinessInfo.industryID3
+                def industryId3Name = stockMainBusinessInfo.industryName3
+                def industryId1ResultList = StockFinancialInfo.findAllByStockCodeInListAndEndDateAndReportType(StockMainBusinessInfo.findAllByIndustryID1(industryId1).stockCode, endData, "A")."${index}".sort { a, b -> b <=> a }
+                def industryId2ResultList = StockFinancialInfo.findAllByStockCodeInListAndEndDateAndReportType(StockMainBusinessInfo.findAllByIndustryID2(industryId2).stockCode, endData, "A")."${index}".sort { a, b -> b <=> a }
+                def industryId3ResultList = StockFinancialInfo.findAllByStockCodeInListAndEndDateAndReportType(StockMainBusinessInfo.findAllByIndustryID3(industryId3).stockCode, endData, "A")."${index}".sort { a, b -> b <=> a }
+                    stockFinancialInfoMap["rankInIndustry1"] = industryId1ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
+                    stockFinancialInfoMap["industryId1Name"] = industryId1Name
+                    stockFinancialInfoMap["industryId1"] = industryId1
+                    stockFinancialInfoMap["rankInIndustry2"] = industryId2ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
+                    stockFinancialInfoMap["industryId2Name"] = industryId2Name
+                    stockFinancialInfoMap["industryId2"] = industryId2
+                    stockFinancialInfoMap["rankInIndustry3"] = industryId3ResultList.indexOf(stockFinancialInfoMap["indexValue"]) + 1
+                    stockFinancialInfoMap["industryId3Name"] = industryId3Name
+                    stockFinancialInfoMap["industryId3"] = industryId3
+            } else {
+                stockFinancialInfoMap["noIndustryInfo"] = "暂无行业排名信息"
+            }
+            if (index == 'basicEPS') {
+                stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元/每股"
+            } else {
+                stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元"
             }
             dataList << stockFinancialInfoMap
         }

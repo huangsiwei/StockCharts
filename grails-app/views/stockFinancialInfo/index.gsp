@@ -144,9 +144,7 @@
                             </tr>
                             </thead>
                             <tbody id="stockFinancialInfoTableContainer">
-                                <td></td>
-                            <td></td>
-                            <td></td>
+
                             </tbody>
                         </table>
                     </div>
