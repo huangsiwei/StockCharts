@@ -16,22 +16,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="${resource(dir: "bootstrap-template/css",file: "bootstrap.min.css")}" rel="stylesheet">
-    %{--<link href="${resource(dir: "css",file: "bootstrap-table.css")}">--}%
     <!-- Custom CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
-
-    %{--<link href="${resource(dir: "bootstrap-template/font-awesome/css",file: "font-awesome.min.css")}" rel="stylesheet" type="text/css">--}%
-    %{--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">--}%
-    %{--<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>--}%
-    %{--<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>--}%
-    %{--<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>--}%
-
-    <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
-    <script src="${resource(dir: "bootstrap-template/js",file: "bootstrap.min.js")}"></script>
-    %{--<script src="${resource(dir: "js",file: "bootstrap-table.js")}"></script>--}%
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,46 +26,18 @@
     <![endif]-->
 
     <link rel="stylesheet" href="${resource(dir: 'css',file: 'loader.css')}">
-
-    <script src="${resource(dir:'js',file: 'select2.min.js')}"></script>
-    %{--<link rel="stylesheet" href="${resource(dir: 'css', file: 'select2.css')}">--}%
-
-    <link rel="stylesheet" href="${resource(dir:'assets/css/fonts/linecons/css/',file: 'linecons.css')}">
-    <link rel="stylesheet" href="${resource(dir:'assets/css/fonts/fontawesome/css/',file: 'font-awesome.min.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'bootstrap.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'xenon-core.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'xenon-forms.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'xenon-components.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'xenon-skins.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/css/',file: 'custom.css')}">
-
-
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/fonts/linecons/css/', file: 'linecons.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/fonts/fontawesome/css/', file: 'font-awesome.min.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'bootstrap.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'xenon-core.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'xenon-forms.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'xenon-components.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'xenon-skins.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'custom.css')}">
     <!-- Imported styles on this page -->
-    <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/',file: 'select2.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/',file: 'select2-bootstrap.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/js/multiselect/css/',file: 'multi-select.css')}">
-
-    <!-- Bottom Scripts -->
-    <script src="${resource(dir: 'assets/js/',file:  'bootstrap.min.js')}"></script>
-    <script src="${resource(dir: 'assets/js/',file:  'TweenMax.min.js')}"></script>
-    <script src="${resource(dir: 'assets/js/',file:  'resizeable.js')}"></script>
-    <script src="${resource(dir: 'assets/js/',file:  'joinable.js')}"></script>
-    <script src="${resource(dir: 'assets/js/',file:  'xenon-api.js')}"></script>
-    <script src="${resource(dir: 'assets/js/',file:  'xenon-toggles.js')}"></script>
-    <script src="${resource(dir: 'assets/js/',file:  'moment.min.js')}"></script>
-
-    <!-- Imported scripts on this page -->
-    <script src="${resource(dir: 'assets/js/select2/',file:  'select2.min.js')}"></script>
-    <script src="${resource(dir: 'assets/js/jquery-ui/',file:  'jquery-ui.min.js')}"></script>
-    <script src="${resource(dir: 'assets/js/selectboxit/',file:  'jquery.selectBoxIt.min.js')}"></script>
-    <script src="${resource(dir: 'assets/js/tagsinput/',file:  'bootstrap-tagsinput.min.js')}"></script>
-    <script src="${resource(dir: 'assets/js/',file:  'typeahead.bundle.js')}"></script>
-    <script src="${resource(dir: 'assets/js/',file:  'handlebars.min.js')}"></script>
-    <script src="${resource(dir: 'assets/js/multiselect/js/',file:  'jquery.multi-select.js')}"></script>
-
-    <!-- JavaScripts initializations and stuff -->
-    <script src="${resource(dir: 'assets/js/',file: 'xenon-custom.js')}"></script>
-
+    <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/', file: 'select2.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/', file: 'select2-bootstrap.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'assets/js/multiselect/css/', file: 'multi-select.css')}">
 
     <style>
         td:nth-child(3) .description {
@@ -198,6 +156,28 @@
     </div>
 
 </div>
+
+<!-- Bottom Scripts -->
+<script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'bootstrap.min.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'TweenMax.min.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'resizeable.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'joinable.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'xenon-api.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'xenon-toggles.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'moment.min.js')}"></script>
+
+<!-- Imported scripts on this page -->
+<script src="${resource(dir: 'assets/js/select2/', file: 'select2.min.js')}"></script>
+<script src="${resource(dir: 'assets/js/jquery-ui/', file: 'jquery-ui.min.js')}"></script>
+<script src="${resource(dir: 'assets/js/selectboxit/', file: 'jquery.selectBoxIt.min.js')}"></script>
+<script src="${resource(dir: 'assets/js/tagsinput/', file: 'bootstrap-tagsinput.min.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'typeahead.bundle.js')}"></script>
+<script src="${resource(dir: 'assets/js/', file: 'handlebars.min.js')}"></script>
+<script src="${resource(dir: 'assets/js/multiselect/js/', file: 'jquery.multi-select.js')}"></script>
+
+<!-- JavaScripts initializations and stuff -->
+<script src="${resource(dir: 'assets/js/',file:'xenon-custom.js')}"></script>
 
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 <script src="${resource(dir: 'js/common',file: 'utils.js')}"></script>
