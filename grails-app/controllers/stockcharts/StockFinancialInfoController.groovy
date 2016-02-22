@@ -15,6 +15,20 @@ class StockFinancialInfoController {
         [stockList: stockList,defaultStock:defaultStock]
     }
 
+    def allStockList() {
+        def stockList = StockBasicInfo.findAllByListStatusCD("L")
+        def resultList = []
+        stockList?.each { stock->
+            def stockMap = [:]
+            stockMap['id'] = stock.stockCode
+            stockMap['stockName'] = stock.stockName
+            resultList << stockMap
+        }
+        render(contentType: "text/json") {
+            stockList:resultList
+        }
+    }
+
     def loadStockFinancialInfoChartData() {
         def result = [:]
         String index = params.index

@@ -35,13 +35,65 @@
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'xenon-skins.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'custom.css')}">
     <!-- Imported styles on this page -->
-    <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/', file: 'select2.css')}">
+    %{--<link rel="stylesheet" href="${resource(dir: 'assets/js/select2/', file: 'select2.css')}">--}%
     <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/', file: 'select2-bootstrap.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/js/multiselect/css/', file: 'multi-select.css')}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
+
 
     <style>
         td:nth-child(3) .description {
             cursor: pointer
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            border-radius:0px;
+            border: 1px solid #e4e4e4;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border: 1px solid #e4e4e4;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border-radius:0px;
+            border: 1px solid #e4e4e4;
+        }
+
+        .select2-dropdown {
+            border-radius:0px;
+            border: 1px solid #e4e4e4;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background:#f5f5f5;
+            border-radius:0px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #979898;
+        }
+
+        span,select,input,textarea{outline:none;}
+
+        .select2-search--dropdown {
+            padding:0px
+        }
+
+        .select2-container--default .select2-search--dropdown .select2-search__field {
+            border: 0px;
+            background-color: #f5f5f5;
+        }
+
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: inherit;
+            color: black;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #68b828;
+            color: white !important;
         }
     </style>
 
@@ -88,16 +140,22 @@
                         </div>
 
                         <div class="col-sm-7">
-                            <select name="stockCodes" multiple="multiple">
-                                <g:each in="${stockList}" var = "stock" >
-                                    <g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">
-                                        <option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>
-                                    </g:if>
-                                    <g:else>
-                                        <option value="${stock.stockCode}">${stock.stockName}</option>
-                                    </g:else>
-                                </g:each>
+                            %{--<select name="stockCodes" multiple="multiple">--}%
+                                %{--<g:each in="${stockList}" var = "stock" >--}%
+                                    %{--<g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">--}%
+                                        %{--<option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>--}%
+                                    %{--</g:if>--}%
+                                    %{--<g:else>--}%
+                                        %{--<option value="${stock.stockCode}">${stock.stockName}</option>--}%
+                                    %{--</g:else>--}%
+                                %{--</g:each>--}%
+                            %{--</select>--}%
+                            <select name="stockCodes" multiple="multiple" style="width: 100%">
+
                             </select>
+                            %{--<select class="js-data-example-ajax" multiple="multiple">--}%
+                                %{--<option value="3620194" selected="selected">select2/select2</option>--}%
+                            %{--</select>--}%
                         </div>
                     </div>
 
@@ -166,7 +224,8 @@
 <script src="${resource(dir: 'assets/js/', file: 'moment.min.js')}"></script>
 
 <!-- Imported scripts on this page -->
-<script src="${resource(dir: 'assets/js/select2/', file: 'select2.min.js')}"></script>
+%{--<script src="${resource(dir: 'assets/js/select2/', file: 'select2.min.js')}"></script>--}%
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js"></script>
 <script src="${resource(dir: 'assets/js/jquery-ui/', file: 'jquery-ui.min.js')}"></script>
 <script src="${resource(dir: 'assets/js/selectboxit/', file: 'jquery.selectBoxIt.min.js')}"></script>
 <script src="${resource(dir: 'assets/js/tagsinput/', file: 'bootstrap-tagsinput.min.js')}"></script>
@@ -182,11 +241,59 @@
 
 <script type="text/javascript">
     $(function () {
-        $('[name=stockCodes]').select2({
-            placeholder:"请输入或者选择要查看的股票"
-        },loadPage());
+//        $('[name=stockCodes]').select2({
+//            placeholder:"请输入或者选择要查看的股票"
+//        },loadPage());
+        initStockCodesSelect();
         $('[name=index]').select2();
     });
+
+    function initStockCodesSelect(){
+        $('[name=stockCodes]').select2({
+            placeholder:"请输入或者选择要查看的股票",
+            ajax: {
+                url:"${createLink(controller: 'stockFinancialInfo',action: 'allStockList')}",
+                dataType:'json',
+                delay:250,
+                data: function (params) {
+                    return {
+                        q: params.term, // search term
+                        page: params.page
+                    };
+                },
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log(data);
+                    return {
+                        results: data,
+                        pagination: {
+                            more: (params.page * 30) < data.total_count
+                        }
+                    };
+                },
+                cache: true,
+            },
+            language: {
+                inputTooShort: function () { return '请输入股票代码或者名称'; }
+            },
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 1,
+            templateResult: formatStock, // omitted for brevity, see the source of this page
+            templateSelection: formatStockSelection // omitted for brevity, see the source of this page
+        });
+    }
+
+    function formatStock(repo) {
+        if (repo.loading) return repo.text;
+
+        var markup = "<div class='select2-result-repository__title'>" + repo.stockName + "</div>";
+
+        return markup;
+    }
+
+    function formatStockSelection (repo) {
+        return repo.stockName;
+    }
 
     function loadPage() {
         loadStockFinancialInfoChart();
