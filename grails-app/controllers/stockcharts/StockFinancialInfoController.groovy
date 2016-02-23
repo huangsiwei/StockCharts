@@ -10,13 +10,23 @@ class StockFinancialInfoController {
     def dataUtilsService
 
     def index() {
-        def stockList = StockBasicInfo.findAllByListStatusCD("L")
-        def defaultStock = ReportConstant.TOP10_BASICEPS_STOCK_LIST
-        [stockList: stockList,defaultStock:defaultStock]
+        def defaultStockList = StockBasicInfo.findAllByStockNameInList(ReportConstant.TOP10_BASICEPS_STOCK_LIST)
+        [defaultStockList:defaultStockList]
     }
 
-    def allStockList() {
-        def stockList = StockBasicInfo.findAllByListStatusCD("L")
+    def loadStockListByKeyWords() {
+        def stockList = StockBasicInfo.withCriteria {
+            or {
+                and {
+                    eq("listStatusCD", "L")
+                    like("stockName", "%" + params.q + "%")
+                }
+                and {
+                    eq("listStatusCD", "L")
+                    like("stockCode", "%" + params.q + "%")
+                }
+            }
+        }
         def resultList = []
         stockList?.each { stock->
             def stockMap = [:]

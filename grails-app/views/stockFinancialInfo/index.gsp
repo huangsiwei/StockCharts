@@ -140,22 +140,11 @@
                         </div>
 
                         <div class="col-sm-7">
-                            %{--<select name="stockCodes" multiple="multiple">--}%
-                                %{--<g:each in="${stockList}" var = "stock" >--}%
-                                    %{--<g:if test="${ReportConstant.TOP10_BASICEPS_STOCK_LIST.contains(stock.stockName)}">--}%
-                                        %{--<option value="${stock.stockCode}" selected="selected">${stock.stockName}</option>--}%
-                                    %{--</g:if>--}%
-                                    %{--<g:else>--}%
-                                        %{--<option value="${stock.stockCode}">${stock.stockName}</option>--}%
-                                    %{--</g:else>--}%
-                                %{--</g:each>--}%
-                            %{--</select>--}%
                             <select name="stockCodes" multiple="multiple" style="width: 100%">
-
+                                <g:each in="${defaultStockList}" var="defaultStock">
+                                    <option value="${defaultStock.stockCode}" selected="selected">${defaultStock.stockName}</option>
+                                </g:each>
                             </select>
-                            %{--<select class="js-data-example-ajax" multiple="multiple">--}%
-                                %{--<option value="3620194" selected="selected">select2/select2</option>--}%
-                            %{--</select>--}%
                         </div>
                     </div>
 
@@ -244,6 +233,7 @@
 //        $('[name=stockCodes]').select2({
 //            placeholder:"请输入或者选择要查看的股票"
 //        },loadPage());
+//        $('[name=stockCodes]').select2();
         initStockCodesSelect();
         $('[name=index]').select2();
     });
@@ -252,7 +242,7 @@
         $('[name=stockCodes]').select2({
             placeholder:"请输入或者选择要查看的股票",
             ajax: {
-                url:"${createLink(controller: 'stockFinancialInfo',action: 'allStockList')}",
+                url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockListByKeyWords')}",
                 dataType:'json',
                 delay:250,
                 data: function (params) {
@@ -263,7 +253,6 @@
                 },
                 processResults: function (data, params) {
                     params.page = params.page || 1;
-                    console.log(data);
                     return {
                         results: data,
                         pagination: {
@@ -271,7 +260,7 @@
                         }
                     };
                 },
-                cache: true,
+                cache: true
             },
             language: {
                 inputTooShort: function () { return '请输入股票代码或者名称'; }
@@ -280,19 +269,17 @@
             minimumInputLength: 1,
             templateResult: formatStock, // omitted for brevity, see the source of this page
             templateSelection: formatStockSelection // omitted for brevity, see the source of this page
-        });
+        },loadPage());
     }
 
     function formatStock(repo) {
         if (repo.loading) return repo.text;
-
         var markup = "<div class='select2-result-repository__title'>" + repo.stockName + "</div>";
-
         return markup;
     }
 
     function formatStockSelection (repo) {
-        return repo.stockName;
+        return repo.stockName || repo.text;
     }
 
     function loadPage() {
