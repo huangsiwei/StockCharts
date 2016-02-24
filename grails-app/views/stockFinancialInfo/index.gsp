@@ -105,6 +105,7 @@
                 </form>
 
                 <div class="col-sm-12">
+                    %{--TODO:需要一个动态计算Chart Height 的方法,用于留取足够的空间工给legend--}%
                     <div id="stockFinancialInfoChart" style="width: 100%;height:500px"></div>
                 </div>
 
@@ -292,8 +293,7 @@
                                     }
                                 },
                                 grid:{
-                                    y:"30px",
-                                    y2:"60px"
+                                    y:"30px"
                                 },
                                 legend: {
                                     data:legendDataList,
