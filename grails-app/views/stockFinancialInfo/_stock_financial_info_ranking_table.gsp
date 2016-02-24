@@ -10,8 +10,8 @@
             </td>
         </g:if>
         <g:else>
-            <td><p class="description">${stock.stockName}</p></td>
-            <td><p class="description">${stock.indexValue}</p></td>
+            <td><br><p class="description">${stock.stockName}</p></td>
+            <td><br><p class="description">${stock.indexValue}</p></td>
             <td>
                 <p class="description">
                     <span onclick='goToFinancialInfoByIndustryFilter($(this))'

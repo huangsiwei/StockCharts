@@ -33,67 +33,16 @@
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'xenon-forms.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'xenon-components.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'xenon-skins.css')}">
-    <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'custom.css')}">
     <!-- Imported styles on this page -->
     %{--<link rel="stylesheet" href="${resource(dir: 'assets/js/select2/', file: 'select2.css')}">--}%
     <link rel="stylesheet" href="${resource(dir: 'assets/js/select2/', file: 'select2-bootstrap.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/js/multiselect/css/', file: 'multi-select.css')}">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
-
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'custom.css')}">
     <style>
         td:nth-child(3) .description {
             cursor: pointer
-        }
-
-        .select2-container--default .select2-selection--multiple {
-            border-radius:0px;
-            border: 1px solid #e4e4e4;
-        }
-
-        .select2-container--default.select2-container--focus .select2-selection--multiple {
-            border: 1px solid #e4e4e4;
-        }
-
-        .select2-container--default .select2-selection--single {
-            border-radius:0px;
-            border: 1px solid #e4e4e4;
-        }
-
-        .select2-dropdown {
-            border-radius:0px;
-            border: 1px solid #e4e4e4;
-        }
-
-        .select2-container--default .select2-selection--multiple .select2-selection__choice {
-            background:#f5f5f5;
-            border-radius:0px;
-        }
-
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            color: #979898;
-        }
-
-        span,select,input,textarea{outline:none;}
-
-        .select2-search--dropdown {
-            padding:0px
-        }
-
-        .select2-container--default .select2-search--dropdown .select2-search__field {
-            border: 0px;
-            background-color: #f5f5f5;
-        }
-
-        .select2-container--default .select2-results__option[aria-selected=true] {
-            background-color: inherit;
-            color: black;
-        }
-
-        .select2-container--default .select2-results__option--highlighted[aria-selected] {
-            background-color: #68b828;
-            color: white !important;
         }
     </style>
 
@@ -108,15 +57,11 @@
 
 <div class="row">
     <div class="col-sm-2">
-
     </div>
     <div class="col-sm-8">
-
         <div class="panel panel-default">
             <div class="panel-body">
-
                 <form role="form" class="form-horizontal" style="margin-bottom: 0px">
-
                     <div class="form-group">
                         <label class="col-sm-3 control-label">请选择指标:</label>
 
@@ -153,13 +98,8 @@
 
                         </div>
                         <div class="col-sm-4">
-                            <button class="btn btn-info btn-sm" type="button" >
-                                重置
-                            </button>
-
-                            <button class="btn btn-success btn-sm" type="button" onclick="loadPage()">
-                                查询
-                            </button>
+                            <button class="btn btn-info btn-sm" type="button" onclick="emptyStockCodesSelected()">清空</button>
+                            <button class="btn btn-success btn-sm" type="button" onclick="loadPage()">查询</button>
                         </div>
                     </div>
                 </form>
@@ -199,18 +139,14 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <!-- Bottom Scripts -->
 <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
 <script src="${resource(dir: 'assets/js/', file: 'bootstrap.min.js')}"></script>
-<script src="${resource(dir: 'assets/js/', file: 'TweenMax.min.js')}"></script>
 <script src="${resource(dir: 'assets/js/', file: 'resizeable.js')}"></script>
-<script src="${resource(dir: 'assets/js/', file: 'joinable.js')}"></script>
 <script src="${resource(dir: 'assets/js/', file: 'xenon-api.js')}"></script>
 <script src="${resource(dir: 'assets/js/', file: 'xenon-toggles.js')}"></script>
-<script src="${resource(dir: 'assets/js/', file: 'moment.min.js')}"></script>
 
 <!-- Imported scripts on this page -->
 %{--<script src="${resource(dir: 'assets/js/select2/', file: 'select2.min.js')}"></script>--}%
@@ -218,9 +154,15 @@
 <script src="${resource(dir: 'assets/js/jquery-ui/', file: 'jquery-ui.min.js')}"></script>
 <script src="${resource(dir: 'assets/js/selectboxit/', file: 'jquery.selectBoxIt.min.js')}"></script>
 <script src="${resource(dir: 'assets/js/tagsinput/', file: 'bootstrap-tagsinput.min.js')}"></script>
-<script src="${resource(dir: 'assets/js/', file: 'typeahead.bundle.js')}"></script>
-<script src="${resource(dir: 'assets/js/', file: 'handlebars.min.js')}"></script>
-<script src="${resource(dir: 'assets/js/multiselect/js/', file: 'jquery.multi-select.js')}"></script>
+
+<!-- Maybe scripts on this page -->
+
+%{--<script src="${resource(dir: 'assets/js/', file: 'TweenMax.min.js')}"></script>--}%
+%{--<script src="${resource(dir: 'assets/js/', file: 'joinable.js')}"></script>--}%
+%{--<script src="${resource(dir: 'assets/js/', file: 'moment.min.js')}"></script>--}%
+%{--<script src="${resource(dir: 'assets/js/', file: 'typeahead.bundle.js')}"></script>--}%
+%{--<script src="${resource(dir: 'assets/js/', file: 'handlebars.min.js')}"></script>--}%
+%{--<script src="${resource(dir: 'assets/js/multiselect/js/', file: 'jquery.multi-select.js')}"></script>--}%
 
 <!-- JavaScripts initializations and stuff -->
 <script src="${resource(dir: 'assets/js/',file:'xenon-custom.js')}"></script>
@@ -287,8 +229,8 @@
         loadStockFinancialInfoRankingTable();
     }
 
-    function resetStockSelected() {
-
+    function emptyStockCodesSelected() {
+        $("[name=stockCodes]").select2("val","");
     }
 
     function loadStockFinancialInfoChart() {

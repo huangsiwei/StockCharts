@@ -9,3 +9,58 @@ body {
 
 a {
 }
+
+/**
+ *
+ * 新版本的select2(v4)的css适配
+ *
+*/
+
+.select2-container--default .select2-selection--multiple {
+    border-radius:0px;
+    border: 1px solid #e4e4e4;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: 1px solid #e4e4e4;
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius:0px;
+    border: 1px solid #e4e4e4;
+}
+
+.select2-dropdown {
+    border-radius:0px;
+    border: 1px solid #e4e4e4;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background:#f5f5f5;
+    border-radius:0px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #979898;
+}
+
+span,select,input,textarea{outline:none;}
+
+.select2-search--dropdown {
+    padding:0px
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 0px;
+    background-color: #f5f5f5;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: inherit;
+    color: black;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #68b828;
+    color: white !important;
+}
