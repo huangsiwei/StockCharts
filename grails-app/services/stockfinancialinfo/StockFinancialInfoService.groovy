@@ -77,9 +77,9 @@ class StockFinancialInfoService {
                 stockFinancialInfoMap["noIndustryInfo"] = "暂无行业排名信息"
             }
             if (index == 'basicEPS') {
-                stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元/每股"
+                stockFinancialInfoMap["indexValue"] = ((int) stockFinancialInfo."${index}") + "元/每股"
             } else {
-                stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元"
+                stockFinancialInfoMap["indexValue"] = ((int) stockFinancialInfo."${index}") + "元"
             }
             dataList << stockFinancialInfoMap
         }

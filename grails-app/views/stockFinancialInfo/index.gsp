@@ -127,7 +127,7 @@
                             <thead>
                             <tr>
                                 <th>股票名称</th>
-                                <th>最近年报数据</th>
+                                <th>最近年报数据(2014年)</th>
                                 <th>行业排名</th>
                             </tr>
                             </thead>
@@ -137,6 +137,27 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="no-stock-selected-hint-modal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">请选择股票</h4>
+            </div>
+
+            <div class="modal-body">
+
+                你还没有选择需要查看的股票,请先选择!
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
             </div>
         </div>
     </div>
@@ -156,15 +177,6 @@
 <script src="${resource(dir: 'assets/js/selectboxit/', file: 'jquery.selectBoxIt.min.js')}"></script>
 <script src="${resource(dir: 'assets/js/tagsinput/', file: 'bootstrap-tagsinput.min.js')}"></script>
 
-<!-- Maybe scripts on this page -->
-
-%{--<script src="${resource(dir: 'assets/js/', file: 'TweenMax.min.js')}"></script>--}%
-%{--<script src="${resource(dir: 'assets/js/', file: 'joinable.js')}"></script>--}%
-%{--<script src="${resource(dir: 'assets/js/', file: 'moment.min.js')}"></script>--}%
-%{--<script src="${resource(dir: 'assets/js/', file: 'typeahead.bundle.js')}"></script>--}%
-%{--<script src="${resource(dir: 'assets/js/', file: 'handlebars.min.js')}"></script>--}%
-%{--<script src="${resource(dir: 'assets/js/multiselect/js/', file: 'jquery.multi-select.js')}"></script>--}%
-
 <!-- JavaScripts initializations and stuff -->
 <script src="${resource(dir: 'assets/js/',file:'xenon-custom.js')}"></script>
 
@@ -173,10 +185,6 @@
 
 <script type="text/javascript">
     $(function () {
-//        $('[name=stockCodes]').select2({
-//            placeholder:"请输入或者选择要查看的股票"
-//        },loadPage());
-//        $('[name=stockCodes]').select2();
         initStockCodesSelect();
         $('[name=index]').select2();
     });
@@ -226,8 +234,12 @@
     }
 
     function loadPage() {
-        loadStockFinancialInfoChart();
-        loadStockFinancialInfoRankingTable();
+        if ($("[name=stockCodes]").val() == null) {
+            $("#no-stock-selected-hint-modal").modal("show");
+        } else {
+            loadStockFinancialInfoChart();
+            loadStockFinancialInfoRankingTable();
+        }
     }
 
     function emptyStockCodesSelected() {

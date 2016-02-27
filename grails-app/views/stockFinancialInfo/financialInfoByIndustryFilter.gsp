@@ -62,7 +62,7 @@
                         <label class="col-sm-3 control-label">请选择指标:</label>
 
                         <div class="col-sm-9">
-                            <select name="index" style="width: 160px;">
+                            <select name="index" style="width: 120px;">
                                 <option value="basicEPS" selected>基本每股收益</option>
                                 <option value="nIncome">净利润</option>
                                 <option value="tProfit">利润总额</option>
@@ -78,17 +78,17 @@
                     <div class="form-group">
                         <div class="col-sm-3 control-label">请选择行业分类:</div>
 
-                        <div class="col-sm-7">
-                            <select name="industryL1" style="width: 160px;" onchange="loadChildIndustrySelect(this.value,'industryL2')">
+                        <div class="col-sm-9">
+                            <select name="industryL1" style="width: 120px;" onchange="loadChildIndustrySelect(this.value,'industryL2')">
                                 <option value="">请选择行业</option>
                                 <g:each in="${industryL1List}" var = "industryL1" >
                                     <option value="${industryL1.industryID}">${industryL1.industryName}</option>
                                 </g:each>
                             </select>
-                            <select name="industryL2" style="width: 160px;" onchange="loadChildIndustrySelect(this.value,'industryL3')">
+                            <select name="industryL2" style="width: 120px;" onchange="loadChildIndustrySelect(this.value,'industryL3')">
                                 <option value="">请选择父行业</option>
                             </select>
-                            <select name="industryL3" style="width: 160px;">
+                            <select name="industryL3" style="width: 120px;">
                                 <option value="">请选择父行业</option>
                             </select>
                         </div>
