@@ -9,7 +9,7 @@
 <html>
 <head>
     <link rel="shortcut icon" href="${resource(dir: 'images',file: 'stocks-icon.png')}" type="image/x-icon">
-    <title>上司公司财务数据趋势图</title>
+    <title>公司基本面数据趋势图</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,15 +52,13 @@
 
 <g:render template="/layouts/navbar"></g:render>
 
-%{--<h1 class="title">上司公司财务数据趋势图</h1>--}%
-%{--<h2 align="center">上司公司财务数据趋势图</h2>--}%
-
 <div class="row">
     <div class="col-sm-2">
     </div>
     <div class="col-sm-8">
         <div class="panel panel-default">
             <div class="panel-body">
+                <h2 class="title" style="text-align: center;margin-bottom: 18px;color: #5084c4">公司基本面数据趋势图</h2>
                 <form role="form" class="form-horizontal" style="margin-bottom: 0px">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">请选择指标:</label>
@@ -375,7 +373,7 @@
 
     function goToFinancialInfoByIndustryFilter(obj) {
         var industryId = obj.attr("industryId");
-        window.location = "financialInfoByIndustryFilter?industryId=" + industryId;
+        window.open("financialInfoByIndustryFilter?industryId=" + industryId);
     }
 
 </script>
