@@ -86,7 +86,7 @@ class StockFinancialInfoService {
             if (index == 'basicEPS') {
                 stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元/每股"
             } else {
-                stockFinancialInfoMap["indexValue"] = ((int) stockFinancialInfo."${index}") + "元"
+                stockFinancialInfoMap["indexValue"] = ((long) stockFinancialInfo."${index}") + "元"
             }
             dataList << stockFinancialInfoMap
         }
