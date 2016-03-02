@@ -53,9 +53,9 @@
 <g:render template="/layouts/navbar"></g:render>
 
 <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-10">
         <div class="panel panel-default">
             <div class="panel-body">
                 <h2 class="title" style="text-align: center;margin-bottom: 18px;color: #5084c4">公司基本面数据趋势图</h2>
@@ -113,10 +113,10 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
 
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-10">
         <div class="panel panel-color">
             <div class="panel-body">
                 <div class="col-sm-12">
@@ -160,6 +160,31 @@
         </div>
     </div>
 </div>
+
+<footer class="main-footer sticky footer-type-1" style="">
+
+    <div class="footer-inner">
+
+        <!-- Add your copyright text here -->
+        <div class="footer-text">
+            © 2014
+            <strong>Xenon</strong>
+            theme by <a href="http://laborator.co" target="_blank">Laborator</a> - <a href="http://themeforest.net/item/xenon-bootstrap-admin-theme/9059661?ref=Laborator" target="_blank">Purchase for only <strong>23$</strong></a>
+        </div>
+
+
+        <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+        <div class="go-up">
+
+            <a href="#" rel="go-top">
+                <i class="fa-angle-up"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
 
 <!-- Bottom Scripts -->
 <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>

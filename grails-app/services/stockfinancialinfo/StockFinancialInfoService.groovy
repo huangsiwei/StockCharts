@@ -2,6 +2,7 @@ package stockfinancialinfo
 
 import datautils.DataUtilsService
 import grails.transaction.Transactional
+import org.hibernate.criterion.Projections
 import report.ReportConstant
 import stockcharts.StockFinancialInfo
 import stockcharts.StockMainBusinessInfo
@@ -14,23 +15,47 @@ class StockFinancialInfoService {
         def dataList = []
         def yearStrList = []
         def yearDateList = ReportConstant.STOCK_CHART_YEAR_LIST
-        stockCodeList.each { stockCode ->
+        def queryResult = StockFinancialInfo.executeQuery("select rpt.stockCode,rpt.stockName, rpt.endDate,rpt.${index} from StockFinancialInfo rpt where rpt.stockCode in :stockCodeList and rpt.reportType = 'A' group by rpt.stockCode,rpt.endDate",[stockCodeList:stockCodeList as List])
+        stockCodeList?.each { stockCode ->
             def stockFinancialInfoMap = [:]
             def stockFinancialData = []
-            yearDateList.each { endDate ->
-                def indexValue = StockFinancialInfo.findByStockCodeAndEndDateAndReportType(stockCode, endDate, "A", [sort: "actPubtime", order: "desc"])?."${index}"
-                if (indexValue) {
-                    stockFinancialData << indexValue
+            yearDateList?.each { yearDate ->
+                def stockYearFinancialDate = queryResult.find { it[0] == stockCode && it[2] == yearDate }
+                if (stockYearFinancialDate) {
+                    if ((stockYearFinancialDate[3]) != null) {
+                        stockFinancialData << stockYearFinancialDate[3]
+                    } else {
+                        stockFinancialData << "-"
+                    }
                 } else {
                     stockFinancialData << "-"
                 }
             }
-            if (StockFinancialInfo.findByStockCode(stockCode)) {
-                stockFinancialInfoMap["stockName"] = StockFinancialInfo.findByStockCode(stockCode)?.stockName
+            //queryResult.find { it[0] == stockCode } 没有结果:可能是因为暂停上市等原因
+            if (queryResult.find { it[0] == stockCode }) {
+                stockFinancialInfoMap["stockName"] = queryResult.find { it[0] == stockCode }[1]
                 stockFinancialInfoMap["indexDataList"] = stockFinancialData
                 dataList << stockFinancialInfoMap
             }
         }
+
+//        stockCodeList.each { stockCode ->
+//            def stockFinancialInfoMap = [:]
+//            def stockFinancialData = []
+//            yearDateList.each { endDate ->
+//                def indexValue = StockFinancialInfo.findByStockCodeAndEndDateAndReportType(stockCode, endDate, "A", [sort: "actPubtime", order: "desc"])?."${index}"
+//                if (indexValue) {
+//                    stockFinancialData << indexValue
+//                } else {
+//                    stockFinancialData << "-"
+//                }
+//            }
+//            if (StockFinancialInfo.findByStockCode(stockCode)) {
+//                stockFinancialInfoMap["stockName"] = StockFinancialInfo.findByStockCode(stockCode)?.stockName
+//                stockFinancialInfoMap["indexDataList"] = stockFinancialData
+//                dataList << stockFinancialInfoMap
+//            }
+//        }
 
         yearDateList.each { yearDate -> yearStrList << yearDate.format("yyyy") }
         result["yearList"] = yearStrList

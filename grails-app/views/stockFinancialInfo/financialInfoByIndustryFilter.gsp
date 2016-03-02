@@ -49,9 +49,9 @@
 <g:render template="/layouts/navbar"></g:render>
 
 <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-10">
         <div class="panel panel-default">
             <div class="panel-body">
                 <h2 class="title" style="text-align: center;margin-bottom: 18px;color: #5084c4">公司财务数据趋势图(按行业筛选)</h2>
