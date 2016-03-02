@@ -296,7 +296,15 @@
                 for (var i = 0; i < jsonObj.yearList.length; i++) {
                     xAxisData.push(jsonObj.yearList[i]);
                 }
-
+                var chartWidth = $("#stockFinancialInfoChart").width();
+                var legendLineCount = (85 * legendDataList.length) / chartWidth + 1;
+                var legendHeight = legendLineCount * 25;
+                var chartHeight = 430;
+                if (legendLineCount >= 1) {
+                    chartHeight = 450
+                }
+                console.log(chartHeight);
+                $("#stockFinancialInfoChart").css("height", (legendHeight + chartHeight) + "px");
                 require.config({
                     paths: {
                         echarts: 'http://echarts.baidu.com/build/dist'
@@ -328,7 +336,8 @@
                                     }
                                 },
                                 grid:{
-                                    y:"30px"
+                                    y:"30px",
+                                    height:"400px"
                                 },
                                 legend: {
                                     data:legendDataList,

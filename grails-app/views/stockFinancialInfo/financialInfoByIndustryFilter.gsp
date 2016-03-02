@@ -109,6 +109,26 @@
     </div>
 </div>
 
+<div class="modal fade" id="no-industry-selected-hint-modal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">请选择行业</h4>
+            </div>
+
+            <div class="modal-body">
+
+                你还没有选择需要查看的行业,请先选择!
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Bottom Scripts -->
 <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
@@ -159,10 +179,17 @@
         var industryL2 = $("[name=industryL2]").val();
         var industryL3 = $("[name=industryL3]").val();
         var index = $("[name=index]").val();
+        if (industryL1 == "") {
+            $("#no-industry-selected-hint-modal").modal("show");
+            return false;
+        }
         $.ajax({
             url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockFinancialTrendDataByIndustry')}",
             data:{industryL1:industryL1,industryL2:industryL2,industryL3:industryL3,index:index},
             dataType:"json",
+            beforeSend: function () {
+                $("#stockFinancialInfoChart").html('<div style="width:100px;margin-left: auto;margin-right: auto;margin-top: 150px"><div class="ouro"><span class="ouro-left"><span class="anim"></span></span><span class="ouro-right"><span class="anim"></span></span></div></div>');
+            },
             success: function (jsonObj) {
                 var seriesDataList = [];
                 var xAxisData = [];
@@ -182,7 +209,11 @@
                 var chartWidth = $("#stockFinancialInfoChart").width();
                 var legendLineCount = (85 * legendDataList.length) / chartWidth + 1;
                 var legendHeight = legendLineCount * 25;
-                $("#stockFinancialInfoChart").css("height", (legendHeight + 440) + "px");
+                var chartHeight = 430;
+                if (legendLineCount >= 1) {
+                    chartHeight = 450
+                }
+                $("#stockFinancialInfoChart").css("height", (legendHeight + chartHeight) + "px");
                 require.config({
                     paths: {
                         echarts: 'http://echarts.baidu.com/build/dist'
