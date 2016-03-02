@@ -166,12 +166,9 @@
     <div class="footer-inner">
 
         <!-- Add your copyright text here -->
-        <div class="footer-text">
-            © 2014
-            <strong>Xenon</strong>
-            theme by <a href="http://laborator.co" target="_blank">Laborator</a> - <a href="http://themeforest.net/item/xenon-bootstrap-admin-theme/9059661?ref=Laborator" target="_blank">Purchase for only <strong>23$</strong></a>
+        <div class="footer-text" style="float: none">
+            如果觉得还不错,就复制链接分享给你的朋友吧!
         </div>
-
 
         <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
         <div class="go-up">

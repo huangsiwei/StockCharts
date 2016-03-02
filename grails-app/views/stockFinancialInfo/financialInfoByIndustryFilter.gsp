@@ -130,6 +130,28 @@
     </div>
 </div>
 
+<footer class="main-footer sticky footer-type-1" style="">
+
+    <div class="footer-inner">
+
+        <!-- Add your copyright text here -->
+        <div class="footer-text" style="float: none">
+            如果觉得还不错,就复制链接分享给你的朋友吧!
+        </div>
+
+        <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+        <div class="go-up">
+
+            <a href="#" rel="go-top">
+                <i class="fa-angle-up"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
 <!-- Bottom Scripts -->
 <script src="${resource(dir: 'js', file: 'jquery-1.11.1.min.js')}"></script>
 <script src="${resource(dir: 'assets/js/', file: 'bootstrap.min.js')}"></script>

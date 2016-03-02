@@ -8,7 +8,8 @@ public enum StockChartType {
 //    mainBusinessPieChart("主营业务分布图","mainBusinessPieChart","stockBasicInfo","mainBusinessInfo"),
     financialInfoTrendChart("业绩趋势图","financialInfoTrendChart","stockFinancialInfo","index"),
 //    financialInfoTrendChartByIndustryFilter("业绩趋势图(按行业分类)","financialInfoTrendChartByIndustryFilter","stockFinancialInfo","financialInfoByIndustryFilter"),
-    financialInfoRadarChart("个股业绩雷达图","financialInfoRadarChart","stockFinancialInfo","financialInfoRadar")
+    financialInfoRadarChart("行业趋势图","financialInfoRadarChart","stockFinancialInfo","financialInfoByIndustryFilter")
+//    financialInfoRadarChart("个股业绩雷达图","financialInfoRadarChart","stockFinancialInfo","financialInfoRadar")
 
     final String chartName
     final String chartKey
