@@ -179,7 +179,10 @@
                 for (var i = 0; i < jsonObj.yearList.length; i++) {
                     xAxisData.push(jsonObj.yearList[i]);
                 }
-
+                var chartWidth = $("#stockFinancialInfoChart").width();
+                var legendLineCount = (85 * legendDataList.length) / chartWidth + 1;
+                var legendHeight = legendLineCount * 25;
+                $("#stockFinancialInfoChart").css("height", (legendHeight + 440) + "px");
                 require.config({
                     paths: {
                         echarts: 'http://echarts.baidu.com/build/dist'
@@ -198,14 +201,6 @@
                             var option = {
                                 tooltip : {
                                     trigger: 'item',
-//                                    axisPointer:{
-//                                        type:'line',
-//                                        lineStyle:{
-//                                            color:"#FF0000",
-//                                            width:1,
-//                                            type:"dashed"
-//                                        }
-//                                    },
                                     formatter: function (parmas) {
                                         return toolTipItemFormatter(index,parmas);
                                     }
@@ -222,7 +217,7 @@
                                 },
                                 calculable:false,
                                 toolbox: {
-                                    show: true,
+                                    show: false,
                                     orient : 'vertical',
                                     x: 'right',
                                     y: 'center',

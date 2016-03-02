@@ -22,7 +22,7 @@ class StockFinancialInfoService {
             yearDateList?.each { yearDate ->
                 def stockYearFinancialDate = queryResult.find { it[0] == stockCode && it[2] == yearDate }
                 if (stockYearFinancialDate) {
-                    if ((stockYearFinancialDate[3]) != null) {
+                    if ((stockYearFinancialDate[3])) {
                         stockFinancialData << stockYearFinancialDate[3]
                     } else {
                         stockFinancialData << "-"
@@ -38,24 +38,6 @@ class StockFinancialInfoService {
                 dataList << stockFinancialInfoMap
             }
         }
-
-//        stockCodeList.each { stockCode ->
-//            def stockFinancialInfoMap = [:]
-//            def stockFinancialData = []
-//            yearDateList.each { endDate ->
-//                def indexValue = StockFinancialInfo.findByStockCodeAndEndDateAndReportType(stockCode, endDate, "A", [sort: "actPubtime", order: "desc"])?."${index}"
-//                if (indexValue) {
-//                    stockFinancialData << indexValue
-//                } else {
-//                    stockFinancialData << "-"
-//                }
-//            }
-//            if (StockFinancialInfo.findByStockCode(stockCode)) {
-//                stockFinancialInfoMap["stockName"] = StockFinancialInfo.findByStockCode(stockCode)?.stockName
-//                stockFinancialInfoMap["indexDataList"] = stockFinancialData
-//                dataList << stockFinancialInfoMap
-//            }
-//        }
 
         yearDateList.each { yearDate -> yearStrList << yearDate.format("yyyy") }
         result["yearList"] = yearStrList
