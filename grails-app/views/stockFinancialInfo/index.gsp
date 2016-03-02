@@ -215,6 +215,7 @@
             ajax: {
                 url:"${createLink(controller: 'stockFinancialInfo',action: 'loadStockListByKeyWords')}",
                 dataType:'json',
+                method:'POST',
                 delay:250,
                 data: function (params) {
                     return {
