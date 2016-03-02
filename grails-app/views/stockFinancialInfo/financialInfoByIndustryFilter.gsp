@@ -9,7 +9,7 @@
 <html>
 <head>
     <link rel="shortcut icon" href="${resource(dir: 'images',file: 'stocks-icon.png')}" type="image/x-icon">
-    <title>公司财务数据趋势图</title>
+    <title>行业基本面数据趋势图</title>
     %{--<title>同行业个股基本面数据比较</title>--}%
 
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
     <div class="col-sm-10">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h2 class="title" style="text-align: center;margin-bottom: 18px;color: #5084c4">公司财务数据趋势图(按行业筛选)</h2>
+                <h2 class="title" style="text-align: center;margin-bottom: 18px;color: #5084c4">行业基本面数据趋势图</h2>
                 <form role="form" class="form-horizontal" style="margin-bottom: 0px">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">请选择指标:</label>

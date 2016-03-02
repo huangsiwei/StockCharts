@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="公司基本面数据趋势图">
+    <meta name="author" content="StockGraph">
 
     <!-- Custom CSS -->
     <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
