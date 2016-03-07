@@ -2,7 +2,7 @@
     <tr>
         <g:if test="${stock.noIndustryInfo}">
             <td><p class="description">${stock.stockName}</p></td>
-            <td><p class="description">${stock.indexValue}</p></td>
+            <td><p class="description"><span class="indexValue">${stock.indexValue}</span>${stock.indexUnit}</p></td>
             <td>
                 <p class="description" style="cursor: default">
                     ${stock.noIndustryInfo}
