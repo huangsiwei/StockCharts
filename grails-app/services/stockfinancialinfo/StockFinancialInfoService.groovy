@@ -1,8 +1,6 @@
 package stockfinancialinfo
 
-import datautils.DataUtilsService
 import grails.transaction.Transactional
-import org.hibernate.criterion.Projections
 import report.ReportConstant
 import stockcharts.StockFinancialInfo
 import stockcharts.StockMainBusinessInfo
@@ -84,9 +82,11 @@ class StockFinancialInfoService {
                 stockFinancialInfoMap["noIndustryInfo"] = "暂无行业排名信息"
             }
             if (index == 'basicEPS') {
-                stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}" + "元/每股"
+                stockFinancialInfoMap["indexValue"] = stockFinancialInfo."${index}"
+                stockFinancialInfoMap["indexUnit"] = "元/每股"
             } else {
-                stockFinancialInfoMap["indexValue"] = ((long) stockFinancialInfo."${index}") + "元"
+                stockFinancialInfoMap["indexValue"] = ((long) stockFinancialInfo."${index}")
+                stockFinancialInfoMap["indexUnit"] = "元"
             }
             dataList << stockFinancialInfoMap
         }

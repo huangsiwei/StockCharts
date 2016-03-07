@@ -78,7 +78,7 @@ function toThousands(num) {
             }
         }
         if (numFloat && numFloat != 0) {
-            result = result + (numFloat + "");
+            result = result + (numFloat.replace("0.",".") + "");
         }
         return result;
     }

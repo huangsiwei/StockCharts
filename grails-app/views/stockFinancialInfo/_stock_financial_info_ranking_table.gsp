@@ -11,7 +11,7 @@
         </g:if>
         <g:else>
             <td><br><p class="description">${stock.stockName}</p></td>
-            <td><br><p class="description">${stock.indexValue}</p></td>
+            <td><br><p class="description"><span class="indexValue">${stock.indexValue}</span>${stock.indexUnit}</p></td>
             <td>
                 <p class="description">
                     <span onclick='goToFinancialInfoByIndustryFilter($(this))'
@@ -33,3 +33,11 @@
         </g:else>
     </tr>
 </g:each>
+
+<script>
+    $(function () {
+        for (var i = 0; i < $(".indexValue").length; i++) {
+            $($(".indexValue")[i]).text((toThousands($($(".indexValue")[i]).text())));
+        }
+    })
+</script>
