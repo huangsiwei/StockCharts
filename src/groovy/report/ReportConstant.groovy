@@ -41,6 +41,7 @@ class ReportConstant {
         STOCK_CHART_YEAR_LIST.add(new Date("2012/12/31"))
         STOCK_CHART_YEAR_LIST.add(new Date("2013/12/31"))
         STOCK_CHART_YEAR_LIST.add(new Date("2014/12/31"))
+        STOCK_CHART_YEAR_LIST.add(new Date("2015/12/31"))
 
         TOP10_BASICEPS_STOCK_LIST.add("贵州茅台")
         TOP10_BASICEPS_STOCK_LIST.add("大商股份")
