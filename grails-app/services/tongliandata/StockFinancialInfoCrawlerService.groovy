@@ -25,35 +25,32 @@ class StockFinancialInfoCrawlerService {
             HttpEntity entity = response.getEntity()
             String body = EntityUtils.toString(entity)
             JSON.parse(body).data.each { financialReport ->
-//                StockFinancialInfo.findOrCreateByStockCodeAndReportTypeAndEndDateAndExchangeCD()
-                if (!StockFinancialInfo.findByStockCodeAndEndDateAndReportType(stockCode,new Date().parse("yyyy-MM-dd", financialReport.endDate),financialReport.reportType)) {
-                    StockFinancialInfo stockFinancialInfo = new StockFinancialInfo()
-                    stockFinancialInfo.stockCode = stockCode
-                    stockFinancialInfo.stockName = financialReport.secShortName
-                    stockFinancialInfo.reportType = financialReport.reportType
-                    stockFinancialInfo.exchangeCD = financialReport.exchangeCD
-                    stockFinancialInfo.endDate = new Date().parse("yyyy-MM-dd", financialReport.endDate)
-                    stockFinancialInfo.actPubtime = new Date().parse("yyyy-MM-dd", financialReport.actPubtime)
-                    stockFinancialInfo.fiscalPeriod = financialReport.fiscalPeriod as int
-                    stockFinancialInfo.tRevenue = financialReport.tRevenue ? financialReport.tRevenue as Float : null
-                    stockFinancialInfo.revenue = financialReport.revenue ? financialReport.revenue as Float : null
-                    stockFinancialInfo.operateProfit = financialReport.operateProfit ? financialReport.operateProfit as Float : null
-                    stockFinancialInfo.noperateIncome = financialReport.NoperateIncome ? financialReport.NoperateIncome as Float : null
-                    stockFinancialInfo.noperateExp = financialReport.NoperateExp ? financialReport.NoperateExp as Float : null
-                    stockFinancialInfo.tProfit = financialReport.TProfit ? financialReport.TProfit as Float : null
-                    stockFinancialInfo.nIncome = financialReport.NIncome ? financialReport.NIncome as Float : null
-                    stockFinancialInfo.basicEPS = financialReport.basicEPS ? financialReport.basicEPS as Float : null
-                    stockFinancialInfo.cogs = financialReport.COGS ? financialReport.COGS as Float : null
-                    stockFinancialInfo.investIncome = financialReport.investIncome ? financialReport.investIncome as Float : null
-                    if (!stockFinancialInfo.save(flush: true)) {
-                        stockFinancialInfo.errors.each {
-                            println it
-                        }
+                StockFinancialInfo stockFinancialInfo = new StockFinancialInfo()
+                stockFinancialInfo.stockCode = stockCode
+                stockFinancialInfo.stockName = financialReport.secShortName
+                stockFinancialInfo.reportType = financialReport.reportType
+                stockFinancialInfo.exchangeCD = financialReport.exchangeCD
+                stockFinancialInfo.endDate = new Date().parse("yyyy-MM-dd", financialReport.endDate)
+                stockFinancialInfo.actPubtime = new Date().parse("yyyy-MM-dd", financialReport.actPubtime)
+                stockFinancialInfo.fiscalPeriod = financialReport.fiscalPeriod as int
+                stockFinancialInfo.tRevenue = financialReport.tRevenue ? financialReport.tRevenue as Float : null
+                stockFinancialInfo.revenue = financialReport.revenue ? financialReport.revenue as Float : null
+                stockFinancialInfo.operateProfit = financialReport.operateProfit ? financialReport.operateProfit as Float : null
+                stockFinancialInfo.noperateIncome = financialReport.NoperateIncome ? financialReport.NoperateIncome as Float : null
+                stockFinancialInfo.noperateExp = financialReport.NoperateExp ? financialReport.NoperateExp as Float : null
+                stockFinancialInfo.tProfit = financialReport.TProfit ? financialReport.TProfit as Float : null
+                stockFinancialInfo.nIncome = financialReport.NIncome ? financialReport.NIncome as Float : null
+                stockFinancialInfo.basicEPS = financialReport.basicEPS ? financialReport.basicEPS as Float : null
+                stockFinancialInfo.cogs = financialReport.COGS ? financialReport.COGS as Float : null
+                stockFinancialInfo.investIncome = financialReport.investIncome ? financialReport.investIncome as Float : null
+                if (!stockFinancialInfo.save(flush: true)) {
+                    stockFinancialInfo.errors.each {
+                        println it
                     }
                 }
-
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace()
             println("exception occured:" + stockCode)
         }
