@@ -235,7 +235,7 @@
                     var seriesData = new Object();
                     seriesData.name= jsonObj.dataList[i].stockName;
                     seriesData.type = 'line';
-                    seriesData.symbolSize = 2;
+                    seriesData.symbolSize = 5;
                     seriesData.data = jsonObj.dataList[i].indexDataList;
                     seriesDataList.push(seriesData);
                     legendDataList.push(seriesData.name);
@@ -245,7 +245,7 @@
                 }
                 var chartWidth = $("#stockFinancialInfoChart").width();
                 var legendLineCount = (85 * legendDataList.length) / chartWidth + 1;
-                var legendHeight = legendLineCount * 25;
+                var legendHeight = legendLineCount * 35;
                 var chartHeight = 430;
                 if (legendLineCount >= 1) {
                     chartHeight = 450
@@ -261,14 +261,14 @@
                         }
                     },
                     grid:{
-                        y:"30px",
+                        top:"30px",
+//                        bottom:"50px",
                         height:"400px"
                     },
                     legend: {
                         data:legendDataList,
                         orient:'horizontal',
-                        x:'center',
-                        y:'bottom'
+                        top:'460px'
                     },
                     calculable:false,
                     toolbox: {
