@@ -193,7 +193,8 @@
 <!-- JavaScripts initializations and stuff -->
 <script src="${resource(dir: 'assets/js/',file:'xenon-custom.js')}"></script>
 
-<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script src="${resource(dir: 'js',file: 'echarts-3.min.js')}"></script>
+<script src="${resource(dir: 'js',file: 'macarons.js')}"></script>
 <script src="${resource(dir: 'js/common',file: 'utils.js')}"></script>
 <script src="${resource(dir: 'js/common',file: 'common.js')}"></script>
 
@@ -250,70 +251,54 @@
                     chartHeight = 450
                 }
                 $("#stockFinancialInfoChart").css("height", (legendHeight + chartHeight) + "px");
-                require.config({
-                    paths: {
-                        echarts: 'http://echarts.baidu.com/build/dist'
-                    }
-                });
+                var myChart = echarts.init(document.getElementById('stockFinancialInfoChart'),'macarons');
 
-                // 使用
-                require(
-                        [
-                            'echarts',
-                            'echarts/chart/line'
-                        ],
-                        function (ec) {
-                            var myChart = ec.init(document.getElementById('stockFinancialInfoChart'));
-
-                            var option = {
-                                tooltip : {
-                                    trigger: 'item',
-                                    formatter: function (parmas) {
-                                        return toolTipItemFormatter(index,parmas);
-                                    }
-                                },
-                                grid:{
-                                    y:"30px",
-                                    height:"400px"
-                                },
-                                legend: {
-                                    data:legendDataList,
-                                    orient:'horizontal',
-                                    x:'center',
-                                    y:'bottom'
-                                },
-                                calculable:false,
-                                toolbox: {
-                                    show: false,
-                                    orient : 'vertical',
-                                    x: 'right',
-                                    y: 'center',
-                                    feature : {
-                                        dataView : {show: true, readOnly: false},
-                                        restore : {show: true}
-                                    }
-                                },
-                                xAxis : [
-                                    {
-                                        type : 'category',
-                                        boundaryGap : false,
-                                        data : xAxisData
-                                    }
-                                ],
-                                yAxis : [
-                                    {
-                                        type : 'value',
-                                        axisLabel:{
-                                            rotate: 45
-                                        }
-                                    }
-                                ],
-                                series : seriesDataList
-                            };
-                            myChart.setTheme('macarons');
-                            myChart.setOption(option);
+                var option = {
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: function (parmas) {
+                            return toolTipItemFormatter(index,parmas);
                         }
-                );
+                    },
+                    grid:{
+                        y:"30px",
+                        height:"400px"
+                    },
+                    legend: {
+                        data:legendDataList,
+                        orient:'horizontal',
+                        x:'center',
+                        y:'bottom'
+                    },
+                    calculable:false,
+                    toolbox: {
+                        show: false,
+                        orient : 'vertical',
+                        x: 'right',
+                        y: 'center',
+                        feature : {
+                            dataView : {show: true, readOnly: false},
+                            restore : {show: true}
+                        }
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            boundaryGap : false,
+                            data : xAxisData
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value',
+                            axisLabel:{
+                                rotate: 45
+                            }
+                        }
+                    ],
+                    series : seriesDataList
+                };
+                myChart.setOption(option);
             },
             error: function (error) {
                 console.log(error);
