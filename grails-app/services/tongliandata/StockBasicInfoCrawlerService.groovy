@@ -9,13 +9,53 @@ import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.util.EntityUtils
 import stockcharts.StockBasicInfo
+import stockcharts.StockDailyMarketingInfo
 import stockcharts.StockMainBusinessInfo
 import stockcharts.StockRegionInfo
 
 @Transactional
 class StockBasicInfoCrawlerService {
 
-    def fetahStockBasicInfo() {
+    def fetchStockTodayMktInfo() {
+        String url = "https://api.wmcloud.com/data/v1/api/market/getMktEqud.json?field=&beginDate=&endDate=&secID=&ticker=&tradeDate=20160321"
+        HttpClient httpClient = new DefaultHttpClient()
+        HttpGet httpGet = new HttpGet(url)
+        httpGet.addHeader("Authorization", "Bearer 5c97761c5f15ec4d41eef90557588fa3b2e0fb1ccb104ff18158cd1ba3319139")
+        def response = httpClient.execute(httpGet)
+        HttpEntity entity = response.getEntity()
+        String body = EntityUtils.toString(entity)
+        JSON.parse(body).data.each { stockMktInfo ->
+            StockDailyMarketingInfo stockDailyMarketingInfo = new StockDailyMarketingInfo()
+            stockDailyMarketingInfo.stockCode = stockMktInfo.ticker
+            stockDailyMarketingInfo.secShortName = stockMktInfo.secShortName
+            stockDailyMarketingInfo.exchangeCD = stockMktInfo.exchangeCD
+            stockDailyMarketingInfo.tradeDate = stockMktInfo.tradeDate? Date.parse("yyyy-MM-dd", stockMktInfo.tradeDate) : null
+            stockDailyMarketingInfo.preClosePrice = stockMktInfo.preClosePrice
+            stockDailyMarketingInfo.actPreClosePrice = stockMktInfo.actPreClosePrice
+            stockDailyMarketingInfo.openPrice = stockMktInfo.openPrice
+            stockDailyMarketingInfo.highestPrice = stockMktInfo.highestPrice
+            stockDailyMarketingInfo.lowestPrice = stockMktInfo.lowestPrice
+            stockDailyMarketingInfo.closePrice = stockMktInfo.closePrice
+            stockDailyMarketingInfo.turnoverVol = stockMktInfo.turnoverVol
+            stockDailyMarketingInfo.turnoverValue = stockMktInfo.turnoverValue
+            stockDailyMarketingInfo.dealAmount = stockMktInfo.dealAmount
+            stockDailyMarketingInfo.turnoverRate = stockMktInfo.turnoverRate
+            stockDailyMarketingInfo.negMarketValue = stockMktInfo.negMarketValue
+            stockDailyMarketingInfo.marketValue = stockMktInfo.marketValue
+            if (stockMktInfo.isOpen == '1') {
+                stockDailyMarketingInfo.isOpen = stockMktInfo.isOpen
+            } else {
+                stockDailyMarketingInfo.isOpen = false
+            }
+            if (!stockDailyMarketingInfo.save(flush: true)){
+                stockDailyMarketingInfo.errors.each {
+                    println (stockMktInfo.ticker + ":" + it)
+                }
+            }
+        }
+    }
+
+    def fetchStockBasicInfo() {
         String url = "https://api.wmcloud.com/data/v1/api/master/getSecID.json?field=&assetClass=E&ticker=&partyID=&cnSpell="
         HttpClient httpClient = new DefaultHttpClient()
         HttpGet httpGet = new HttpGet(url)

@@ -79,15 +79,39 @@
                         <div class="col-sm-9">
                             <select name="industryL1" style="width: 120px;" onchange="loadChildIndustrySelect(this.value,'industryL2')">
                                 <option value="">请选择行业</option>
-                                <g:each in="${industryL1List}" var = "industryL1" >
-                                    <option value="${industryL1.industryID}">${industryL1.industryName}</option>
-                                </g:each>
+                                <g:if test="${selectedIndustryL1}">
+                                    <g:each in="${industryL1List}" var = "industryL1" >
+                                        <option ${selectedIndustryL1.industryID == industryL1.industryID ? "selected" : ""}
+                                                value="${industryL1.industryID}">${industryL1.industryName}</option>
+                                    </g:each>
+                                </g:if>
+                                <g:else>
+                                    <g:each in="${industryL1List}" var = "industryL1" >
+                                        <option value="${industryL1.industryID}">${industryL1.industryName}</option>
+                                    </g:each>
+                                </g:else>
                             </select>
                             <select name="industryL2" style="width: 120px;" onchange="loadChildIndustrySelect(this.value,'industryL3')">
-                                <option value="">请选择父行业</option>
+                                <g:if test="${selectedIndustryL2}">
+                                    <g:each in="${base.Industry.findAllByParent(selectedIndustryL1)}" var="industryL2">
+                                        <option selected='${selectedIndustryL2.industryID == industryL2.industryID ? "selected" : ""}'
+                                                value="${industryL2.industryID}">${industryL2.industryName}</option>
+                                    </g:each>
+                                </g:if>
+                                <g:else>
+                                    <option value="">请选择父行业</option>
+                                </g:else>
                             </select>
                             <select name="industryL3" style="width: 120px;">
-                                <option value="">请选择父行业</option>
+                                <g:if test="${selectedIndustryL3}">
+                                    <g:each in="${base.Industry.findAllByParent(selectedIndustryL2)}" var="industryL3">
+                                        <option selected='${selectedIndustryL3.industryID == industryL3.industryID ? "selected" : ""}'
+                                                value="${industryL3.industryID}">${industryL3.industryName}</option>
+                                    </g:each>
+                                </g:if>
+                                <g:else>
+                                    <option value="">请选择父行业</option>
+                                </g:else>
                             </select>
                         </div>
                     </div>
@@ -180,19 +204,9 @@
     });
 
     function initSelectedIndustries() {
-        if ("${selectedIndustryL3}" != "") {
-            $("[name=industryL1]").html("<option value='${selectedIndustryL1?.industryID}'>${selectedIndustryL1?.industryName}</option>");
-            $("[name=industryL2]").html("<option value='${selectedIndustryL2?.industryID}'>${selectedIndustryL2?.industryName}</option>");
-            $("[name=industryL3]").html("<option value='${selectedIndustryL3?.industryID}'>${selectedIndustryL3?.industryName}</option>");
-        } else if ("${selectedIndustryL2}" != ""){
-            $("[name=industryL1]").html("<option value='${selectedIndustryL1?.industryID}'>${selectedIndustryL1?.industryName}</option>");
-            $("[name=industryL2]").html("<option value='${selectedIndustryL2?.industryID}'>${selectedIndustryL2?.industryName}</option>");
-        } else if ("${selectedIndustryL1}" != "") {
-            $("[name=industryL1]").html("<option value='${selectedIndustryL1?.industryID}'>${selectedIndustryL1?.industryName}</option>");
-        }
         $("select").select2();
         if ("${selectedIndustryL1}" != "") {
-            $("#queryBtn").click();
+            loadStockFinancialTrendDataByIndustry();
         }
     }
 

@@ -125,7 +125,7 @@
                             <thead>
                             <tr>
                                 <th>股票名称</th>
-                                <th>最近年报数据(2014年)</th>
+                                <th>最近年报数据(2015年)</th>
                                 <th>行业排名</th>
                             </tr>
                             </thead>
@@ -167,7 +167,7 @@
 
         <!-- Add your copyright text here -->
         <div class="footer-text" style="float: none">
-            如果觉得还不错,就复制链接分享给你的朋友吧!
+            欢迎反馈! stockgraph@sina.com
         </div>
 
         <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->

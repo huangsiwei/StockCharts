@@ -41,7 +41,7 @@
 }
 
 .navbar-default .navbar-brand:hover {
-    color: rgba(254, 41, 26, 0.83);
+    color: rgba(216, 216, 216, 0.83);
     font-weight: bold;
 }
 

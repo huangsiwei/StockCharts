@@ -2,6 +2,7 @@ package datautils
 
 import grails.transaction.Transactional
 import stockcharts.StockBasicInfo
+import stockcharts.StockFinancialInfo
 
 @Transactional
 class DataUtilsService {
@@ -14,5 +15,14 @@ class DataUtilsService {
             }
         }
         [stockBasicInfoMap: stockBasicInfoMap]
+    }
+
+    def getNIncomeRate(StockFinancialInfo stockFinancialInfo) {
+        if (stockFinancialInfo?.nIncome && stockFinancialInfo?.revenue) {
+            return stockFinancialInfo.nIncome / stockFinancialInfo.revenue
+        } else {
+            return 0
+        }
+
     }
 }
