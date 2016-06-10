@@ -48,7 +48,7 @@
 
 <g:render template="/layouts/navbar"></g:render>
 
-<div class="row">
+<div class="row" style="background-color: #eeeeee">
     <div class="col-sm-1">
     </div>
     <div class="col-sm-10">
@@ -237,6 +237,7 @@
                     seriesData.type = 'line';
                     seriesData.symbolSize = 5;
                     seriesData.data = jsonObj.dataList[i].indexDataList;
+                    seriesData.animationDuration = 2000;
                     seriesDataList.push(seriesData);
                     legendDataList.push(seriesData.name);
                 }
