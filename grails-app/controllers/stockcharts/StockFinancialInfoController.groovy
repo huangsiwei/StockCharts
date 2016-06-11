@@ -116,7 +116,6 @@ class StockFinancialInfoController {
     }
 
     def financialInfoRadar() {
-
         def stockList = StockBasicInfo.findAllByListStatusCD("L")
         [stockList: stockList]
     }
@@ -126,5 +125,11 @@ class StockFinancialInfoController {
         def stockCodes = params.stockCodes.split(",")
         def result = stockFinancialInfoService.loadStockFinancialInfoRadarChartData(stockCodes,indexes,ReportConstant.STOCK_CHART_YEAR_LIST.last(),null)
         render (JSON.toJSONString(result))
+    }
+
+    def financialInfoCompare() {
+        def stockList
+        def selectedIndex
+        def selectedYear
     }
 }
