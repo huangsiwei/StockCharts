@@ -288,7 +288,7 @@
                     seriesData.name = jsonObj.dataList[i].stockName;
                     seriesData.type = 'line';
 //                    seriesData.symbol = 'none';
-                    seriesData.symbolSize = 2;
+                    seriesData.symbolSize = 5;
                     seriesData.data = jsonObj.dataList[i].indexDataList;
                     seriesDataList.push(seriesData);
                     legendDataList.push(seriesData.name);
@@ -354,8 +354,8 @@
                     ],
                     series: seriesDataList
                 };
-                myChart.setTheme('macarons');
                 myChart.setOption(option);
+                window.onresize = myChart.resize;
             },
             error: function (error) {
                 console.log(error);

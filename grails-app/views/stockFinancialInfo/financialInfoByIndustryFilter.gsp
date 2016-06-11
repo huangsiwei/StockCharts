@@ -300,6 +300,7 @@
                     series : seriesDataList
                 };
                 myChart.setOption(option);
+                window.onresize = myChart.resize;
             },
             error: function (error) {
                 console.log(error);

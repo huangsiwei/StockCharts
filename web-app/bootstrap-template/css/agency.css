@@ -283,13 +283,13 @@ header .intro-text .intro-lead-in {
     margin-bottom: 25px;
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 22px;
-    font-style: italic;
+    /*font-style: italic;*/
     line-height: 22px;
 }
 
 header .intro-text .intro-heading {
     margin-bottom: 25px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 50px;
     font-weight: 700;
@@ -298,7 +298,7 @@ header .intro-text .intro-heading {
 
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 300px;
+        padding-top: 220px;
         padding-bottom: 200px;
     }
 
@@ -306,17 +306,25 @@ header .intro-text .intro-heading {
         margin-bottom: 25px;
         font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 40px;
-        font-style: italic;
+        /*font-style: italic;*/
         line-height: 40px;
+        color: #666;
     }
 
     header .intro-text .intro-heading {
-        margin-bottom: 50px;
-        text-transform: uppercase;
-        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin-bottom: 30px;
+        /*text-transform: uppercase;*/
+        /*font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
         font-size: 75px;
         font-weight: 700;
         line-height: 75px;
+        color: #666;
+    }
+
+    header .intro-text .intro-description {
+        font-size: 20px;
+        color: #666;
+
     }
 }
 
@@ -846,12 +854,12 @@ ul.social-buttons li a:active {
 
 ::-moz-selection {
     text-shadow: none;
-    background: #fed136;
+    background: #93d4ff;
 }
 
 ::selection {
     text-shadow: none;
-    background: #fed136;
+    background: #93D4FF;
 }
 
 img::selection {

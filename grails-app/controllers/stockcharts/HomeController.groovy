@@ -3,10 +3,10 @@ package stockcharts
 class HomeController {
 
     def index() {
-        redirect(controller: 'stockFinancialInfo',action: 'index')
+//        redirect(controller: 'home',action: 'index')
     }
 
     def index2() {
-        redirect(controller: 'stockFinancialInfo',action: 'index')
+
     }
 }
