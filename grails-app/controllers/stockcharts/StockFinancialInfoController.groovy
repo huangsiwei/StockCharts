@@ -132,4 +132,8 @@ class StockFinancialInfoController {
         def selectedIndex
         def selectedYear
     }
+
+    def detailInfo () {
+
+    }
 }

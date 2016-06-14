@@ -48,13 +48,30 @@
         </div>
     </header>
 
+    %{--<section id="chartSamples">--}%
+        %{--<div class="container">--}%
+            %{--<div class="list">--}%
+                %{--<img src="./images/index/1.png" data-index="1" class=""><i></i><i></i>--}%
+                %{--<img--}%
+                    %{--src="./images/index/2.png" data-index="2" class=""><i></i><i></i><img src="./images/index/3.png"--}%
+                                                                                          %{--data-index="3"--}%
+                                                                                          %{--class=""><i></i><i></i><img--}%
+                    %{--src="./images/index/4.png" data-index="4" class="cur-item"><i></i><i></i><img--}%
+                    %{--src="./images/index/5.png" data-index="5" class=""><i></i><i></i><img src="./images/index/6.png"--}%
+                                                                                          %{--data-index="6"--}%
+                                                                                          %{--class=""><i></i><i></i><img--}%
+                    %{--src="./images/index/7.png" data-index="7" class="">--}%
+            %{--</div>--}%
+        %{--</div>--}%
+    %{--</section>--}%
+
     <!-- Services Section -->
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">丰富的可视化效果</h2>
+                    <h3 class="section-subheading text-muted"></h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -63,7 +80,8 @@
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">E-Commerce</h4>
+                    <h4 class="service-heading">个股详情</h4>
+                    <img src="${resource(dir: 'images',file: '1.png')}" style="width: 200px;height: 200px"/>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
                 <div class="col-md-4">
@@ -71,7 +89,8 @@
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">Responsive Design</h4>
+                    <h4 class="service-heading">同业比较</h4>
+                    <img src="${resource(dir: 'images',file: '2.png')}" style="width: 200px;height: 200px"/>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
                 <div class="col-md-4">
@@ -79,7 +98,8 @@
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">Web Security</h4>
+                    <h4 class="service-heading">深度挖掘</h4>
+                    <img src="${resource(dir: 'images',file: '6.png')}" style="width: 200px;height: 200px"/>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
             </div>

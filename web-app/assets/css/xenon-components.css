@@ -3455,7 +3455,7 @@ button.toast-close-button {
 .xe-widget.xe-counter-block .xe-upper,
 .xe-widget.xe-progress-counter .xe-upper {
   background: #fff;
-  padding: 28px;
+  /*padding: 28px;*/
   line-height: 1;
   display: table;
   width: 100%;
