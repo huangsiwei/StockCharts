@@ -82,7 +82,7 @@
                     </span>
                     <h4 class="service-heading">个股详情</h4>
                     <img src="${resource(dir: 'images',file: '1.png')}" style="width: 200px;height: 200px"/>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">从过去到现在,展现股票的基本面趋势</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -91,7 +91,7 @@
                     </span>
                     <h4 class="service-heading">同业比较</h4>
                     <img src="${resource(dir: 'images',file: '2.png')}" style="width: 200px;height: 200px"/>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">这支股票的业绩和它的同行相比如何? 更好or更糟?</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -100,45 +100,17 @@
                     </span>
                     <h4 class="service-heading">深度挖掘</h4>
                     <img src="${resource(dir: 'images',file: '6.png')}" style="width: 200px;height: 200px"/>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">穿透表面的财务数据,了解背后的事件</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Clients Aside -->
-    %{--<aside class="clients">--}%
-        %{--<div class="container">--}%
-            %{--<div class="row">--}%
-                %{--<div class="col-md-3 col-sm-6">--}%
-                    %{--<a href="#">--}%
-                        %{--<img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">--}%
-                    %{--</a>--}%
-                %{--</div>--}%
-                %{--<div class="col-md-3 col-sm-6">--}%
-                    %{--<a href="#">--}%
-                        %{--<img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">--}%
-                    %{--</a>--}%
-                %{--</div>--}%
-                %{--<div class="col-md-3 col-sm-6">--}%
-                    %{--<a href="#">--}%
-                        %{--<img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">--}%
-                    %{--</a>--}%
-                %{--</div>--}%
-                %{--<div class="col-md-3 col-sm-6">--}%
-                    %{--<a href="#">--}%
-                        %{--<img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">--}%
-                    %{--</a>--}%
-                %{--</div>--}%
-            %{--</div>--}%
-        %{--</div>--}%
-    %{--</aside>--}%
-
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2014</span>
+                    <span class="copyright">Copyright &copy; StockGraph 2016</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
@@ -152,7 +124,7 @@
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
+                        <li><a href="#"></a>
                         </li>
                         <li><a href="#">Terms of Use</a>
                         </li>
