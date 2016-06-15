@@ -35,6 +35,18 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        .echart-symbol {
+            width: 200px;
+            height: 200px;
+            transition:0.5s;
+        }
+        .echart-symbol:hover {
+            width:220px;
+            height:220px;
+        }
+    </style>
+
 </head>
 
 <body id="page-top" class="index">
@@ -63,17 +75,23 @@
             <div class="row text-center">
                 <div class="col-md-4">
                     <h4 class="service-heading">个股详情</h4>
-                    <img src="${resource(dir: 'images',file: '1.png')}" style="width: 200px;height: 200px"/>
+                    <div style="height: 220px">
+                        <img class="echart-symbol" src="${resource(dir: 'images',file: '1.png')}"/>
+                    </div>
                     <p class="text-muted">从过去到现在,展现股票的基本面趋势</p>
                 </div>
                 <div class="col-md-4">
                     <h4 class="service-heading">同业比较</h4>
-                    <img src="${resource(dir: 'images',file: '2.png')}" style="width: 200px;height: 200px"/>
+                    <div style="height: 220px">
+                        <img class="echart-symbol" src="${resource(dir: 'images',file: '2.png')}"/>
+                    </div>
                     <p class="text-muted">这支股票的业绩和它的同行相比如何? 更好or更糟?</p>
                 </div>
                 <div class="col-md-4">
                     <h4 class="service-heading">深度挖掘</h4>
-                    <img src="${resource(dir: 'images',file: '6.png')}" style="width: 200px;height: 200px"/>
+                    <div style="height: 220px">
+                        <img class="echart-symbol" src="${resource(dir: 'images',file: '6.png')}"/>
+                    </div>
                     <p class="text-muted">穿透表面的财务数据,了解背后的事件</p>
                 </div>
             </div>
