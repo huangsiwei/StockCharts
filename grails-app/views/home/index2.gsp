@@ -15,10 +15,14 @@
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'bootstrap.css')}">
 
     <!-- Custom CSS -->
-    <link href="${resource(dir: "bootstrap-template/css",file: "agency.css")}" rel="stylesheet">
-    <link rel="stylesheet" href="${resource(dir: 'css',file: 'loader.css')}">
+    <link href="${resource(dir: "bootstrap-template/css", file: "agency.css")}" rel="stylesheet">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'loader.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/css/fonts/fontawesome/css/', file: 'font-awesome.min.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'bootstrap.css')}">
+    %{--<link rel="stylesheet" href="${resource(dir:'css/',file: 'default.css')}">--}%
+    <link rel="stylesheet" href="${resource(dir: 'css/', file: 'component.css')}">
+
+    %{--<script src="js/modernizr.custom.js"></script>--}%
     %{----}%
 
     <!-- Custom Fonts -->
@@ -36,15 +40,16 @@
     <![endif]-->
 
     <style>
-        .echart-symbol {
-            width: 200px;
-            height: 200px;
-            transition:0.5s;
-        }
-        .echart-symbol:hover {
-            width:220px;
-            height:220px;
-        }
+    .echart-symbol {
+        width: 200px;
+        height: 200px;
+        transition: 0.5s;
+    }
+
+    .echart-symbol:hover {
+        width: 220px;
+        height: 220px;
+    }
     </style>
 
 </head>
@@ -87,72 +92,116 @@
     <!-- /.container-fluid -->
 </nav>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-heading" style="color: #666">Stock Graph</div>
-                <div class="intro-lead-in" style="color: #666">图读财报</div>
-                <div class="intro-description">帮助你从枯燥的财务报表中解脱出来</div>
-                %{--<a href="#services" class="page-scroll btn btn-xl"></a>--}%
-            </div>
-        </div>
-    </header>
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-heading" style="color: #666">Stock Graph</div>
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">丰富的可视化效果</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <h4 class="service-heading">个股详情</h4>
-                    <div style="height: 220px">
-                        <img class="echart-symbol" src="${resource(dir: 'images',file: '1.png')}"/>
-                    </div>
-                    <p class="text-muted">从过去到现在,展现股票的基本面趋势</p>
-                </div>
-                <div class="col-md-4">
-                    <h4 class="service-heading">同业比较</h4>
-                    <div style="height: 220px">
-                        <img class="echart-symbol" src="${resource(dir: 'images',file: '2.png')}"/>
-                    </div>
-                    <p class="text-muted">这支股票的业绩和它的同行相比如何? 更好or更糟?</p>
-                </div>
-                <div class="col-md-4">
-                    <h4 class="service-heading">深度挖掘</h4>
-                    <div style="height: 220px">
-                        <img class="echart-symbol" src="${resource(dir: 'images',file: '6.png')}"/>
-                    </div>
-                    <p class="text-muted">穿透表面的财务数据,了解背后的事件</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="intro-lead-in" style="color: #666">图读财报</div>
 
-    <footer style="background-color: #d92231">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-offset-4 col-md-4">
-                    <ul class="list-inline social-buttons">
-                        %{--支付宝--}%
-                        <li><a href="javascript:;"><i class="fa fa-qrcode"></i></a>
-                        </li>
-                        %{--信息反馈--}%
-                        %{--<li><a href="javascript:;"><i class="fa fa-question"></i></a>--}%
-                        %{--</li>--}%
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <span class="copyright" style="color: #dddddd">Copyright &copy; 2016 StockGraph</span>
-                </div>
+            <div class="intro-description">帮助你从枯燥的财务报表中解脱出来</div>
+            %{--<a href="#services" class="page-scroll btn btn-xl"></a>--}%
+        </div>
+    </div>
+</header>
+
+<!-- Services Section -->
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">丰富的可视化效果</h2>
+
+                <h3 class="section-subheading text-muted"></h3>
             </div>
         </div>
-    </footer>
+
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h4 class="service-heading">个股详情</h4>
+
+                <div style="height: 220px">
+                    <img class="echart-symbol" src="${resource(dir: 'images', file: '1.png')}"/>
+                </div>
+
+                <p class="text-muted">从过去到现在,展现股票的基本面趋势</p>
+            </div>
+
+            <div class="col-md-4">
+                <h4 class="service-heading">同业比较</h4>
+
+                <div style="height: 220px">
+                    <img class="echart-symbol" src="${resource(dir: 'images', file: '2.png')}"/>
+                </div>
+
+                <p class="text-muted">这支股票的业绩和它的同行相比如何? 更好or更糟?</p>
+            </div>
+
+            <div class="col-md-4">
+                <h4 class="service-heading">深度挖掘</h4>
+
+                <div style="height: 220px">
+                    <img class="echart-symbol" src="${resource(dir: 'images', file: '6.png')}"/>
+                </div>
+
+                <p class="text-muted">穿透表面的财务数据,了解背后的事件</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer style="background-color: #d92231">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4">
+                <ul class="list-inline social-buttons">
+                    %{--支付宝--}%
+                    <li><a href="javascript:;" onclick="showZhifubaoModal()"><i class="fa fa-qrcode"></i></a>
+                    </li>
+                    %{--信息反馈--}%
+                    %{--<li><a href="javascript:;"><i class="fa fa-question"></i></a>--}%
+                    %{--</li>--}%
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <span class="copyright" style="color: #dddddd">Copyright &copy; 2016 StockGraph</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="md-modal md-effect-3" id="modal-zhifubao">
+    <div class="md-content">
+        <h3>Modal Dialog</h3>
+        <div>
+            <p>This is a modal window. You can do the following things with it:</p>
+            <ul>
+                <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
+                <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+                <li><strong>Close:</strong> click on the button below to close the modal.</li>
+            </ul>
+            <button onclick="hiddenZhifubaoModal()" class="md-close">Close me!</button>
+        </div>
+    </div>
+</div>
+
+<script src="${resource(dir: 'js',file: 'jquery-1.11.1.min.js')}"></script>
+
+<script>
+    $(function () {
+
+    });
+
+    function showZhifubaoModal() {
+        $("#modal-zhifubao").addClass("md-show");
+    }
+
+    function hiddenZhifubaoModal() {
+        $("#modal-zhifubao").removeClass("md-show");
+    }
+</script>
 
 </body>
 

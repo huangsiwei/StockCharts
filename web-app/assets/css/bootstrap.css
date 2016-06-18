@@ -4073,6 +4073,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default {
   background-color: #ffffff;
   border-color: #eeeeee;
+  box-shadow: 0px 3px 5px #ddd;
 }
 .navbar-default .navbar-brand {
   color: #2c2e2f;
