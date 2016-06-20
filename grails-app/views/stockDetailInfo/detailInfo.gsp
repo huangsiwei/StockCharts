@@ -46,8 +46,22 @@
 
 <div class="row">
     <div class="col-sm-offset-1 col-sm-10">
+
         <div class="panel panel-default">
             <div class="panel-body">
+
+                <div class="col-sm-12">
+                    <div class="panel panel-inverted">
+                        <div class="panel-heading">
+                            万科A SZ00002
+                        </div>
+                        <div class="panel-body">
+                            <p>简介: 公司原系经深圳市人民政府深府办(1988)1509号文批准,于1988年11月1日在深圳现代企业有限公司基础上改组设立的股份有限公司,原名为"深圳万科企业股份有限公司"。1991年1月29日,本公司发行之A股在深圳证券交易所上市。1993年5月28日,本公司发行之B股在深圳证券交易所上市。1993年12月28日经深圳市工商行政管理局批准更名为"万科企业股份有限公司"。</p>
+                            <p>业务:房地产开发和物业服务。</p>
+                        </div>
+                    </div>
+                </div>
+
                 %{--<h2 class="title" style="text-align: center;margin-bottom: 18px;color: #5084c4">公司基本面数据趋势图</h2>--}%
                 <div class="col-sm-4">
 
@@ -102,9 +116,19 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-sm-4">
+
+                </div>
+
+                <div class="col-sm-12">
+                    竞争对手 主营构成
+                </div>
             </div>
             %{--http://webf10.gw.com.cn/SZ/B3/SZ300015_B3.html 主营环形图 负数占内环--}%
             %{--TODO:--}%
+
+
         </div>
     </div>
 </div>
