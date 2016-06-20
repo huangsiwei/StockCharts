@@ -130,7 +130,7 @@
                 <h4 class="service-heading">深度挖掘</h4>
 
                 <div style="height: 220px">
-                    <img class="echart-symbol" src="${resource(dir: 'images', file: '6.png')}"/>
+                    <img class="echart-symbol" onclick="window.location.href='${createLink(controller: 'stockDetailInfo',action: 'detailInfo')}'" src="${resource(dir: 'images', file: '6.png')}"/>
                 </div>
 
                 <p class="text-muted">穿透表面的财务数据,了解背后的事件</p>
