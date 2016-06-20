@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="${resource(dir: 'images',file: 'stocks-icon.png')}" type="image/x-icon">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Stock Graph 图读财报</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'bootstrap.css')}">
@@ -19,21 +20,8 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'loader.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/css/fonts/fontawesome/css/', file: 'font-awesome.min.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'bootstrap.css')}">
-    %{--<link rel="stylesheet" href="${resource(dir:'css/',file: 'default.css')}">--}%
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'component.css')}">
 
-    %{--<script src="js/modernizr.custom.js"></script>--}%
-    %{----}%
-
-    <!-- Custom Fonts -->
-    %{--<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">--}%
-    %{--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">--}%
-    %{--<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>--}%
-    %{--<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>--}%
-    %{--<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>--}%
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -121,7 +109,7 @@
             <div class="col-md-4">
                 <h4 class="service-heading">个股详情</h4>
 
-                <div style="height: 220px">
+                <div style="height: 220px" onclick="window.location.href='${createLink(controller: 'stockFinancialInfo',action: 'index')}'">
                     <img class="echart-symbol" src="${resource(dir: 'images', file: '1.png')}"/>
                 </div>
 
@@ -131,7 +119,7 @@
             <div class="col-md-4">
                 <h4 class="service-heading">同业比较</h4>
 
-                <div style="height: 220px">
+                <div style="height: 220px" onclick="window.location.href='${createLink(controller: 'stockFinancialInfo',action: 'financialInfoByIndustryFilter')}'">
                     <img class="echart-symbol" src="${resource(dir: 'images', file: '2.png')}"/>
                 </div>
 
