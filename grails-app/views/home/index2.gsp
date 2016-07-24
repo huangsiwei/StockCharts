@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="${resource(dir: 'assets/css/fonts/fontawesome/css/', file: 'font-awesome.min.css')}">
     <link rel="stylesheet" href="${resource(dir: 'assets/css/', file: 'bootstrap.css')}">
     <link rel="stylesheet" href="${resource(dir: 'css/', file: 'component.css')}">
+    <link rel="stylesheet" href="${resource(dir: 'css/', file: 'jquery.fullPage.css')}">
+
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -38,6 +40,32 @@
         width: 220px;
         height: 220px;
     }
+
+    .copyright {
+        float: right;
+        color: #dddddd;
+        margin-right: 30px;
+        margin-top: 15px;
+    }
+
+    .footer {
+        background-color: #d92231;
+        position: absolute;
+        bottom: 0%;
+        width: 100%;
+    }
+
+    .footer .fa {
+        font-size: 30px;
+        color: #eeeeee;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .footer .fa:hover {
+        color: #e6c400;
+    }
+
     </style>
 
 </head>
@@ -80,85 +108,99 @@
     <!-- /.container-fluid -->
 </nav>
 
-<!-- Header -->
-<header>
-    <div class="container">
-        <div class="intro-text">
-            <div class="intro-heading" style="color: #666">Stock Graph</div>
+<div id="dowebok">
+    <div class="section">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <div class="intro-text">
+                    <div class="intro-heading" style="color: #666">Stock Graph</div>
 
-            <div class="intro-lead-in" style="color: #666">图读财报</div>
+                    <div class="intro-lead-in" style="color: #666">图读财报</div>
 
-            <div class="intro-description">帮助你从枯燥的财务报表中解脱出来</div>
-            %{--<a href="#services" class="page-scroll btn btn-xl"></a>--}%
-        </div>
-    </div>
-</header>
-
-<!-- Services Section -->
-<section id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">丰富的可视化效果</h2>
-
-                <h3 class="section-subheading text-muted"></h3>
+                    <div class="intro-description">帮助你从枯燥的财务报表中解脱出来</div>
+                    %{--<a href="#services" class="page-scroll btn btn-xl"></a>--}%
+                </div>
             </div>
-        </div>
+        </header>
 
-        <div class="row text-center">
-            <div class="col-md-4">
-                <h4 class="service-heading">个股详情</h4>
+    </div>
 
-                <div style="height: 220px" onclick="window.location.href='${createLink(controller: 'stockFinancialInfo',action: 'index')}'">
-                    <img class="echart-symbol" src="${resource(dir: 'images', file: '1.png')}"/>
+    <div class="section">
+        <!-- Services Section -->
+        <div id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">丰富的可视化效果</h2>
+
+                        <h3 class="section-subheading text-muted"></h3>
+                    </div>
                 </div>
 
-                <p class="text-muted">从过去到现在,展现股票的基本面趋势</p>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <h4 class="service-heading">个股详情</h4>
+
+                        <div style="height: 220px"
+                             onclick="window.location.href = '${createLink(controller: 'stockFinancialInfo',action: 'index')}'">
+                            <img class="echart-symbol" src="${resource(dir: 'images', file: '1.png')}"/>
+                        </div>
+
+                        <p class="text-muted">从过去到现在,展现股票的基本面趋势</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4 class="service-heading">同业比较</h4>
+
+                        <div style="height: 220px"
+                             onclick="window.location.href = '${createLink(controller: 'stockFinancialInfo',action: 'financialInfoByIndustryFilter')}'">
+                            <img class="echart-symbol" src="${resource(dir: 'images', file: '2.png')}"/>
+                        </div>
+
+                        <p class="text-muted">这支股票的业绩和它的同行相比如何? 更好or更糟?</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4 class="service-heading">深度挖掘</h4>
+
+                        <div style="height: 220px">
+                            <img class="echart-symbol"
+                                 onclick="window.location.href = '${createLink(controller: 'stockDetailInfo',action: 'detailInfo')}'"
+                                 src="${resource(dir: 'images', file: '6.png')}"/>
+                        </div>
+
+                        <p class="text-muted">穿透表面的财务数据,了解背后的事件</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-md-4">
-                <h4 class="service-heading">同业比较</h4>
+            <div class="footer">
+                <div class="row">
+                    <div class="col-md-offset-4 col-md-4">
+                        <div class="col-md-offset-4 col-md-2">
+                            <a href="javascript:;" onclick="showZhifubaoModal()">
+                                <i class="fa fa-qrcode"></i>
+                            </a>
+                        </div>
 
-                <div style="height: 220px" onclick="window.location.href='${createLink(controller: 'stockFinancialInfo',action: 'financialInfoByIndustryFilter')}'">
-                    <img class="echart-symbol" src="${resource(dir: 'images', file: '2.png')}"/>
+                        <div class="col-md-6">
+                            <a href="javascript:;">
+                                <i class="fa fa-question"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="copyright">Copyright &copy; 2016 StockGraph</span>
+                    </div>
                 </div>
 
-                <p class="text-muted">这支股票的业绩和它的同行相比如何? 更好or更糟?</p>
-            </div>
-
-            <div class="col-md-4">
-                <h4 class="service-heading">深度挖掘</h4>
-
-                <div style="height: 220px">
-                    <img class="echart-symbol" onclick="window.location.href='${createLink(controller: 'stockDetailInfo',action: 'detailInfo')}'" src="${resource(dir: 'images', file: '6.png')}"/>
-                </div>
-
-                <p class="text-muted">穿透表面的财务数据,了解背后的事件</p>
             </div>
         </div>
-    </div>
-</section>
 
-<footer style="background-color: #d92231">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-4 col-md-4">
-                <ul class="list-inline social-buttons">
-                    %{--支付宝--}%
-                    <li><a href="javascript:;" onclick="showZhifubaoModal()"><i class="fa fa-qrcode"></i></a>
-                    </li>
-                    %{--信息反馈--}%
-                    %{--<li><a href="javascript:;"><i class="fa fa-question"></i></a>--}%
-                    %{--</li>--}%
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <span class="copyright" style="color: #dddddd">Copyright &copy; 2016 StockGraph</span>
-            </div>
-        </div>
     </div>
-</footer>
+</div>
+
 
 <div class="md-modal md-effect-3" id="modal-zhifubao">
     <div class="md-content">
@@ -176,10 +218,10 @@
 </div>
 
 <script src="${resource(dir: 'js',file: 'jquery-1.11.1.min.js')}"></script>
-
+<script src="${resource(dir: 'js',file: 'jquery.fullPage.min.js')}"></script>
 <script>
     $(function () {
-
+        $('#dowebok').fullpage();
     });
 
     function showZhifubaoModal() {

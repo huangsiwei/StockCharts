@@ -35,20 +35,17 @@
     margin-top: 10px;
 }
 
-.navbar-default .navbar-brand {
-    color: #fea836;
-    font-weight: bold;
-}
 
-.navbar-default .navbar-brand:hover {
-    color: rgba(216, 216, 216, 0.83);
-    font-weight: bold;
-}
+
+/*.navbar-default .navbar-brand:hover {*/
+    /*color: rgba(216, 216, 216, 0.83);*/
+    /*font-weight: bold;*/
+/*}*/
 
 
 </style>
 
-<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header page-scroll">
             <a class="navbar-brand page-scroll" href="${createLink(controller: 'home',action: 'index')}">Stock Graph</a>
